@@ -43,6 +43,8 @@ const mockNodes: TreeNode[] = [
     status: 'completed',
     progress: 100,
     parent: 'root',
+    description: 'Generates consistent character models and voices for all episode characters',
+    importance: 'Essential for maintaining character identity across all scenes',
     children: [
       {
         id: 'char-models',
