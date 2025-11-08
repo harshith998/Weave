@@ -134,8 +134,8 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
   const flowNodes: Node[] = [];
   const flowEdges: Edge[] = [];
 
-  // Layout configuration - very vertical layout (tight horizontal, tall vertical)
-  const horizontalSpacing = 14;
+  // Layout configuration - vertical layout with spaced out nodes horizontally
+  const horizontalSpacing = 200;
   const verticalSpacing = 480;
 
   // Build a map of children by parent ID
