@@ -56,16 +56,16 @@ function CustomNode({ data }: { data: any }) {
   return (
     <div
       style={{
-        padding: '14px 20px',
-        borderRadius: '10px',
-        border: `3px solid ${borderColor}`,
+        padding: '8px 12px',
+        borderRadius: '8px',
+        border: `2px solid ${borderColor}`,
         background: bgColor,
         color: textColor,
-        minWidth: '180px',
-        maxWidth: '220px',
-        fontSize: '13px',
+        minWidth: '120px',
+        maxWidth: '160px',
+        fontSize: '11px',
         fontWeight: 600,
-        boxShadow: `0 0 20px ${glowColor}, 0 4px 12px rgba(0,0,0,0.3)`,
+        boxShadow: `0 0 15px ${glowColor}, 0 3px 8px rgba(0,0,0,0.3)`,
         position: 'relative',
         transition: 'all 0.3s ease',
       }}
@@ -74,13 +74,13 @@ function CustomNode({ data }: { data: any }) {
       {/* Connection handles */}
       <Handle
         type="target"
-        position={Position.Left}
-        style={{ background: borderColor, border: '2px solid #1A1A1D' }}
+        position={Position.Top}
+        style={{ background: borderColor, border: '2px solid #1A1A1D', width: 8, height: 8 }}
       />
       <Handle
         type="source"
-        position={Position.Right}
-        style={{ background: borderColor, border: '2px solid #1A1A1D' }}
+        position={Position.Bottom}
+        style={{ background: borderColor, border: '2px solid #1A1A1D', width: 8, height: 8 }}
       />
       
       {/* Top accent bar */}
