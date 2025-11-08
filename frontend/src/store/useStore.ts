@@ -32,6 +32,8 @@ const mockNodes: TreeNode[] = [
     name: 'South Park AI Episode',
     status: 'progress',
     progress: 62,
+    description: 'Complete AI-generated South Park episode with character consistency and narrative flow',
+    importance: 'Root project orchestrating all video production workflows',
   },
 
   // Character Generation Pipeline
