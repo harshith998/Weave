@@ -18,6 +18,7 @@ import type { TreeNode } from '../../types';
 
 // Custom node component for our tree nodes
 function CustomNode({ data }: { data: any }) {
+  const [showTooltip, setShowTooltip] = useState(false);
   const status = data.status;
 
   let bgColor = '#1A1A1D';
