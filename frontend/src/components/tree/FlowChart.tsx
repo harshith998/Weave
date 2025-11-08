@@ -148,6 +148,8 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
       id: node.id,
       type: 'custom',
       position: { x, y },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
       data: {
         label: node.name,
         status: node.status,
