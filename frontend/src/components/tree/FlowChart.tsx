@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -87,13 +87,27 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
   const flowEdges: Edge[] = [];
 
   // Layout configuration
-  const horizontalSpacing = 250;
-  const verticalSpacing = 100;
+  const horizontalSpacing = 280;
+  const verticalSpacing = 120;
+
+  // Build a map of children by parent ID
+  const childrenMap = new Map<string, TreeNode[]>();
+  nodes.forEach((node) => {
+    if (node.parent) {
+      if (!childrenMap.has(node.parent)) {
+        childrenMap.set(node.parent, []);
+      }
+      childrenMap.get(node.parent)!.push(node);
+    }
+  });
+
+  // Track vertical position for each level
+  let nodeCounter = 0;
 
   // Build flow nodes with positioning
-  const layoutNode = (node: TreeNode, level: number, index: number, parentIndex: number = 0) => {
+  const layoutNode = (node: TreeNode, level: number, yOffset: number = 0): number => {
     const x = level * horizontalSpacing;
-    const y = (index - parentIndex) * verticalSpacing + parentIndex * verticalSpacing;
+    const y = nodeCounter * verticalSpacing;
 
     flowNodes.push({
       id: node.id,
@@ -106,29 +120,44 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
       },
     });
 
-    if (node.children) {
-      node.children.forEach((child, childIndex) => {
-        flowEdges.push({
-          id: `${node.id}-${child.id}`,
-          source: node.id,
-          target: child.id,
-          type: 'smoothstep',
-          markerEnd: {
-            type: MarkerType.ArrowClosed,
-            color: '#6B7280',
-          },
-          style: { stroke: '#6B7280', strokeWidth: 2 },
-        });
+    nodeCounter++;
 
-        layoutNode(child, level + 1, flowNodes.length, index);
-      });
+    // Process children (both from children array and from parent relationships)
+    let children: TreeNode[] = [];
+
+    // First check if node has children array
+    if (node.children && node.children.length > 0) {
+      children = node.children;
+    } else if (childrenMap.has(node.id)) {
+      // Otherwise check the children map
+      children = childrenMap.get(node.id)!;
     }
+
+    let maxY = y;
+    children.forEach((child) => {
+      flowEdges.push({
+        id: `${node.id}-${child.id}`,
+        source: node.id,
+        target: child.id,
+        type: 'smoothstep',
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: '#6B7280',
+        },
+        style: { stroke: '#6B7280', strokeWidth: 2 },
+      });
+
+      const childMaxY = layoutNode(child, level + 1, maxY);
+      maxY = Math.max(maxY, childMaxY);
+    });
+
+    return maxY;
   };
 
   // Process root nodes
   const rootNodes = nodes.filter((n) => !n.parent);
-  rootNodes.forEach((node, index) => {
-    layoutNode(node, 0, index);
+  rootNodes.forEach((node) => {
+    layoutNode(node, 0, 0);
   });
 
   return { nodes: flowNodes, edges: flowEdges };
@@ -140,6 +169,13 @@ export function FlowChart() {
 
   const [nodes, setNodes, onNodesChange] = useNodesState(flowNodesData);
   const [edges, setEdges, onEdgesChange] = useEdgesState(flowEdgesData);
+
+  // Update nodes and edges when tree data changes
+  useEffect(() => {
+    const { nodes: newNodes, edges: newEdges } = treeToFlow(treeNodes);
+    setNodes(newNodes);
+    setEdges(newEdges);
+  }, [treeNodes, setNodes, setEdges]);
 
   const onNodeClick = useCallback(
     (_: React.MouseEvent, node: Node) => {
