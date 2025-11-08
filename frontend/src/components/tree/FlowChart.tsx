@@ -7,6 +7,7 @@ import ReactFlow, {
   useEdgesState,
   MarkerType,
   Position,
+  Handle,
   type Node,
   type Edge,
 } from 'reactflow';
