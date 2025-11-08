@@ -19,6 +19,10 @@ interface WeaveStore {
   setActiveAgent: (agent: Agent) => void;
 
   conversations: Conversation[];
+  
+  // Layout state
+  leftPanelWidth: number;
+  setLeftPanelWidth: (width: number) => void;
 }
 
 // Mock data for initial state - Complete video production workflow
