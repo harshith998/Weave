@@ -237,12 +237,19 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
     return currentX;
   };
 
-  // Process root nodes
+  // Process root nodes - arrange them horizontally at the top
   const rootNodes = nodes.filter((n) => !n.parent);
-  let currentX = 0;
-  rootNodes.forEach((node) => {
+  
+  // Calculate total width needed for root nodes
+  const totalRootWidth = rootNodes.length * horizontalSpacing;
+  const startX = -totalRootWidth / 2;
+  
+  let currentX = startX;
+  rootNodes.forEach((node, index) => {
     currentX = layoutNode(node, 0, currentX);
-    currentX += horizontalSpacing; // Space between root trees
+    if (index < rootNodes.length - 1) {
+      currentX += horizontalSpacing * 0.5; // Reduced spacing between root trees
+    }
   });
 
   return { nodes: flowNodes, edges: flowEdges };
