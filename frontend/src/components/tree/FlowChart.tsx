@@ -124,6 +124,53 @@ function CustomNode({ data }: { data: any }) {
           />
         </div>
       )}
+      
+      {/* Tooltip */}
+      {showTooltip && (data.description || data.importance) && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            marginBottom: '12px',
+            padding: '12px 14px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #2D2D32 0%, #1A1A1D 100%)',
+            border: `2px solid ${borderColor}`,
+            boxShadow: `0 0 20px ${glowColor}, 0 8px 16px rgba(0,0,0,0.5)`,
+            minWidth: '220px',
+            maxWidth: '280px',
+            zIndex: 1000,
+            pointerEvents: 'none',
+          }}
+        >
+          {data.description && (
+            <div style={{ fontSize: '11px', lineHeight: '1.5', marginBottom: '6px', color: '#E0E0E2' }}>
+              {data.description}
+            </div>
+          )}
+          {data.importance && (
+            <div style={{ fontSize: '10px', lineHeight: '1.4', color: '#9CA3AF', fontStyle: 'italic', marginTop: '6px', borderTop: `1px solid ${borderColor}`, paddingTop: '6px' }}>
+              <strong style={{ color: accentColor }}>Why it matters:</strong> {data.importance}
+            </div>
+          )}
+          {/* Tooltip arrow */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 0,
+              height: 0,
+              borderLeft: '8px solid transparent',
+              borderRight: '8px solid transparent',
+              borderTop: `8px solid ${borderColor}`,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
