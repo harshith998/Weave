@@ -187,6 +187,8 @@ const mockNodes: TreeNode[] = [
     status: 'active',
     progress: 73,
     parent: 'root',
+    description: 'Kyle and Stan discuss resistance plans while dealing with AI interference',
+    importance: 'Currently in progress - Key scene for character development and plot advancement',
     metadata: {
       workingOn: 'Audio synchronization',
       duration: '38s',
