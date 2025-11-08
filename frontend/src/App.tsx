@@ -46,11 +46,49 @@ function App() {
     // TODO: Add to store
   };
 
+  const handleMouseDown = () => {
+    setIsResizing(true);
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing) return;
+      
+      const newWidth = e.clientX;
+      if (newWidth >= 300 && newWidth <= 800) {
+        setLeftPanelWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    if (isResizing) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isResizing, setLeftPanelWidth]);
+
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden">
       <TopBar />
       <main className="flex-1 flex overflow-hidden">
-        <LeftPanel onNewProject={() => setNewProjectModalOpen(true)} />
+        <div style={{ width: `${leftPanelWidth}px` }} className="relative">
+          <LeftPanel onNewProject={() => setNewProjectModalOpen(true)} />
+          <div
+            className="absolute top-0 right-0 w-1 h-full cursor-col-resize bg-border-subtle hover:bg-accent-purple transition-colors z-10"
+            onMouseDown={handleMouseDown}
+            style={{
+              cursor: 'col-resize',
+            }}
+          />
+        </div>
         <RightPanel />
       </main>
       <StatusBar />
