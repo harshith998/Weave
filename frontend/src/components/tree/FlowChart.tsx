@@ -71,6 +71,8 @@ function CustomNode({ data }: { data: any }) {
         transition: 'all 0.3s ease',
       }}
       className="custom-node"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
     >
       {/* Connection handles */}
       <Handle
