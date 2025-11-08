@@ -267,6 +267,8 @@ const mockNodes: TreeNode[] = [
     status: 'progress',
     progress: 35,
     parent: 'root',
+    description: 'Fast-paced montage showing AI systems taking control across South Park',
+    importance: 'Visually showcases the scope of the AI takeover and raises stakes',
     metadata: {
       workingOn: 'Generating montage clips',
       duration: '52s',
