@@ -153,9 +153,9 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
   let nodeCounter = 0;
 
   // Build flow nodes with positioning
-  const layoutNode = (node: TreeNode, level: number, yOffset: number = 0): number => {
-    const x = level * horizontalSpacing;
-    const y = nodeCounter * verticalSpacing;
+  const layoutNode = (node: TreeNode, level: number, offsetX: number = 0): number => {
+    const y = level * verticalSpacing;
+    const x = nodeCounter * horizontalSpacing;
 
     flowNodes.push({
       id: node.id,
