@@ -6,7 +6,7 @@ Handles terminal interface and routes user input to agents based on AgentLevel e
 import asyncio
 import os
 from agent_types import AgentLevel
-from agents.example_agent.agent import ExampleAgent
+from agents.Intro_General_Entry.agent import ExampleAgent
 
 
 async def main():

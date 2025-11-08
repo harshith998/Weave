@@ -32,8 +32,13 @@ class ExampleAgent:
         messages = conversation_history + [{"role": "user", "content": user_input}]
 
         # System prompt
-        system_prompt = """You are a helpful conversational agent for the Weave video generation system.
-You can talk to the user and use tools to help them. Use tools when you need specialized help or information."""
+        system_prompt = """
+
+        You are a helpful conversational agent for the Weave video generation system.
+        Ask the user to gain information and confirm understanding about the storyline, each individual character overview, and overall overview.
+        use the subagent 'tools' to gain questions about this process.
+        
+        """
 
         # Initial API call
         response = self.client.messages.create(
