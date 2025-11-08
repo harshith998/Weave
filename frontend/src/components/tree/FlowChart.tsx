@@ -17,58 +17,91 @@ import type { TreeNode } from '../../types';
 function CustomNode({ data }: { data: any }) {
   const status = data.status;
 
-  let bgColor = '#252528';
+  let bgColor = '#1A1A1D';
   let borderColor = '#6B7280';
+  let glowColor = 'rgba(107, 114, 128, 0.3)';
+  let accentColor = '#6B7280';
   let textColor = '#EEEFF1';
 
   switch (status) {
     case 'completed':
       borderColor = '#10B981';
+      glowColor = 'rgba(16, 185, 129, 0.4)';
+      accentColor = '#10B981';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(16, 185, 129, 0.1) 100%)';
       break;
     case 'progress':
       borderColor = '#F59E0B';
+      glowColor = 'rgba(245, 158, 11, 0.4)';
+      accentColor = '#F59E0B';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(245, 158, 11, 0.15) 100%)';
       break;
     case 'active':
       borderColor = '#8B5CF6';
-      bgColor = '#8B5CF6';
-      textColor = '#FFFFFF';
+      glowColor = 'rgba(139, 92, 246, 0.5)';
+      accentColor = '#8B5CF6';
+      bgColor = 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.05) 100%)';
       break;
     case 'pending':
       borderColor = '#3B82F6';
-      bgColor = '#1A1A1D';
+      glowColor = 'rgba(59, 130, 246, 0.3)';
+      accentColor = '#3B82F6';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(59, 130, 246, 0.08) 100%)';
       break;
   }
 
   return (
     <div
       style={{
-        padding: '12px 16px',
-        borderRadius: '6px',
-        border: `2px solid ${borderColor}`,
+        padding: '14px 20px',
+        borderRadius: '10px',
+        border: `3px solid ${borderColor}`,
         background: bgColor,
         color: textColor,
-        minWidth: '160px',
-        fontSize: '14px',
-        fontWeight: 500,
+        minWidth: '180px',
+        maxWidth: '220px',
+        fontSize: '13px',
+        fontWeight: 600,
+        boxShadow: `0 0 20px ${glowColor}, 0 4px 12px rgba(0,0,0,0.3)`,
+        position: 'relative',
+        transition: 'all 0.3s ease',
       }}
+      className="custom-node"
     >
-      <div>{data.label}</div>
+      {/* Top accent bar */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '3px',
+          background: accentColor,
+          borderRadius: '10px 10px 0 0',
+        }}
+      />
+      
+      <div style={{ lineHeight: '1.4' }}>{data.label}</div>
+      
       {data.progress !== undefined && data.progress > 0 && (
         <div
           style={{
-            marginTop: '6px',
-            height: '4px',
-            background: 'rgba(255,255,255,0.1)',
-            borderRadius: '2px',
+            marginTop: '8px',
+            height: '6px',
+            background: 'rgba(255,255,255,0.08)',
+            borderRadius: '3px',
             overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,0.1)',
           }}
         >
           <div
             style={{
               width: `${data.progress}%`,
               height: '100%',
-              background: borderColor,
-              borderRadius: '2px',
+              background: `linear-gradient(90deg, ${accentColor} 0%, ${borderColor} 100%)`,
+              borderRadius: '3px',
+              boxShadow: `0 0 8px ${glowColor}`,
+              transition: 'width 0.5s ease',
             }}
           />
         </div>
