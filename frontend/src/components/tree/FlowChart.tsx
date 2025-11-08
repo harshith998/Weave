@@ -71,6 +71,18 @@ function CustomNode({ data }: { data: any }) {
       }}
       className="custom-node"
     >
+      {/* Connection handles */}
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: borderColor, border: '2px solid #1A1A1D' }}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        style={{ background: borderColor, border: '2px solid #1A1A1D' }}
+      />
+      
       {/* Top accent bar */}
       <div
         style={{
