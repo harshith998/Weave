@@ -168,16 +168,44 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
 
     let maxY = y;
     children.forEach((child) => {
+      // Determine edge color based on child status
+      let edgeColor = '#6B7280';
+      let edgeGlow = 'rgba(107, 114, 128, 0.3)';
+      
+      switch (child.status) {
+        case 'completed':
+          edgeColor = '#10B981';
+          edgeGlow = 'rgba(16, 185, 129, 0.5)';
+          break;
+        case 'progress':
+          edgeColor = '#F59E0B';
+          edgeGlow = 'rgba(245, 158, 11, 0.5)';
+          break;
+        case 'active':
+          edgeColor = '#8B5CF6';
+          edgeGlow = 'rgba(139, 92, 246, 0.6)';
+          break;
+        case 'pending':
+          edgeColor = '#3B82F6';
+          edgeGlow = 'rgba(59, 130, 246, 0.4)';
+          break;
+      }
+      
       flowEdges.push({
         id: `${node.id}-${child.id}`,
         source: node.id,
         target: child.id,
         type: 'smoothstep',
+        animated: child.status === 'progress' || child.status === 'active',
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          color: '#6B7280',
+          color: edgeColor,
         },
-        style: { stroke: '#6B7280', strokeWidth: 2 },
+        style: { 
+          stroke: edgeColor, 
+          strokeWidth: 3,
+          filter: `drop-shadow(0 0 4px ${edgeGlow})`,
+        },
       });
 
       const childMaxY = layoutNode(child, level + 1, maxY);
