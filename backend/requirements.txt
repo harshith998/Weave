@@ -1,15 +1,8 @@
 # Minimal dependencies for the agentic backend
 
-# Async support
-asyncio>=3.4.3
-
-# For MCP integration (add specific MCP packages as needed)
-# mcp>=1.0.0  # Uncomment when implementing MCP
+# Anthropic API
+anthropic>=0.39.0
 
 # For API layer (uncomment when implementing frontend integration)
 # fastapi>=0.104.0
 # uvicorn>=0.24.0
-
-# Add your MCP servers and other dependencies here:
-# supermemory
-# other-mcp-package

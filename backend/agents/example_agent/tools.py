@@ -1,52 +1,71 @@
 """
-Tools for ExampleAgent.
-
-Define agent-specific tools and MCP integrations here.
-Each agent can have its own set of tools.
+Tool definitions and executor for ExampleAgent.
+Defines tools in Anthropic format and routes tool calls to subagents.
 """
 
 from typing import Any, Dict
 
+# Import subagents
+from .subagents.subagent import research_subagent, creative_subagent
 
-class ExampleTools:
+
+# Tool definitions in Anthropic format
+TOOLS = [
+    {
+        "name": "research_subagent",
+        "description": "Research a topic or gather information. Use this when you need to look up facts, analyze concepts, or gather background information.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The research query or topic to investigate"
+                }
+            },
+            "required": ["query"]
+        }
+    },
+    {
+        "name": "creative_subagent",
+        "description": "Generate creative content like character ideas, scene descriptions, or story elements. Use this when you need creative writing or brainstorming.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "prompt": {
+                    "type": "string",
+                    "description": "The creative prompt or request"
+                },
+                "style": {
+                    "type": "string",
+                    "description": "Optional style guide (e.g., 'dramatic', 'comedic', 'realistic')",
+                    "default": "neutral"
+                }
+            },
+            "required": ["prompt"]
+        }
+    }
+]
+
+
+async def execute_tool(tool_name: str, **kwargs) -> str:
     """
-    Tools available to ExampleAgent.
+    Execute a tool by routing to the appropriate subagent
 
-    TODO: Implement your agent-specific tools here.
-    These can be:
-    - MCP tool wrappers
-    - Custom utility functions
-    - API integrations
+    Args:
+        tool_name: Name of the tool to execute
+        **kwargs: Tool parameters
+
+    Returns:
+        Tool result as string
     """
+    if tool_name == "research_subagent":
+        return await research_subagent(kwargs.get("query", ""))
 
-    @staticmethod
-    async def example_tool(param: str) -> Dict[str, Any]:
-        """
-        Example tool method.
+    elif tool_name == "creative_subagent":
+        return await creative_subagent(
+            prompt=kwargs.get("prompt", ""),
+            style=kwargs.get("style", "neutral")
+        )
 
-        TODO: Replace with your actual tool implementation.
-
-        Args:
-            param: Tool parameter
-
-        Returns:
-            Tool result
-        """
-        pass
-
-    @staticmethod
-    async def call_mcp_tool(mcp_name: str, tool_name: str, **kwargs) -> Any:
-        """
-        Call an MCP tool through the registry.
-
-        TODO: Implement MCP tool calling.
-
-        Args:
-            mcp_name: Name of the MCP server
-            tool_name: Name of the tool
-            **kwargs: Tool arguments
-
-        Returns:
-            Tool result
-        """
-        pass
+    else:
+        return f"Error: Unknown tool '{tool_name}'"

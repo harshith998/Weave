@@ -1,63 +1,79 @@
 """
-Example agent implementation.
-
-This is a template showing how to create a new agent.
-Copy this folder and implement the methods for your specific agent.
+Example agent implementation using Anthropic API with tool calling.
 """
 
-from typing import Any, Dict, Optional
-import sys
-sys.path.append('../..')
-
-from base_agent import BaseAgent
+from typing import List, Dict, Any
+from anthropic import Anthropic
 from agent_types import AgentLevel
+from .tools import TOOLS, execute_tool
 
 
-class ExampleAgent(BaseAgent):
-    """
-    Example agent implementation.
+class ExampleAgent:
+    """Main conversational agent with tool calling capabilities"""
 
-    TODO: Implement your agent logic here.
-    """
+    def __init__(self, api_key: str, level: AgentLevel):
+        self.api_key = api_key
+        self.level = level
+        self.client = Anthropic(api_key=api_key)
+        self.model = "claude-sonnet-4-5-20250929"
 
-    def __init__(self, agent_id: str, level: AgentLevel = AgentLevel.MAIN, config: Optional[Dict[str, Any]] = None):
-        super().__init__(agent_id, level, config)
-        # TODO: Add agent-specific initialization
-
-    async def run(self, task: Dict[str, Any]) -> Any:
+    async def run(self, user_input: str, conversation_history: List[Dict[str, str]]) -> str:
         """
-        Main execution logic.
+        Main execution method - handles conversation with tool calling loop
 
-        TODO: Implement your agent's main logic here.
-        - Process the task
-        - Call tools as needed
-        - Spawn subagents if required
-        - Send checkpoints for progress
-        """
-        pass
+        Args:
+            user_input: User's message
+            conversation_history: Previous conversation turns
 
-    async def call_tool(self, tool_name: str, **kwargs) -> Any:
+        Returns:
+            Agent's response string
         """
-        Call an MCP tool.
+        # Build messages list
+        messages = conversation_history + [{"role": "user", "content": user_input}]
 
-        TODO: Implement tool calling logic.
-        See tools.py for available tools.
-        """
-        pass
+        # System prompt
+        system_prompt = """You are a helpful conversational agent for the Weave video generation system.
+You can talk to the user and use tools to help them. Use tools when you need specialized help or information."""
 
-    async def spawn_subagent(self, agent_class: type, config: Optional[Dict[str, Any]] = None) -> BaseAgent:
-        """
-        Spawn a sub-agent.
+        # Initial API call
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            system=system_prompt,
+            messages=messages,
+            tools=TOOLS
+        )
 
-        TODO: Implement subagent spawning logic.
-        See subagents.py for subagent management.
-        """
-        pass
+        # Tool use loop
+        while response.stop_reason == "tool_use":
+            # Extract tool uses from response
+            tool_uses = [block for block in response.content if block.type == "tool_use"]
 
-    async def send_checkpoint(self, checkpoint_data: Dict[str, Any]) -> None:
-        """
-        Send checkpoint to orchestrator.
+            # Build tool results
+            tool_results = []
+            for tool_use in tool_uses:
+                # Execute the tool
+                result = await execute_tool(tool_use.name, **tool_use.input)
 
-        TODO: Implement checkpoint sending.
-        """
-        pass
+                tool_results.append({
+                    "type": "tool_result",
+                    "tool_use_id": tool_use.id,
+                    "content": str(result)
+                })
+
+            # Continue conversation with tool results
+            messages.append({"role": "assistant", "content": response.content})
+            messages.append({"role": "user", "content": tool_results})
+
+            # Get next response
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=4096,
+                system=system_prompt,
+                messages=messages,
+                tools=TOOLS
+            )
+
+        # Extract final text response
+        text_content = [block.text for block in response.content if hasattr(block, "text")]
+        return " ".join(text_content)
