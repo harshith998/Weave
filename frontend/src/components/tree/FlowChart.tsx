@@ -259,7 +259,12 @@ export function FlowChart() {
         attributionPosition="bottom-left"
         className="bg-bg-primary"
       >
-        <Background color="#2D2D32" gap={16} />
+        <Background 
+          color="rgba(139, 92, 246, 0.15)" 
+          gap={20} 
+          size={1.5}
+          style={{ backgroundColor: '#1A1A1D' }}
+        />
         <Controls className="bg-bg-secondary border-border-subtle" />
         <MiniMap
           nodeColor={(node) => {
