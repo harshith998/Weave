@@ -10,6 +10,7 @@ import ReactFlow, {
   type Edge,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import './FlowChart.css';
 import { useStore } from '../../store/useStore';
 import type { TreeNode } from '../../types';
 
