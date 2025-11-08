@@ -214,6 +214,8 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
         label: node.name,
         status: node.status,
         progress: node.progress,
+        description: node.description,
+        importance: node.importance,
       },
     });
 
