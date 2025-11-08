@@ -6,6 +6,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   MarkerType,
+  Position,
   type Node,
   type Edge,
 } from 'reactflow';
