@@ -149,13 +149,10 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
     }
   });
 
-  // Track vertical position for each level
-  let nodeCounter = 0;
-
-  // Build flow nodes with positioning
-  const layoutNode = (node: TreeNode, level: number, offsetX: number = 0): number => {
+  // Build flow nodes with positioning - top-down layout
+  const layoutNode = (node: TreeNode, level: number, offsetX: number): number => {
     const y = level * verticalSpacing;
-    const x = nodeCounter * horizontalSpacing;
+    const x = offsetX;
 
     flowNodes.push({
       id: node.id,
@@ -170,8 +167,6 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
       },
     });
 
-    nodeCounter++;
-
     // Process children (both from children array and from parent relationships)
     let children: TreeNode[] = [];
 
@@ -183,8 +178,14 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
       children = childrenMap.get(node.id)!;
     }
 
-    let maxY = y;
-    children.forEach((child) => {
+    if (children.length === 0) {
+      return x + horizontalSpacing;
+    }
+
+    let currentX = offsetX;
+    const childStartX = currentX;
+    
+    children.forEach((child, index) => {
       // Determine edge color based on child status
       let edgeColor = '#6B7280';
       let edgeGlow = 'rgba(107, 114, 128, 0.3)';
@@ -225,17 +226,23 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
         },
       });
 
-      const childMaxY = layoutNode(child, level + 1, maxY);
-      maxY = Math.max(maxY, childMaxY);
+      currentX = layoutNode(child, level + 1, currentX);
     });
 
-    return maxY;
+    // Center parent above children
+    const childEndX = currentX;
+    const parentCenterX = childStartX + (childEndX - childStartX - horizontalSpacing) / 2;
+    flowNodes.find(n => n.id === node.id)!.position.x = parentCenterX;
+
+    return currentX;
   };
 
   // Process root nodes
   const rootNodes = nodes.filter((n) => !n.parent);
+  let currentX = 0;
   rootNodes.forEach((node) => {
-    layoutNode(node, 0, 0);
+    currentX = layoutNode(node, 0, currentX);
+    currentX += horizontalSpacing; // Space between root trees
   });
 
   return { nodes: flowNodes, edges: flowEdges };
