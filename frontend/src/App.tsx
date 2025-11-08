@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { TopBar } from './components/layout/TopBar';
 import { LeftPanel } from './components/layout/LeftPanel';
 import { RightPanel } from './components/layout/RightPanel';
 import { StatusBar } from './components/layout/StatusBar';
 import { CommandPalette } from './components/common/CommandPalette';
 import { NewProjectModal } from './components/common/NewProjectModal';
+import { useStore } from './store/useStore';
 
 function App() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [newProjectModalOpen, setNewProjectModalOpen] = useState(false);
+  const [isResizing, setIsResizing] = useState(false);
+  
+  const leftPanelWidth = useStore((state) => state.leftPanelWidth);
+  const setLeftPanelWidth = useStore((state) => state.setLeftPanelWidth);
 
   // Keyboard shortcuts
   useEffect(() => {
