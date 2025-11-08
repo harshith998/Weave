@@ -111,6 +111,8 @@ const mockNodes: TreeNode[] = [
     status: 'completed',
     progress: 100,
     parent: 'root',
+    description: 'Opening scene where Cartman announces his AI takeover plan at town hall',
+    importance: 'Sets up the main conflict and introduces the episode premise',
     metadata: {
       duration: '45s',
       lastUpdate: '5m ago',
