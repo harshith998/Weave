@@ -626,4 +626,8 @@ export const useStore = create<WeaveStore>((set) => ({
   setActiveAgent: (agent) => set({ activeAgent: agent }),
 
   conversations: mockConversations,
+  
+  // Layout state
+  leftPanelWidth: 400,
+  setLeftPanelWidth: (width) => set({ leftPanelWidth: width }),
 }));
