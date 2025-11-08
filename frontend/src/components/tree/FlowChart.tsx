@@ -199,8 +199,6 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
         id: `${node.id}-${child.id}`,
         source: node.id,
         target: child.id,
-        sourceHandle: null,
-        targetHandle: null,
         type: 'smoothstep',
         animated: child.status === 'progress' || child.status === 'active',
         markerEnd: {
