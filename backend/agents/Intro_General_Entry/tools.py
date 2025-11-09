@@ -148,7 +148,7 @@ async def generate_style_image(style_description: str, context: str = "") -> str
                 for part in candidate.content.parts:
                     if hasattr(part, 'inline_data') and part.inline_data:
                         # Create output directory if it doesn't exist
-                        output_dir = "backend/output/style_examples"
+                        output_dir = "output/style_examples"
                         os.makedirs(output_dir, exist_ok=True)
 
                         # Generate unique filename with timestamp
