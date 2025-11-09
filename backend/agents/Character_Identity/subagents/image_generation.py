@@ -152,12 +152,8 @@ Intimate, emotionally revealing."""
             print(f"Generating {image_type} image...")
 
             # Generate image using Gemini
-            response = model.generate_content(
-                prompt,
-                generation_config=genai.GenerationConfig(
-                    response_modalities=["image"],
-                )
-            )
+            # Note: Gemini 2.0 Flash for image generation
+            response = model.generate_content(prompt)
 
             # Extract image data from response
             if response.parts:
