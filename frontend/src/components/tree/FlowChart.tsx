@@ -17,7 +17,7 @@ import { useStore } from '../../store/useStore';
 import type { TreeNode } from '../../types';
 
 // Custom node component for our tree nodes
-function CustomNode({ data }: { data: any }) {
+function CustomNode({ data }: { data: { label: string; status: string; progress?: number; description?: string; importance?: string } }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const status = data.status;
 
@@ -25,7 +25,7 @@ function CustomNode({ data }: { data: any }) {
   let borderColor = '#6B7280';
   let glowColor = 'rgba(107, 114, 128, 0.3)';
   let accentColor = '#6B7280';
-  let textColor = '#EEEFF1';
+  const textColor = '#EEEFF1';
 
   switch (status) {
     case 'completed':
