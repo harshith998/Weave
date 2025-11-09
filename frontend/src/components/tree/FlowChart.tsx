@@ -133,25 +133,25 @@ function CustomNode({ data }: { data: any }) {
             bottom: '100%',
             left: '50%',
             transform: 'translateX(-50%)',
-            marginBottom: '12px',
-            padding: '12px 14px',
-            borderRadius: '8px',
+            marginBottom: '20px',
+            padding: '20px 24px',
+            borderRadius: '12px',
             background: 'linear-gradient(135deg, #2D2D32 0%, #1A1A1D 100%)',
-            border: `2px solid ${borderColor}`,
-            boxShadow: `0 0 20px ${glowColor}, 0 8px 16px rgba(0,0,0,0.5)`,
-            minWidth: '220px',
-            maxWidth: '280px',
+            border: `3px solid ${borderColor}`,
+            boxShadow: `0 0 30px ${glowColor}, 0 12px 24px rgba(0,0,0,0.5)`,
+            minWidth: '400px',
+            maxWidth: '550px',
             zIndex: 1000,
             pointerEvents: 'none',
           }}
         >
           {data.description && (
-            <div style={{ fontSize: '11px', lineHeight: '1.5', marginBottom: '6px', color: '#E0E0E2' }}>
+            <div style={{ fontSize: '16px', lineHeight: '1.6', marginBottom: '12px', color: '#E0E0E2' }}>
               {data.description}
             </div>
           )}
           {data.importance && (
-            <div style={{ fontSize: '10px', lineHeight: '1.4', color: '#9CA3AF', fontStyle: 'italic', marginTop: '6px', borderTop: `1px solid ${borderColor}`, paddingTop: '6px' }}>
+            <div style={{ fontSize: '14px', lineHeight: '1.5', color: '#9CA3AF', fontStyle: 'italic', marginTop: '12px', borderTop: `2px solid ${borderColor}`, paddingTop: '12px' }}>
               <strong style={{ color: accentColor }}>Why it matters:</strong> {data.importance}
             </div>
           )}
@@ -164,9 +164,9 @@ function CustomNode({ data }: { data: any }) {
               transform: 'translateX(-50%)',
               width: 0,
               height: 0,
-              borderLeft: '8px solid transparent',
-              borderRight: '8px solid transparent',
-              borderTop: `8px solid ${borderColor}`,
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderTop: `12px solid ${borderColor}`,
             }}
           />
         </div>
