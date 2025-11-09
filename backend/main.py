@@ -5,11 +5,13 @@ Handles terminal interface and routes user input to agents based on AgentLevel e
 
 import asyncio
 import os
+from dotenv import load_dotenv
 from agent_types import AgentLevel
-from agents.example_agent.agent import ExampleAgent
+from agents.Intro_General_Entry.agent import EntryAgent
 
 
 async def main():
+    load_dotenv()
     # Get API key from environment
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
@@ -25,7 +27,7 @@ async def main():
     print("-" * 60)
 
     # Initialize first agent
-    current_agent = ExampleAgent(api_key=api_key, level=AgentLevel.Intro_General_Entry)
+    current_agent = EntryAgent(api_key=api_key, level=AgentLevel.Intro_General_Entry)
     print(f"[Agent: {AgentLevel(agent_counter).name}]")
 
     while True:
@@ -51,7 +53,7 @@ async def main():
 
         if user_input.lower() == '/reset':
             agent_counter = 1
-            current_agent = ExampleAgent(api_key=api_key, level=AgentLevel.Intro_General_Entry)
+            current_agent = EntryAgent(api_key=api_key, level=AgentLevel.Intro_General_Entry)
             conversation_history = []
             print(f"[Reset to Agent: {AgentLevel(agent_counter).name}]")
             continue
@@ -77,7 +79,7 @@ def get_agent_by_level(level: int, api_key: str):
     agent_level = AgentLevel(level)
 
     if agent_level == AgentLevel.Intro_General_Entry:
-        return ExampleAgent(api_key=api_key, level=agent_level)
+        return EntryAgent(api_key=api_key, level=agent_level)
     elif agent_level == AgentLevel.Character_Identity:
         # TODO: return CharacterIdentityAgent(api_key=api_key, level=agent_level)
         print("Character_Identity agent not yet implemented, using ExampleAgent")
