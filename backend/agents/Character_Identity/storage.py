@@ -68,6 +68,10 @@ class CharacterStorage:
             json.dump(input_data, f, indent=2)
 
         # Initialize metadata
+        # Determine total checkpoints based on image generation setting
+        IMAGE_GENERATION_ENABLED = os.getenv("IMAGE_GENERATION_ENABLED", "false").lower() == "true"
+        total_checkpoints = 8 if IMAGE_GENERATION_ENABLED else 7
+
         metadata = {
             "character_id": character_id,
             "created_at": datetime.utcnow().isoformat(),
@@ -76,7 +80,7 @@ class CharacterStorage:
             "current_wave": 1,
             "current_checkpoint": 0,
             "completed_checkpoints": 0,
-            "total_checkpoints": 7,  # FIX: Changed from 8 (image generation disabled)
+            "total_checkpoints": total_checkpoints,
             "regenerations": 0
         }
 

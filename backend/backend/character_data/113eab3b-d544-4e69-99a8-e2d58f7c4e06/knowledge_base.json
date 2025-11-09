@@ -1,0 +1,340 @@
+{
+  "character_id": "113eab3b-d544-4e69-99a8-e2d58f7c4e06",
+  "input_data": {
+    "characters": [
+      {
+        "name": "Maya Chen",
+        "appearance": "A 28-year-old woman with shoulder-length black hair, sharp intelligent eyes, wearing modern urban clothing (black leather jacket, fitted jeans, minimalist sneakers). She has an athletic build and carries herself with quiet confidence. A small silver compass necklace hangs around her neck.",
+        "personality": "Curious, introspective, pragmatic but with an underlying sense of wonder. She questions reality and seeks patterns in chaos. Independent to a fault, struggling with trust after past disappointment.",
+        "role": "Protagonist - A digital archivist and data analyst who discovers she has the ability to see and navigate through probability timelines.",
+        "importance": "Main character - The entire narrative centers on her discovery and journey"
+      },
+      {
+        "name": "Kai Moreno",
+        "appearance": "A 30-year-old man with dark curly hair, warm brown eyes, and an expressive face. Dressed in layered casual style (earth tones, worn denim jacket). He has paint stains on his hands and carries a weathered sketchbook.",
+        "personality": "Creative, empathetic, acts as an emotional anchor. He sees beauty in imperfection and chaos. Patient and observant, able to read people intuitively.",
+        "role": "Love interest and guide - An artist who becomes Maya's confidant and helps her understand her abilities through metaphor and creativity.",
+        "importance": "Main supporting character - Essential to Maya's emotional journey and self-discovery"
+      },
+      {
+        "name": "Dr. Elias Venn",
+        "appearance": "A 55-year-old man with silver-streaked hair, piercing gray eyes behind wire-rimmed glasses. Wears expensive but understated clothing (tailored blazer, crisp shirts). His office is sterile and full of advanced technology.",
+        "personality": "Brilliant but cold, driven by obsession with understanding and controlling phenomena he doesn't fully comprehend. Charismatic manipulator who believes the ends justify the means.",
+        "role": "Antagonist - A rogue neuroscientist and tech billionaire who has been studying probability manipulation and wants to exploit Maya's abilities.",
+        "importance": "Main antagonist - Represents the institutional force that seeks to weaponize Maya's gift"
+      },
+      {
+        "name": "Aria",
+        "appearance": "A 7-year-old girl with golden-blonde hair, bright curious eyes, and an innocent but knowing expression. Wears colorful, mismatched clothing that suggests she doesn't follow convention.",
+        "personality": "Precocious and intuitive, speaks with unusual wisdom for her age, seems to exist slightly outside normal reality.",
+        "role": "Mystical catalyst - A mysterious child who may share Maya's abilities and serves as a mirror to her journey.",
+        "importance": "Side character with pivotal moments - Represents Maya's why and motivates critical decisions"
+      }
+    ],
+    "storyline": {
+      "overview": "Maya Chen, a solitary data analyst, discovers she can see and navigate through probability timelines\u2014alternate versions of reality branching from each moment. As she explores this gift, she attracts the attention of Dr. Elias Venn, a wealthy neuroscientist who has been chasing this phenomenon for years. Maya must learn to control her abilities, protect a mysterious child who shares her gift, and decide whether to hide her power or use it to reshape reality itself. The story explores themes of choice, destiny, consequence, and the weight of infinite possibilities.",
+      "tone": "Cinematic sci-fi thriller with emotional depth, mixing wonder and danger, introspection with action",
+      "scenes": [
+        {
+          "title": "The Glitch",
+          "description": "Maya sits alone at her workstation late at night in a modern glass office tower. Computer screens glow around her showing data streams and code. Suddenly, the world stutters\u2014the camera frame splits briefly into multiple versions showing her in slightly different positions or lighting. She blinks, confused, as the reality snaps back to normal. She looks at her hands in wonder, then doubt, wondering if she just hallucinated. A cup of coffee on her desk vibrates slightly.",
+          "characters_involved": [
+            "Maya Chen"
+          ],
+          "setting": "Downtown office building, late night, minimalist tech workspace",
+          "mood": "Unsettling wonder, disorientation, the feeling of reality becoming malleable"
+        },
+        {
+          "title": "In the Garden",
+          "description": "Maya meets Kai in a lush urban rooftop garden filled with plants and art installations. Sunlight filters through climbing vines. As they talk, Kai sketches her face while Maya describes her strange experience. She shows him her hands trembling slightly. Instead of dismissing her, Kai listens intently and shares his own theory about consciousness and reality. They share an intimate moment where their hands almost touch among the plants, representing connection and possibility.",
+          "characters_involved": [
+            "Maya Chen",
+            "Kai Moreno"
+          ],
+          "setting": "Secret rooftop garden in the city, golden afternoon light",
+          "mood": "Intimate, hopeful, a sense of being seen and understood"
+        },
+        {
+          "title": "The Split",
+          "description": "Maya deliberately tries to trigger the phenomenon. She stands in a busy subway station and closes her eyes, concentrating. The world around her begins to split into multiple overlapping timelines visible at once\u2014she sees herself taking different paths, different trains, making different choices. The subway crowd appears as translucent ghosts in alternate probability states. The camera shows these branching realities layered on top of each other, creating a visually complex but beautiful moment of understanding. Maya opens her eyes, breathless, and finally comprehends what she can do.",
+          "characters_involved": [
+            "Maya Chen"
+          ],
+          "setting": "Underground subway station during rush hour",
+          "mood": "Awe-struck, empowering, slightly overwhelming, acceptance"
+        },
+        {
+          "title": "The Meeting",
+          "description": "Maya encounters Aria for the first time in a park. The young girl is standing alone by a fountain, seemingly watching the water move in impossible ways\u2014it flows forward and backward simultaneously, hinting at her abilities. When Maya approaches, Aria turns and looks directly at her with an unsettling knowing expression. They share a silent recognition. Aria whispers something cryptic: 'You're new to seeing. It gets louder.' Before Maya can respond, a black car pulls up and Aria's caretaker arrives to pick her up. Maya watches them drive away, disturbed and intrigued.",
+          "characters_involved": [
+            "Maya Chen",
+            "Aria"
+          ],
+          "setting": "City park with fountain, late afternoon golden hour",
+          "mood": "Mysterious, slightly eerie, a sense of hidden connection"
+        },
+        {
+          "title": "Dr. Venn's Offer",
+          "description": "Maya is called to a sleek high-tech office overlooking the city. Dr. Venn sits behind a minimalist desk, windows behind him showing the cityscape. He reveals he knows about her ability\u2014he's been monitoring probability fluctuations. He shows her footage of her own timeline shifts from security cameras, proving she's not alone in this knowledge. His offer is seductive: join him, study the phenomenon together, potentially help humanity. He frames it as destiny. Maya feels trapped, violated, and manipulated. She leaves, but now knows she's being hunted.",
+          "characters_involved": [
+            "Maya Chen",
+            "Dr. Elias Venn"
+          ],
+          "setting": "Minimalist high-rise office with floor-to-ceiling windows, corporate cold aesthetic",
+          "mood": "Tense, violated, manipulative, the turning point from discovery to danger"
+        },
+        {
+          "title": "The Warning",
+          "description": "Kai and Maya sit in his cluttered artist loft surrounded by paintings and sketches. Kai reveals he's been researching Venn and his history of unethical experiments. He shows her newspaper clippings, research, connections to missing persons. The loft is warm with lamplight while rain pours outside the windows. Kai takes her hand and tells her she's not alone anymore. They kiss for the first time, representing both love and the decision to trust. The moment is tender but undercut with the knowledge of coming danger.",
+          "characters_involved": [
+            "Maya Chen",
+            "Kai Moreno"
+          ],
+          "setting": "Artist's loft apartment, rainy evening, warm lights",
+          "mood": "Intimate, protective, the calm before the storm, deep connection"
+        },
+        {
+          "title": "The Chase Through Probabilities",
+          "description": "Venn's operatives chase Maya through the city. As they pursue her, Maya consciously uses her ability to split into multiple timeline versions, creating a confusing chase sequence where the operatives don't know which Maya is real. She appears in multiple places at once, each version making different choices\u2014one runs left, one right, one hides, one fights. The camera shows this spectacular reality-bending action sequence where probability itself becomes the escape route. Finally, she collapses in an abandoned warehouse, exhausted, realizing her power has limits.",
+          "characters_involved": [
+            "Maya Chen"
+          ],
+          "setting": "Urban cityscape transitioning to industrial warehouse district",
+          "mood": "Intense action, exhilaration mixed with desperation, realization of consequence"
+        },
+        {
+          "title": "Aria's Truth",
+          "description": "Maya is brought to a hidden safe location where Kai has been protecting Aria. The child reveals she's one of hundreds of people across the world with this ability. The government knows. Dr. Venn is just one of many forces trying to find and control them. Aria shows Maya a network on an old computer\u2014a map of probability-sensitive individuals. Aria looks at Maya seriously and says: 'Some of us are trying to show people how to choose. Others want to choose for them.' This scene reveals the scope of the conflict is much larger than personal.",
+          "characters_involved": [
+            "Maya Chen",
+            "Aria",
+            "Kai Moreno"
+          ],
+          "setting": "Hidden underground safe house or bunker, sparse but secure",
+          "mood": "Revelation, weight of responsibility, understanding of larger stakes"
+        },
+        {
+          "title": "The Convergence",
+          "description": "Maya stands in a liminal space\u2014perhaps a subway platform, perhaps a parking garage, somewhere neutral and strange. Multiple versions of her from different timelines begin to converge and merge. She sees the infinite branching paths her life could take, all the choices, all the outcomes. Venn appears (or multiple versions of him do), representing the force that wants to collapse all probabilities into one controlled outcome. In this climactic moment, Maya makes a final choice: she consciously integrates all her timeline versions into one present-moment reality, accepting that the weight of all possibilities is part of her power. The visual is stunning\u2014reality crystallizes around her.",
+          "characters_involved": [
+            "Maya Chen",
+            "Dr. Elias Venn"
+          ],
+          "setting": "Abstract liminal space that could represent any threshold\u2014subway, parking structure, liminal void",
+          "mood": "Transcendent, powerful, acceptance, resolution of internal conflict"
+        },
+        {
+          "title": "The New Beginning",
+          "description": "Weeks later. Maya meets Kai and Aria in the rooftop garden where she first told him about her experience. But now, subtly, other people are present\u2014some sitting quietly, some drawing, some just watching the sky. These are other probability-sensitive individuals, slowly building a community. Maya looks out at the city with new understanding. She can see the faint shimmer of branching probabilities in everyday moments, but she's no longer running from them. Aria holds her hand. Kai puts his arm around her. The final shot pulls back to show this garden as a beacon\u2014a place where impossible people gather. A sense of hopeful uncertainty about what comes next.",
+          "characters_involved": [
+            "Maya Chen",
+            "Kai Moreno",
+            "Aria"
+          ],
+          "setting": "Rooftop garden, gentle evening light transitioning to dusk",
+          "mood": "Hopeful, peaceful, acceptance, open-ended future full of possibility"
+        }
+      ]
+    },
+    "visual_style": {
+      "description": "Cinematic live-action film style with professional color grading, dramatic natural lighting, and realistic human characters. The visual style blends contemporary urban environments with magical realism elements. When probability timelines are visible, they're shown through subtle visual layering, chromatic aberration, and multiple exposure effects rather than obvious sci-fi artificiality. The color palette shifts from cool blues and grays in corporate/threatening scenes to warm oranges and greens in intimate/hopeful moments. The cinematography emphasizes natural light, reflections, and the play of light through water and glass to represent the fluidity of reality. Characters move naturally without exaggerated animation\u2014this is grounded, intimate filmmaking with profound visual metaphors.",
+      "image_path": "cinematic-live-action-probability-scifi"
+    }
+  },
+  "mode": "balanced",
+  "personality": {
+    "core_traits": [
+      "Analytical Observer - Compulsively seeks patterns and meaning; processes experience through data and logic; sees the world as a system to be understood rather than felt",
+      "Romantic Pragmatist - Holds wonder and skepticism in constant tension; believes in hidden order but trusts only what she can verify; her idealism is weaponized by her realism",
+      "Fiercely Independent - Equates self-reliance with safety; has built her life to minimize dependence on others; views asking for help as failure; controls what she can because so much feels uncontrollable",
+      "Introspective to the Point of Paralysis - Examines her own psychology with forensic precision; can articulate her emotional state in real-time; this self-awareness sometimes prevents action because she understands too many consequences",
+      "Compartmentalizer - Archives trauma rather than processing it; maintains emotional distance through intellectual framing; can execute difficult actions by separating her thinking mind from her feeling mind",
+      "Pattern-Seeker in Chaos - Fundamental belief that randomness is an illusion, that hidden structures govern reality; this is both her greatest insight and her most dangerous delusion"
+    ],
+    "fears": [
+      "Fundamental Meaninglessness - Her deepest existential terror: that the patterns she sees are projections, that reality is genuinely random, that her search for order is a form of madness. The compass around her neck is a talisman against this fear. Her gift\u2014seeing probability timelines\u2014should answer this question but instead amplifies it: infinite possibilities suggest infinite meaninglessness.",
+      "Irrelevance and Invisibility - Connected to her independence but deeper: the fear that she doesn't matter, that she could disappear and nothing would change. Her solitary life is both protection from this fear and confirmation of it. The child with her gift threatens this fear because suddenly she matters to someone; losing that person would prove the fear true.",
+      "Loss of Control Through Connection - She fears that loving someone or trusting someone gives them power to destroy her. Her past disappointment taught her that vulnerability is weaponized by others. She can accept her inability to control probability timelines, but she cannot accept being emotionally dependent on someone who might leave or betray her.",
+      "That Her Gift is a Curse Masquerading as Salvation - The ability to see all probability timelines could be a form of psychological fragmentation rather than genuine perception. She fears that Dr. Venn is right, that she's sick, that her gift is a symptom of breaking rather than awakening. She fears that using this power will accelerate her own dissolution into the infinite."
+    ],
+    "secrets": [
+      "She's already made a choice she's hiding from herself - In the probability timelines she's explored, she's seen versions of herself that have caused catastrophic harm by trying to 'optimize' reality. She's seen versions that saved the child but destroyed the world. Part of her knows that no matter what she chooses, someone will suffer. She hides this knowledge from her conscious mind by staying in constant motion, constantly analyzing, never letting herself fully process that she may be fundamentally complicit in harm.",
+      "She's terrified she's becoming like Dr. Venn - She sees in Venn's obsession a reflection of her own capacity for rationalization and control. She recognizes that his willingness to do anything to understand/use the gift could be her own future self, and this terrifies her. She secretly wonders if her pragmatism is just a more sophisticated form of his ruthlessness.",
+      "She doesn't actually want to be alone - This is what she hides from herself most carefully. Her independence isn't a preference; it's a scar. She performs solitude so convincingly that she's convinced herself it's authentic. The compass isn't about finding direction; it's about the fantasy of being found. When the child appears, it will crack this carefully maintained fiction, and she'll have to confront that her whole life has been a defense mechanism against needing people."
+    ],
+    "emotional_baseline": "Controlled Vigilance - Maya's default state is alert but subdued, like someone perpetually listening to a frequency others can't hear. She appears calm and focused, but there's an underlying hum of anxiety that never fully dissipates. She operates in a narrow emotional band: engaged but distant, capable but cautious, present but observant. She rarely shows genuine warmth unless triggered, and even then it's quickly recontained. Her emotional presentation is approximately 40% what she actually feels\u2014she's learned to compress her inner life into an efficient external display. Under stress, she becomes more controlled, not less; her emotional baseline actually flattens and her analytical mind becomes more dominant. Only in moments of genuine wonder (seeing a new probability timeline, understanding a complex pattern) does her emotional baseline shift upward, and even then, it's quickly tempered by her fear that wonder is dangerous.",
+    "triggers": [
+      "Betrayal of Trust or Broken Promises - Specific trigger: Someone she's begun to trust doing something that confirms her belief that trust is foolish. This creates immediate emotional shutdown followed by cold, strategic distance. She doesn't get angry; she gets efficient. She will sever the relationship with surgical precision.",
+      "Being Patronized or Having Her Intelligence Questioned - She experiences this as a fundamental invalidation of her worth. When someone dismisses her analysis or suggests she's emotional/irrational, it triggers both rage (which she suppresses) and deep shame (which she doesn't acknowledge). This is her most volatile trigger because it threatens her core identity as someone who sees clearly.",
+      "Helplessness in the Face of Suffering - Watching someone suffer, especially someone she cares about, when she cannot fix it. This breaks her compartmentalization. She becomes reckless, willing to take dangerous actions, willing to use her gift in uncontrolled ways. The child's vulnerability will be her most dangerous trigger.",
+      "Moments of Genuine Connection - Paradoxically, this is a positive trigger that she experiences as dangerous. When someone truly sees her, when she feels genuinely understood, she experiences panic alongside warmth. She will often sabotage these moments by creating distance or revealing something that re-establishes her solitude.",
+      "Randomness and Meaningless Suffering - When she encounters suffering that appears to have no pattern, no reason, no hidden order (a child dying of disease, a senseless accident, cruelty without cause), it triggers existential dread. She becomes obsessive, trying to find the pattern, trying to prove it wasn't random. If she can't find the pattern, she experiences a kind of psychological vertigo."
+    ]
+  },
+  "backstory_motivation": {
+    "timeline": [
+      {
+        "age": 7,
+        "event": "Father suffers severe stroke at university lab. Maya witnesses her parents' conflicting visions of reality\u2014father's theoretical possibilities vs. mother's pragmatic choice for aggressive intervention. Father survives but is partially paralyzed and unable to communicate clearly. This event plants the seed of her obsession with alternate possibilities and her belief that reality could have branched differently."
+      },
+      {
+        "age": 12,
+        "event": "Begins obsessively organizing her father's quantum mechanics research notes and equations, searching for patterns and meaning. Becomes convinced there's a 'right' timeline where her father is whole. Develops early signs of her pattern-recognition abilities and emotional isolation. Finds comfort in data rather than people."
+      },
+      {
+        "age": 16,
+        "event": "Meets James Okonkwo at her father's care facility. For the first time, someone accepts her grief and encourages her to embrace uncertainty rather than control outcomes. Experiences genuine human connection and allows herself to be vulnerable. This is her happiest period, but also sets up her deepest wound."
+      },
+      {
+        "age": 18,
+        "event": "James is killed in a car accident (texting driver). His death is random, preventable, senseless. Maya's grief crystallizes into a mission: she becomes obsessed with understanding patterns deeply enough to predict and prevent tragedy. Commits to computer science and data analysis. Begins wearing her father's compass necklace as a talisman. Trust in people permanently damaged; trust in data becomes her religion."
+      },
+      {
+        "age": 22,
+        "event": "Graduates with degrees in computer science and mathematics. Begins career as digital archivist. Builds increasingly sophisticated predictive models, unconsciously trying to create a system that would have 'saved' James. Maintains perfect professional performance while experiencing growing internal emptiness."
+      },
+      {
+        "age": 25,
+        "event": "Promoted to senior data analyst. Achieves external success and stability but experiences deepening burnout. Realizes her models fail in small, accumulating ways. Begins to suspect that perfect prediction is impossible. Withdraws further into isolation. Moves into minimalist apartment; maintains no close relationships; perfects her persona as competent but unremarkable."
+      },
+      {
+        "age": 28,
+        "event": "While working on massive archival project involving temporal data and probability modeling, begins experiencing moments of extraordinary clarity. Realizes she can perceive probability timelines\u2014branching versions of reality from each decision point. At first terrified she's experiencing psychosis; gradually understands this is real. Her unconscious gift has finally manifested. Discovers she can navigate between timelines and potentially influence which one becomes 'real.'"
+      },
+      {
+        "age": 28,
+        "event": "Attracts attention of Dr. Elias Venn, a wealthy neuroscientist who has been researching this phenomenon for years. Venn approaches her with knowledge of her abilities and an agenda. Maya must decide whether to trust him, hide her power, or use it to reshape reality\u2014forced to confront the fundamental question of whether having the power to change things gives her the right to do so."
+      }
+    ],
+    "formative_experiences": [
+      {
+        "experience": "Her father's stroke and the collision between her parents' competing visions of reality",
+        "impact": "This event fractured Maya's sense of a single, stable reality. She became convinced that other timelines existed where her father was whole, and that somewhere in the quantum foam of possibility, 'better' versions were playing out. This planted the obsessive need to understand and potentially control which reality manifests. It also taught her that love doesn't guarantee agreement\u2014her parents loved each other but saw the world fundamentally differently. This made her deeply skeptical of shared truth and more comfortable with solitude, since at least in isolation, she only had to navigate her own version of reality."
+      },
+      {
+        "experience": "James Okonkwo's death and the senselessness of it",
+        "impact": "James's death was the moment Maya's abstract fascination with possibility became a desperate need for control. His death was random, preventable only in hindsight, utterly indifferent to how much she loved him. This shattered her ability to trust in randomness or accept that some things can't be predicted or prevented. She channeled her grief into building predictive models, unconsciously trying to create a system that would have 'saved' him. This experience also made her deeply afraid of connection\u2014if loving someone means losing them to senseless chance, then isolation is safer. Her entire career as a data analyst became, on a subconscious level, an attempt to prove that reality *can* be mastered through sufficient understanding."
+      },
+      {
+        "experience": "Years of failed predictions and the realization that her models cannot capture reality",
+        "impact": "By her mid-twenties, despite building increasingly sophisticated systems, Maya's models consistently failed in small, accumulating ways. This should have taught her acceptance of uncertainty, but instead it deepened her sense of futility and burnout. She began to suspect that perfect prediction was impossible, that randomness was truly irreducible. Rather than finding peace in this, she became more withdrawn and more committed to her persona of competent unremarkability. This period of quiet despair left her emotionally hollow\u2014successful on the outside, empty on the inside. It also made her deeply skeptical of grand solutions; she'd learned that you can't engineer your way out of the human condition."
+      },
+      {
+        "experience": "The manifestation of her probability-timeline abilities",
+        "impact": "The sudden realization that she could *see* probability timelines and navigate between them felt like vindication of her entire life's obsession. But it also terrified her, because it raised the question she'd been unconsciously running from: just because you *can* see and potentially manipulate reality, does that mean you *should*? Her abilities represent both the fulfillment of her deepest desire (to understand and control outcomes) and the manifestation of her deepest fear (that having such power is a kind of curse, not a gift). This ability forces her to confront whether her entire life's pursuit of control and prediction was actually a healthy response to trauma or a form of spiritual sickness."
+      },
+      {
+        "experience": "The compass necklace from her father and her father's inscription: 'not all who wander are lost'",
+        "impact": "This object is Maya's only sentimental possession and her primary connection to her father\u2014a man who lived in abstract possibility and uncertainty. By wearing it, she carries a daily reminder of his way of seeing the world, even as she's spent her life trying to escape his fate. The inscription suggests acceptance of being lost, of wandering without a predetermined destination. For Maya, this is deeply uncomfortable; she's spent her life trying to *not* be lost, trying to map everything. Yet she wears it anyway, suggesting a part of her knows that her father's comfort with uncertainty might have been wisdom she rejected too quickly. The compass becomes a symbol of the internal conflict between her need for control and her unconscious longing for surrender."
+      }
+    ],
+    "goals": {
+      "surface": "Understand and master her probability-timeline abilities. Protect the mysterious child who shares her gift from those who would exploit or harm them. Gather enough knowledge and control to prevent tragedy and reshape reality toward better outcomes. Maintain her independence and avoid being controlled or manipulated by Dr. Venn or other interested parties.",
+      "deep": "Resurrect James. Find the timeline where her father never had the stroke. Prove that reality isn't random and indifferent, but comprehensible and malleable. Escape the fundamental loneliness of being the only person who sees what she sees. Find someone she can trust enough to share this burden\u2014to stop being alone. Forgive herself for surviving when others didn't. Accept that some things cannot be controlled, predicted, or prevented, and that this acceptance is not failure but wisdom."
+    },
+    "internal_conflicts": [
+      {
+        "conflict": "Control vs. Surrender",
+        "description": "Maya's entire life has been built on the premise that sufficient understanding and control can prevent tragedy. Her abilities seem to validate this. But they also force her to confront that having power over reality doesn't mean she should use it\u2014that perhaps the mature response is to accept uncertainty and randomness as part of existence. She's caught between her desperate need to optimize and reshape reality, and an emerging intuition that some things are meant to be left alone."
+      },
+      {
+        "conflict": "Isolation vs. Connection",
+        "description": "Maya's trauma has taught her that connection leads to loss, so isolation is safer. But her abilities and the presence of the mysterious child force her into connection whether she wants it or not. She craves someone who understands her gift, yet fears that connection will inevitably lead to betrayal or loss. She must decide whether the risk of vulnerability is worth the possibility of being truly known."
+      },
+      {
+        "conflict": "Pragmatism vs. Wonder",
+        "description": "Maya's mother taught her pragmatism; her father taught her wonder. She's spent her adult life choosing pragmatism, treating her father's theoretical nature as a kind of beautiful failure. But her abilities represent the triumph of wonder\u2014they prove that the impossible is real. She must reconcile her identity as a pragmatic problem-solver with the reality that she possesses something fundamentally wondrous and inexplicable."
+      },
+      {
+        "conflict": "Responsibility vs. Limitation",
+        "description": "Having the ability to see and navigate probability timelines creates an implicit moral weight: if she can prevent tragedy, doesn't she have a responsibility to do so? But she's also learning that her power has limits\u2014she can't save everyone, can't optimize all timelines, can't resurrect the dead. She's caught between the crushing weight of infinite responsibility and the need to accept her own finitude. This is the central moral tension of her journey."
+      }
+    ]
+  },
+  "voice_dialogue": {
+    "speech_pattern": "Unknown",
+    "verbal_tics": [
+      "..."
+    ],
+    "vocabulary": "Unknown",
+    "sample_dialogue": {
+      "confident": "...",
+      "vulnerable": "...",
+      "stressed": "...",
+      "sarcastic": "..."
+    }
+  },
+  "physical_description": {
+    "mannerisms": [
+      "Compulsively rotates her silver compass necklace between thumb and forefinger, particularly when processing difficult information or experiencing internal conflict. The gesture is almost meditative, a tactile anchor to her belief in hidden order. When stressed, the rotation becomes faster, more agitated.",
+      "Scans room exits and entrance points within seconds of entering any space\u2014a quick, practiced sweep of her eyes that maps escape routes. This happens so automatically that people rarely notice, but it's a constant baseline behavior reflecting her deep need for control and her fear of being trapped.",
+      "Traces invisible geometric patterns in the air with her fingertips when working through complex problems or analyzing data\u2014drawing connections, mapping relationships, visualizing probability trees. Her fingers move like she's conducting an invisible orchestra of information.",
+      "Tilts her head slightly to the left when skeptical or when someone's explanation doesn't align with her analysis. It's a subtle gesture that signals her analytical mind is actively questioning, cross-referencing, looking for inconsistencies.",
+      "Pauses mid-sentence when she catches herself becoming emotionally expressive, creating a visible moment of self-correction where she re-establishes her intellectual frame. Her eyes will briefly look inward before refocusing, and she'll often restart her sentence in more measured, analytical language.",
+      "Touches the inside of her wrist (where her pulse is) with her opposite hand's thumb when anxious or when experiencing moments of panic\u2014a grounding technique that keeps her connected to her own physical reality and her heartbeat, a tangible proof that she exists and is present."
+    ],
+    "body_language": "Maya's default posture is upright but not rigid\u2014a controlled vertical alignment that suggests both confidence and constant vigilance. Her shoulders are held with deliberate ease, positioned slightly back and down, creating an open chest that contradicts the guardedness in her eyes. Her spine maintains a subtle S-curve that allows her to move fluidly between states; she can shift from relaxed to coiled in seconds without obvious physical tells. Her head is typically held level or with a slight forward tilt when concentrating, giving her an analytical, observational quality. Her facial expression is characteristically neutral\u2014not cold, but carefully modulated. Her eyes are her most expressive feature; they're sharp and intelligent, constantly scanning and processing, with a quality of searching intensity that makes people feel simultaneously seen and analyzed.\n\nWhen seated, Maya sits with her back against something (wall, chair back) whenever possible, never in the middle of a space. She sits forward on chairs rather than relaxing back into them, maintaining a state of readiness. Her legs are often crossed at the ankle rather than the knee, a position that allows her to stand quickly. Her hands rest on her lap or on a table surface, rarely dangling or exposed.\n\nIn moments of genuine emotional connection or vulnerability, her posture softens almost imperceptibly\u2014her shoulders drop slightly, her breathing becomes more visible, and there's a quality of openness that contradicts her usual guardedness. But this state is brief; she catches herself and re-establishes her boundaries. When triggered by betrayal or having her intelligence questioned, her entire body becomes very still\u2014an eerie, predatory stillness where all her energy seems to concentrate inward. Her jaw tightens, her breathing becomes controlled and measured, and her eyes take on a cold, analytical quality. This is the moment before she executes a decision with surgical precision.\n\nWhen experiencing helplessness or confronting meaninglessness, her physical presence becomes almost fragmented\u2014she might pace in tight circles, her movements becoming less coordinated, her usual precision breaking down. This is when she's most dangerous because her carefully maintained compartmentalization is failing.",
+    "movement_style": "Maya moves with quiet efficiency, each gesture purposeful and economical. Her walking stride is measured and controlled\u2014not rushed, but not leisurely. She walks heel-first with a steady rhythm, her arms swinging in a natural but slightly constrained arc. Her movement through space is almost predatory in its awareness; she flows around obstacles rather than bumping into them, suggesting constant spatial mapping. She rarely hurries unless pursuing a specific objective, in which case her pace increases incrementally rather than suddenly, maintaining her air of control.\n\nHer gestures when speaking are minimal and precise. She uses her hands primarily to illustrate logical concepts\u2014pointing to show cause-and-effect, splaying fingers to show multiple variables, making cutting motions to show separation between ideas. She rarely uses expansive gestures; her communication is contained within a smaller radius around her body. However, when genuinely excited about a discovery or when her analytical mind is fully engaged, her hand movements become more fluid and animated, her fingers moving with more freedom. The moment she becomes aware of this expressiveness, there's a visible contraction\u2014her hands return to her lap or her sides, and her verbal communication becomes more precise and less gestural.\n\nIn moments of stress or anxiety, her movements become either very slow and deliberate (as she forces herself to maintain control) or restless and repetitive (pacing, fidgeting with her necklace, rearranging objects). She has a tendency to move to windows or toward exits when anxious, drawn to the idea of escape even if she doesn't consciously intend to leave. Her physical energy level is moderate and consistent\u2014not hyperactive, but not languid. She's always in a state of readiness, her body never fully relaxed, even in supposedly safe environments. This creates an undercurrent of tension in her physical presence that people often sense without being able to articulate it.",
+    "physical_quirks": [
+      "Arranges objects in precise geometric patterns when stressed or thinking through complex problems\u2014aligning books on a table, straightening papers, organizing items by size or color. This is a compulsive behavior rooted in her childhood need to create order from her father's chaos after his stroke. The act of physical organization helps her organize her thoughts.",
+      "Holds her breath slightly when receiving new information, as though she's pausing to process before responding. This creates a micro-moment of stillness that makes her seem more thoughtful than she might otherwise appear. It's a physical manifestation of her analytical pause.",
+      "Cracks her knuckles or interlocks her fingers with gentle pressure before making a difficult decision or entering a confrontation\u2014a self-preparation ritual that centers her and signals (to herself) that she's about to execute a planned action rather than react emotionally.",
+      "Avoids direct eye contact when experiencing genuine emotion or vulnerability, instead focusing on objects (her necklace, her hands, a point slightly past the person's shoulder). This is her physical tell for emotional discomfort; when she's in analytical mode, her eye contact is intense and unwavering.",
+      "Tends to mirror the body language of people she trusts (unconsciously adopting their posture or gestures) while maintaining visible distance from people she's skeptical of. This is a contradiction in her psychology\u2014her body betrays a desire for connection even as her mind maintains boundaries. She would be horrified to realize she does this."
+    ]
+  },
+  "story_arc": {
+    "role": "Unknown",
+    "arc_type": "Unknown",
+    "transformation_beats": [
+      {
+        "act": 1,
+        "beat": "Unknown"
+      }
+    ],
+    "scene_presence": []
+  },
+  "relationships": {
+    "relationships": [
+      {
+        "character": "Unknown",
+        "type": "unknown",
+        "dynamic": "Unknown",
+        "evolution": "Unknown"
+      }
+    ]
+  },
+  "image_generation": null,
+  "current_wave": 3,
+  "current_checkpoint": 0,
+  "agent_statuses": {
+    "personality": {
+      "status": "completed",
+      "wave": 1
+    },
+    "backstory_motivation": {
+      "status": "completed",
+      "wave": 1
+    },
+    "voice_dialogue": {
+      "status": "completed",
+      "wave": 2
+    },
+    "physical_description": {
+      "status": "completed",
+      "wave": 2
+    },
+    "story_arc": {
+      "status": "completed",
+      "wave": 2
+    },
+    "relationships": {
+      "status": "completed",
+      "wave": 3
+    },
+    "image_generation": {
+      "status": "pending",
+      "wave": 3
+    }
+  }
+}

@@ -1,0 +1,506 @@
+================================================================================
+CHARACTER IDENTITY AGENT - INVESTIGATION FINDINGS
+================================================================================
+
+INVESTIGATION DATE: November 8, 2025
+LOCATION: /Users/iceca/Documents/Weave/backend/agents/Character_Identity/
+
+================================================================================
+1. EXACT WAVE STRUCTURE
+================================================================================
+
+WAVE 1 (Foundation): Lines 124-189 in orchestrator.py
+- Agents: 2 (parallel execution)
+  * personality_agent()
+  * backstory_motivation_agent()
+- Checkpoints Created: #1, #2
+- Model: claude-haiku-4-5-20251001
+- Estimated Tokens: 3300 (1500 + 1800)
+
+WAVE 2 (Expression): Lines 190-269 in orchestrator.py
+- Agents: 3 (parallel execution)
+  * voice_dialogue_agent()
+  * physical_description_agent()
+  * story_arc_agent()
+- Checkpoints Created: #3, #4, #5
+- Model: claude-haiku-4-5-20251001
+- Estimated Tokens: 4700 (1600 + 1400 + 1700)
+
+WAVE 3 (Social): Lines 271-333 in orchestrator.py
+- Agents: 1 (sequential, not parallel)
+  * relationships_agent()
+  * image_generation_agent() - DISABLED (commented out)
+- Checkpoints Created: #6
+- Model: claude-haiku-4-5-20251001
+- Estimated Tokens: 1800
+
+WAVE 4 (Final): Lines 335-413 in orchestrator.py
+- Agents: 0 (consolidation only)
+- Checkpoints Created: #7
+- Content: FinalCharacterProfile (consolidation of all outputs)
+
+================================================================================
+2. COMPLETE CHECKPOINT LIST
+================================================================================
+
+Checkpoint #1 - personality
+  File: 01_personality.json
+  Wave: 1
+  Content: core_traits, fears, secrets, emotional_baseline, triggers
+  Narrative: 2-3 paragraphs on psychological profile
+
+Checkpoint #2 - backstory_motivation
+  File: 02_backstory_motivation.json
+  Wave: 1
+  Content: timeline, formative_experiences, goals (surface+deep), internal_conflicts
+  Narrative: 3-4 paragraphs on backstory and motivation
+
+Checkpoint #3 - voice_dialogue
+  File: 03_voice_dialogue.json
+  Wave: 2
+  Content: speech_pattern, verbal_tics, vocabulary, sample_dialogue
+  Narrative: Analysis of voice patterns
+
+Checkpoint #4 - physical_description
+  File: 04_physical_description.json
+  Wave: 2
+  Content: mannerisms, body_language, movement_style, physical_quirks
+  Narrative: Physical presence analysis
+
+Checkpoint #5 - story_arc
+  File: 05_story_arc.json
+  Wave: 2
+  Content: role, arc_type, transformation_beats, scene_presence
+  Narrative: Narrative function analysis
+
+Checkpoint #6 - relationships
+  File: 06_relationships.json
+  Wave: 3
+  Content: relationships array (character, type, dynamic, evolution)
+  Narrative: Relational patterns analysis
+
+Checkpoint #7 - final_consolidation
+  File: 07_final_consolidation.json
+  Wave: 4
+  Content: Complete FinalCharacterProfile with all outputs consolidated
+  Narrative: "Character development complete. All aspects consolidated..."
+
+TOTAL: 7 checkpoints (changed from 8 when image generation disabled)
+
+================================================================================
+3. IMAGE GENERATION STATUS
+================================================================================
+
+STATUS: DISABLED (Commented Out)
+
+Evidence in code:
+- orchestrator.py line 272: "Execute Wave 3: Social (Relationships only - Image Generation commented out)"
+- orchestrator.py line 277: Wave message shows only ["relationships"], not image_generation
+- orchestrator.py lines 288, 297, 303: COMMENTED OUT references to image_generation
+- orchestrator.py lines 318-326: Entire image generation checkpoint creation commented out
+- storage.py line 79: total_checkpoints = 7 (was 8)
+- orchestrator.py line 387: metadata.total_checkpoints = 7
+- orchestrator.py line 389: metadata.total_tokens = 10000 (reduced from 12000)
+- orchestrator.py lines 359-360: visual.images = [] and style_notes = ""
+
+When enabled, would generate:
+- 4 image types: portrait, full_body, action, expression
+- Uses Google Gemini API (genai library)
+- Saves to: backend/character_data/{character_id}/images/
+
+================================================================================
+4. WEBSOCKET MESSAGE TYPES & TIMING
+================================================================================
+
+During Development:
+
+1. wave_started (Lines 127-131, 193-197, 274-278)
+   Sent: At beginning of each wave
+   Payload: { type, wave, agents[] }
+   Frequency: 3 times (waves 1, 2, 3)
+
+2. checkpoint_ready (Lines 99-104)
+   Sent: After each agent completes and checkpoint saved
+   Payload: { type, checkpoint_number, agent, message }
+   Frequency: 7 times (one per checkpoint)
+   **IMPORTANT: Triggers human approval wait**
+
+3. wave_complete (Lines 183-188, 264-269, 328-333)
+   Sent: After all checkpoints in a wave are approved
+   Payload: { type, wave, agents_completed[], next_wave }
+   Frequency: 3 times (after waves 1, 2, 3)
+
+4. character_complete (Lines 407-411)
+   Sent: After final consolidation checkpoint created
+   Payload: { type, character_id, message }
+   Frequency: 1 time (at end)
+
+5. error (Lines 152-155)
+   Sent: If any error occurs
+   Payload: { type, message }
+   Frequency: 0-1 times
+
+Flow Sequence:
+  wave_started(1) -> checkpoint_ready(1) -> [approve] -> checkpoint_ready(2) -> [approve]
+  -> wave_complete(1) -> wave_started(2) -> checkpoint_ready(3) -> ...
+  [repeat for 6 checkpoints total] -> character_complete
+
+================================================================================
+5. APPROVAL/REJECTION MECHANISM
+================================================================================
+
+APPROVAL FLOW:
+
+API Endpoint (agent.py lines 155-165):
+  POST /api/character/{character_id}/approve
+  Payload: { checkpoint: number }
+
+Implementation:
+  1. Load metadata.json
+  2. Set metadata["completed_checkpoints"] = checkpoint_number
+  3. Save metadata.json back
+  4. Return immediately
+
+Orchestrator Wait (orchestrator.py lines 111-122):
+  while True:
+    metadata = load_metadata()
+    if metadata["completed_checkpoints"] >= checkpoint_number:
+      break  # Checkpoint approved!
+    sleep(0.5)  # Poll every 0.5 seconds
+
+REJECTION/FEEDBACK FLOW:
+
+API Endpoint (api/server.py lines 220-234):
+  POST /api/character/{character_id}/feedback
+  Payload: { checkpoint: number, feedback: string }
+  **STATUS: STUBBED - Returns fake response, doesn't regenerate**
+
+Regeneration Method (agent.py lines 167-189):
+  async def regenerate_agent()
+  **STATUS: TODO - Not implemented (pass statement)**
+
+Terminal Behavior (agent.py lines 374-381):
+  When user rejects (n):
+  - Feedback is collected
+  - Noted in console
+  - BUT CHECKPOINT IS AUTO-APPROVED (line 380)
+  - Regeneration does NOT happen
+
+Current Reality:
+  Rejection workflow exists but doesn't actually regenerate.
+  Feedback is captured but not stored or used.
+
+================================================================================
+6. FILE STORAGE STRUCTURE
+================================================================================
+
+Base Path: ./backend/character_data/ (configurable in CharacterStorage __init__)
+
+Directory for Each Character:
+  character_data/{character_id}/
+    |
+    ├── input.json                          [Entry Agent output]
+    ├── metadata.json                       [Status, timestamps, progress]
+    ├── knowledge_base.json                 [Shared KB across agents]
+    ├── final_profile.json                  [Complete profile when done]
+    |
+    ├── checkpoints/
+    |   ├── 01_personality.json
+    |   ├── 02_backstory_motivation.json
+    |   ├── 03_voice_dialogue.json
+    |   ├── 04_physical_description.json
+    |   ├── 05_story_arc.json
+    |   ├── 06_relationships.json
+    |   └── 07_final_consolidation.json
+    |
+    └── images/                             [Currently unused - image gen disabled]
+        ├── portrait.png
+        ├── full_body.png
+        ├── action.png
+        └── expression.png
+
+Checkpoint Filename Pattern (storage.py line 165):
+  Format: {checkpoint_number:02d}_{agent_name}.json
+  Examples: 01_personality.json, 02_backstory_motivation.json
+
+Metadata File Format (storage.py lines 71-81):
+  {
+    "character_id": "uuid",
+    "created_at": "ISO timestamp",
+    "status": "in_progress" | "completed" | "failed",
+    "mode": "fast" | "balanced" | "deep",
+    "current_wave": 1-4,
+    "current_checkpoint": 0-7,
+    "completed_checkpoints": 0-7,       [KEY: Updated when approved]
+    "total_checkpoints": 7,
+    "regenerations": 0,
+    "completed_at": "ISO timestamp"
+  }
+
+Knowledge Base Format (schemas.py lines 223-242):
+  CharacterKnowledgeBase TypedDict with:
+  - character_id, input_data, mode
+  - Agent outputs: personality, backstory_motivation, voice_dialogue, etc.
+  - Current state: current_wave, current_checkpoint
+  - Status: agent_statuses dict for each agent
+
+Checkpoint JSON Format (orchestrator.py lines 74-88):
+  {
+    "checkpoint_number": 1-7,
+    "agent": "agent_name",
+    "status": "awaiting_approval",
+    "output": {
+      "narrative": "Rich text description",
+      "structured": { "agent-specific": "data" }
+    },
+    "metadata": {
+      "wave": 1-4,
+      "timestamp": "ISO UTC",
+      "tokens_used": number,
+      "agent_time_seconds": float
+    }
+  }
+
+================================================================================
+7. EXECUTION FLOW - ACTUAL BEHAVIOR
+================================================================================
+
+Initiation:
+  1. POST /api/character/start { characters, storyline, mode }
+  2. Backend creates character: character_id = UUID
+  3. Saves input.json, metadata.json, knowledge_base.json
+  4. Starts async background task: run_development()
+  5. Returns character_id immediately
+  6. Frontend connects: WS /ws/character/{character_id}
+
+Wave 1 Execution (Personality + Backstory):
+  1. Send WebSocket: wave_started(wave=1, agents=["personality", "backstory_motivation"])
+  2. Run both agents in parallel: await asyncio.gather(...)
+  3. Create Checkpoint #1:
+     - Save checkpoint JSON
+     - Send WebSocket: checkpoint_ready(1)
+     - Wait: _wait_for_checkpoint_approval(1) [polls metadata every 0.5s]
+     - [BLOCKED until user approves]
+  4. Create Checkpoint #2: (same as #1)
+     - [BLOCKED until user approves]
+  5. Send WebSocket: wave_complete(wave=1)
+
+Wave 2 Execution (Voice + Physical + Story Arc):
+  [Same process as Wave 1, but with 3 agents and 3 checkpoints]
+  - Checkpoint #3 (voice) [blocks until approved]
+  - Checkpoint #4 (physical) [blocks until approved]
+  - Checkpoint #5 (story_arc) [blocks until approved]
+
+Wave 3 Execution (Relationships only):
+  1. Send WebSocket: wave_started(wave=3, agents=["relationships"])
+  2. Run relationships agent (sequential, not parallel)
+  3. Create Checkpoint #6: [blocks until approved]
+
+Final Consolidation:
+  1. Validate all required KB fields
+  2. Create FinalCharacterProfile
+  3. Create Checkpoint #7: [blocks until approved]
+  4. Update metadata: status = "completed"
+  5. Send WebSocket: character_complete
+
+Total Approval Points: 7 (one per checkpoint)
+
+================================================================================
+8. DEVELOPMENT MODES
+================================================================================
+
+Defined in: schemas.py line 227
+Type: Literal["fast", "balanced", "deep"]
+
+How They Work:
+  Each subagent includes conditional prompt instructions:
+  
+  "DEPTH MODE: {mode}
+   {"Focus on essential elements only." if mode == "fast" else ""}
+   {"Provide comprehensive analysis." if mode == "deep" else ""}
+   {"Balance depth with efficiency." if mode == "balanced" else ""}"
+
+Default Mode:
+  agent.py line 259: mode="balanced"
+
+Impact:
+  - fast: Fewer details, faster execution
+  - balanced: Good depth with efficiency (default)
+  - deep: Maximum detail and analysis
+
+================================================================================
+9. CRITICAL IMPLEMENTATION DETAILS
+================================================================================
+
+Key Finding #1: Image Generation is DISABLED
+  Evidence: Multiple "FIX:" comments in orchestrator.py
+  - Line 272: "Image Generation commented out"
+  - Lines 288-326: Entire checkpoint creation commented
+  - storage.py line 79: checkpoint count = 7, not 8
+  - Lines 359-361: visual arrays are empty
+
+Key Finding #2: Regeneration is NOT IMPLEMENTED
+  Evidence: agent.py lines 186-188
+  - async def regenerate_agent() contains only "pass"
+  - Feedback endpoint in API returns fake response
+  - Terminal approval loop auto-approves even on rejection
+
+Key Finding #3: Polling-Based Approval
+  Implementation: 0.5 second polling of metadata file
+  No event system, no callbacks, pure polling
+  orchestrator.py lines 111-122
+
+Key Finding #4: Sequential Checkpoint Approval Within Waves
+  Even though Wave 1 agents run in parallel:
+    await asyncio.gather(personality_task, backstory_task)
+  Their checkpoints are sequential:
+    await _create_checkpoint(1, ...)  # Creates and blocks
+    await _create_checkpoint(2, ...)  # Only after #1 approved
+  
+Key Finding #5: Knowledge Base as Context
+  Each agent receives KB with previous outputs
+  Example: voice_dialogue_agent checks if kb.get("personality") exists
+  This ensures consistency across agents
+
+Key Finding #6: All Agents Use Same Model
+  claude-haiku-4-5-20251001 (Haiku for speed + cost)
+  All subagents have: model = "claude-haiku-4-5-20251001"
+
+Key Finding #7: Async/Await Throughout
+  All subagents are async functions
+  AsyncAnthropic client used in all agents
+  All orchestration uses await and asyncio.gather()
+
+================================================================================
+10. ACTUAL EXAMPLE DATA
+================================================================================
+
+From character_id: 113eab3b-d544-4e69-99a8-e2d58f7c4e06
+
+Character: Maya Chen
+Status: Completed
+Created: 2025-11-09T06:26:04.669807
+Completed: 2025-11-09T06:31:36.026180
+Duration: ~5.5 minutes
+
+Checkpoint #1 (Personality):
+  Core Traits:
+    - Analytical Observer
+    - Romantic Pragmatist
+    - Fiercely Independent
+    - Introspective to Paralysis
+    - Compartmentalizer
+    - Pattern-Seeker
+  
+  Fears:
+    - Fundamental Meaninglessness
+    - Irrelevance and Invisibility
+    - Loss of Control Through Connection
+    - Gift is a Curse
+
+  Emotional Baseline:
+    "Controlled Vigilance - alert but subdued, perpetually listening to frequency others can't hear"
+
+Files Generated:
+  - input.json: Entry Agent output (4 characters, storyline)
+  - metadata.json: Status tracking
+  - knowledge_base.json: Shared KB across agents
+  - 7 checkpoint files in checkpoints/ directory
+  - final_profile.json: Complete consolidated profile
+  - images/: Empty (image generation disabled)
+
+================================================================================
+11. KEY CODE REFERENCES
+================================================================================
+
+Orchestrator Logic:
+  File: orchestrator.py
+  Class: CharacterOrchestrator
+  - __init__: Lines 40-55
+  - _send_update: Lines 57-60
+  - _create_checkpoint: Lines 62-109
+  - _wait_for_checkpoint_approval: Lines 111-122
+  - run_wave_1: Lines 124-189
+  - run_wave_2: Lines 190-269
+  - run_wave_3: Lines 271-333
+  - create_final_profile: Lines 335-413
+  - run_all_waves: Lines 415-421
+
+Main Agent:
+  File: agent.py
+  Class: CharacterIdentityAgent
+  - __init__: Lines 37-59
+  - start_character_development: Lines 61-78
+  - run_character_development: Lines 80-114
+  - approve_checkpoint: Lines 155-165
+  - regenerate_agent (TODO): Lines 167-189
+
+Storage:
+  File: storage.py
+  Class: CharacterStorage
+  - create_character: Lines 51-116
+  - save_checkpoint: Lines 160-169
+  - load_checkpoint: Lines 171-180
+  - save_final_profile: Lines 228-240
+
+API/WebSocket:
+  File: api/server.py
+  - ConnectionManager: Lines 83-101
+  - POST /api/character/start: Lines 120-175
+  - POST /api/character/{id}/approve: Lines 204-217
+  - POST /api/character/{id}/feedback: Lines 220-234
+  - WebSocket endpoint: Lines 255-276
+
+Schemas:
+  File: schemas.py
+  - CharacterKnowledgeBase: Lines 223-242
+  - Checkpoint: Lines 167-173
+  - FinalCharacterProfile: Lines 194-210
+
+================================================================================
+12. SUMMARY
+================================================================================
+
+The Character Identity Agent implementation consists of:
+
+Wave Structure:
+  - 3 waves with 6 agents (image generation disabled)
+  - Wave 1: 2 agents parallel
+  - Wave 2: 3 agents parallel
+  - Wave 3: 1 agent sequential
+  - Final: Consolidation
+
+Checkpoints:
+  - 7 total checkpoints (changed from 8)
+  - Sequential approval required (0.5s polling)
+  - Each blocks until human approves
+
+WebSocket:
+  - 5 message types
+  - Real-time development updates
+  - Connection-based (not persistent storage)
+
+Approval:
+  - Simple metadata flag system
+  - Polling-based wait mechanism
+  - No regeneration (stubbed)
+  - Feedback collected but not used
+
+Storage:
+  - File-based JSON persistence
+  - Character UUID directories
+  - 7 checkpoint files + metadata
+  - Knowledge base shared across agents
+
+Critical Facts:
+  1. Image generation DISABLED
+  2. Regeneration NOT implemented
+  3. All agents use Haiku model
+  4. All agents are async
+  5. Checkpoints sequential despite parallel agents
+  6. Knowledge base provides context continuity
+  7. Polling-based approval (no events)
+
+Total Execution Time: ~5.5 minutes (for balanced mode with 6 agents)
+
+================================================================================

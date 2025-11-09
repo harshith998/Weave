@@ -175,18 +175,86 @@ class CharacterIdentityAgent:
 
         Args:
             character_id: Character UUID
-            agent_name: Name of agent to regenerate
+            agent_name: Name of agent to regenerate (e.g., "personality", "backstory_motivation")
             feedback: User feedback for regeneration
         """
-        # Update regeneration count
+        from .subagents import (
+            personality_agent,
+            backstory_motivation_agent,
+            voice_dialogue_agent,
+            physical_description_agent,
+            story_arc_agent,
+            relationships_agent,
+            image_generation_agent
+        )
+
+        # Load KB and metadata
+        kb = self.storage.load_character_kb(character_id)
         metadata = self.storage.load_metadata(character_id)
+
+        # Add feedback to KB so it's available to the agent
+        feedback_key = f"{agent_name}_feedback"
+        kb[feedback_key] = feedback
+        self.storage.save_character_kb(kb)
+
+        # Map agent name to agent function
+        agent_mapping = {
+            "personality": personality_agent,
+            "backstory_motivation": backstory_motivation_agent,
+            "voice_dialogue": voice_dialogue_agent,
+            "physical_description": physical_description_agent,
+            "story_arc": story_arc_agent,
+            "relationships": relationships_agent,
+            "image_generation": image_generation_agent,
+        }
+
+        if agent_name not in agent_mapping:
+            raise ValueError(f"Unknown agent name: {agent_name}. Valid agents: {list(agent_mapping.keys())}")
+
+        agent_func = agent_mapping[agent_name]
+
+        # Re-run the agent with feedback in KB
+        if agent_name == "image_generation":
+            # Image generation requires additional parameters
+            output, narrative = await agent_func(kb, self.gemini_api_key, self.storage)
+        else:
+            # Text-based agents use Anthropic API
+            output, narrative = await agent_func(kb, self.anthropic_api_key)
+
+        # Update KB with new output
+        kb[agent_name] = output
+        self.storage.save_character_kb(kb)
+
+        # Find the checkpoint number for this agent
+        # Map agents to their checkpoint numbers
+        checkpoint_mapping = {
+            "personality": 1,
+            "backstory_motivation": 2,
+            "voice_dialogue": 3,
+            "physical_description": 4,
+            "story_arc": 5,
+            "relationships": 6,
+            "image_generation": 7,
+        }
+        checkpoint_num = checkpoint_mapping.get(agent_name, 1)
+
+        # Load and update the checkpoint
+        checkpoint = self.storage.load_checkpoint(character_id, checkpoint_num)
+        checkpoint["output"]["structured"] = output
+        checkpoint["output"]["narrative"] = narrative
+        checkpoint["status"] = "awaiting_approval"
+        self.storage.save_checkpoint(character_id, checkpoint)
+
+        # Update regeneration count
         metadata["regenerations"] = metadata.get("regenerations", 0) + 1
         self.storage.save_metadata(character_id, metadata)
 
-        # TODO: Implement regeneration logic
-        # This would re-run specific agent with feedback incorporated
-        # into the prompt
-        pass
+        return {
+            "checkpoint": checkpoint_num,
+            "agent": agent_name,
+            "status": "regenerated",
+            "message": f"Agent '{agent_name}' regenerated with feedback. Review checkpoint #{checkpoint_num}."
+        }
 
     def get_final_profile(self, character_id: str) -> Optional[FinalCharacterProfile]:
         """

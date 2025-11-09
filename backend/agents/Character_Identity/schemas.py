@@ -6,6 +6,10 @@ the character development multi-agent system.
 """
 
 from typing import TypedDict, List, Dict, Literal, Optional, Union
+try:
+    from typing import NotRequired  # Python 3.11+
+except ImportError:
+    from typing_extensions import NotRequired  # Python < 3.11
 
 
 # ============================================================================
@@ -18,6 +22,7 @@ class CharacterInput(TypedDict):
     appearance: str
     personality: str
     role: str
+    importance: NotRequired[str]  # Optional: "main character", "supporting", "antagonist", etc.
 
 
 class SceneInput(TypedDict, total=False):

@@ -12,7 +12,8 @@ import os
 import base64
 import json
 from typing import Tuple, List
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 from ..schemas import CharacterKnowledgeBase, ImageGenerationOutput, GeneratedImage
 
@@ -33,8 +34,8 @@ async def image_generation_agent(
     Returns:
         Tuple of (ImageGenerationOutput, narrative_description)
     """
-    # Configure Gemini
-    genai.configure(api_key=api_key)
+    # Initialize Gemini client (NEW API)
+    client = genai.Client(api_key=api_key)
 
     # Extract comprehensive character data
     character = kb["input_data"]["characters"][0]
@@ -143,48 +144,56 @@ Intimate, emotionally revealing."""
 
     image_prompts.append(("expression", expression_prompt, "1:1"))
 
-    # Generate images using Gemini
+    # Generate images using Gemini (NEW API)
     generated_images: List[GeneratedImage] = []
-    model = genai.GenerativeModel("gemini-2.0-flash-exp")
+    model_name = "gemini-2.5-flash-image"  # Updated model for image generation
 
     for image_type, prompt, aspect_ratio in image_prompts:
         try:
             print(f"Generating {image_type} image...")
 
-            # Generate image using Gemini
-            # Note: Gemini 2.0 Flash for image generation
-            response = model.generate_content(prompt)
+            # Generate image using Gemini NEW API
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_modalities=["IMAGE"],
+                    response_mime_type="image/png"
+                )
+            )
 
-            # Extract image data from response
-            if response.parts:
-                for part in response.parts:
-                    if hasattr(part, 'inline_data') and part.inline_data:
-                        # Get base64 image data
-                        image_data = part.inline_data.data
+            # Extract image data from response (NEW API structure)
+            if response.candidates and len(response.candidates) > 0:
+                candidate = response.candidates[0]
+                if candidate.content and candidate.content.parts:
+                    for part in candidate.content.parts:
+                        if hasattr(part, 'inline_data') and part.inline_data:
+                            # Get base64 image data
+                            image_data = part.inline_data.data
 
-                        # Decode base64 to bytes
-                        if isinstance(image_data, str):
-                            image_bytes = base64.b64decode(image_data)
-                        else:
-                            image_bytes = image_data
+                            # Decode base64 to bytes
+                            if isinstance(image_data, str):
+                                image_bytes = base64.b64decode(image_data)
+                            else:
+                                image_bytes = image_data
 
-                        # Save image using storage
-                        image_path = storage.save_image(
-                            kb["character_id"],
-                            image_type,
-                            image_bytes
-                        )
+                            # Save image using storage
+                            image_path = storage.save_image(
+                                kb["character_id"],
+                                image_type,
+                                image_bytes
+                            )
 
-                        # Add to generated images
-                        generated_image: GeneratedImage = {
-                            "type": image_type,  # type: ignore
-                            "path": image_path,
-                            "prompt": prompt,
-                            "approved": False
-                        }
-                        generated_images.append(generated_image)
-                        print(f"✓ {image_type} image generated and saved")
-                        break
+                            # Add to generated images
+                            generated_image: GeneratedImage = {
+                                "type": image_type,  # type: ignore
+                                "path": image_path,
+                                "prompt": prompt,
+                                "approved": False
+                            }
+                            generated_images.append(generated_image)
+                            print(f"✓ {image_type} image generated and saved")
+                            break
 
         except Exception as e:
             print(f"Warning: Failed to generate {image_type} image: {e}")

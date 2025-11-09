@@ -1,0 +1,27 @@
+{
+  "checkpoint_number": 3,
+  "agent": "voice_dialogue",
+  "status": "awaiting_approval",
+  "output": {
+    "narrative": "# MAYA CHEN - VOICE & DIALOGUE PROFILE\n\n## NARRATIVE\n\nMaya Chen speaks like someone translating from a language only she understands. Her voice carries the precise cadence of someone accustomed to speaking to machines and datasets rather than people\u2014measured, efficient, occasionally clinical. There's an underlying musicality to her speech that contradicts this precision: she has a tendency to let her voice drift upward at the end of observations, turning statements into provisional hypotheses, as if nothing is ever truly settled. When she's analyzing, her speech becomes almost hypnotic\u2014rhythmic and recursive, circling back to refine a thought, catching herself mid-sentence to correct an imprecision. But there's a brittleness underneath this composure. Her pauses are strategic; she uses silence like punctuation, letting words sit in the air to be examined before moving forward. She rarely uses contractions, which gives her speech a formality that feels slightly out of step with modern conversation\u2014a holdover from academic training and years of writing technical documentation. When she's frightened or genuinely moved, this formality cracks slightly; contractions slip in, her sentences fragment, and that controlled distance collapses into something rawer and more human.\n\nHer vocabulary is a precise blend of technical terminology and deliberately simple language\u2014she'll use \"probability cascade\" in one breath and \"things fall apart\" in the next, often within the same sentence. This mixture reflects her internal conflict: the analytical mind trying to contain the emotional reality through precision, and simultaneously the intuitive mind recognizing that precision sometimes obscures rather than clarifies truth. She has a particular habit of using present-tense, almost clinical descriptions of emotional states\u2014\"I'm experiencing what I believe is fear\" rather than \"I'm scared\"\u2014which sounds detached but is actually a form of self-preservation, a way of observing her own dissolution without being consumed by it. When speaking to the child, or in rare moments of genuine connection, this clinical distance softens; she becomes more direct, more present, though she's visibly uncomfortable with the vulnerability this requires. Under extreme stress, her speech becomes increasingly fragmented and recursive; she loops back over her own statements, second-guessing them, as if the act of speaking is itself a probability timeline that might collapse if examined too closely.\n\nHer accent is almost imperceptible\u2014a slight flattening of vowels suggesting a childhood spent moving between regions, never quite settling into any single linguistic identity. She speaks quietly, which forces people to lean in; this is partly deliberate, a form of control, and partly unconscious\u2014she's learned that quiet people are often overlooked, and being overlooked has always felt safer than being seen. When she's excited or discovering something significant, her volume increases almost imperceptibly, but her pace quickens dramatically, words tumbling over each other in a way that contrasts sharply with her usual deliberate delivery. There's something almost musical about her speech when she's engaged\u2014a rhythm that suggests she's hearing multiple frequencies at once, translating them into language. But she catches herself doing this, becomes self-conscious, and the controlled distance reasserts itself. Her voice is alto-range, with slightly husky undertones, the kind of voice that suggests someone who doesn't speak much and has learned to make each word count.\n\n---\n\n## STRUCTURED DATA\n\n```json",
+    "structured": {
+      "speech_pattern": "Unknown",
+      "verbal_tics": [
+        "..."
+      ],
+      "vocabulary": "Unknown",
+      "sample_dialogue": {
+        "confident": "...",
+        "vulnerable": "...",
+        "stressed": "...",
+        "sarcastic": "..."
+      }
+    }
+  },
+  "metadata": {
+    "wave": 2,
+    "timestamp": "2025-11-09T06:29:59.510941",
+    "tokens_used": 1600,
+    "agent_time_seconds": 17.240676666666666
+  }
+}

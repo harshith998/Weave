@@ -34,6 +34,40 @@ from .subagents import (
 )
 
 
+def parse_importance_to_int(importance_str: str) -> int:
+    """
+    Convert importance string to numeric value (1-10 scale)
+
+    Args:
+        importance_str: String like "main character", "supporting", "antagonist", etc.
+
+    Returns:
+        int: Importance score 1-10 (higher = more important)
+    """
+    importance_str = importance_str.lower().strip()
+
+    # Main characters and antagonists (highest priority)
+    if any(word in importance_str for word in ["main", "protagonist", "primary", "lead"]):
+        return 9
+    if any(word in importance_str for word in ["antagonist", "villain", "main antagonist"]):
+        return 9
+
+    # Secondary/supporting characters
+    if any(word in importance_str for word in ["supporting", "secondary", "love interest", "deuteragonist"]):
+        return 6
+
+    # Minor/side characters
+    if any(word in importance_str for word in ["side", "minor", "tertiary", "background"]):
+        return 3
+
+    # Cameos and extras
+    if any(word in importance_str for word in ["cameo", "extra", "mention"]):
+        return 1
+
+    # Default medium importance
+    return 5
+
+
 class CharacterOrchestrator:
     """Orchestrates wave-based character development"""
 
@@ -54,10 +88,30 @@ class CharacterOrchestrator:
         # Load character KB
         self.kb: CharacterKnowledgeBase = storage.load_character_kb(character_id)
 
+        # Approval gates for wave-level human-in-the-loop control
+        self.approval_events = {
+            1: asyncio.Event(),  # Wave 1 approval gate
+            2: asyncio.Event(),  # Wave 2 approval gate
+            3: asyncio.Event(),  # Wave 3 approval gate
+        }
+
     async def _send_update(self, message: Dict):
         """Send real-time update via WebSocket"""
         if self.websocket_callback:
             await self.websocket_callback(message)
+
+    def approve_wave(self, wave_number: int):
+        """
+        Approve a wave and signal the orchestrator to continue to the next wave
+
+        Args:
+            wave_number: Wave number to approve (1, 2, or 3)
+        """
+        if wave_number not in self.approval_events:
+            raise ValueError(f"Invalid wave number: {wave_number}. Must be 1, 2, or 3.")
+
+        # Set the event to unblock the wave gate
+        self.approval_events[wave_number].set()
 
     async def _create_checkpoint(
         self,
@@ -269,41 +323,50 @@ class CharacterOrchestrator:
         })
 
     async def run_wave_3(self):
-        """Execute Wave 3: Social (Relationships only - Image Generation commented out)"""
+        """Execute Wave 3: Social (Relationships + optional Image Generation)"""
+
+        # Check if image generation is enabled
+        IMAGE_GENERATION_ENABLED = os.getenv("IMAGE_GENERATION_ENABLED", "false").lower() == "true"
+
+        agents_list = ["relationships"]
+        if IMAGE_GENERATION_ENABLED and self.gemini_api_key:
+            agents_list.append("image_generation")
 
         await self._send_update({
             "type": "wave_started",
             "wave": 3,
-            "agents": ["relationships"]  # FIX: Removed image_generation
+            "agents": agents_list
         })
 
         # Update KB
         self.kb["current_wave"] = 3
         self.storage.save_character_kb(self.kb)
 
-        # Run relationships agent only (image generation commented out)
+        # Run agents
         start_time = datetime.now()
 
-        relationships_task = relationships_agent(self.kb, self.anthropic_api_key)
-        # COMMENTED OUT: image_task = image_generation_agent(self.kb, self.gemini_api_key, self.storage)
+        if IMAGE_GENERATION_ENABLED and self.gemini_api_key:
+            # Run both relationships and image generation
+            relationships_task = relationships_agent(self.kb, self.anthropic_api_key)
+            image_task = image_generation_agent(self.kb, self.gemini_api_key, self.storage)
 
-        relationships_result = await relationships_task  # FIX: No longer using gather
+            relationships_result, image_result = await asyncio.gather(relationships_task, image_task)
+        else:
+            # Run only relationships
+            relationships_result = await relationships_agent(self.kb, self.anthropic_api_key)
+            image_result = None
 
         end_time = datetime.now()
         wave_time = (end_time - start_time).total_seconds()
 
         # Unpack results
         relationships_output, relationships_narrative = relationships_result
-        # COMMENTED OUT: image_output, image_narrative = image_result
 
         # Update KB
         self.kb["relationships"] = relationships_output
-        # COMMENTED OUT: self.kb["image_generation"] = image_output
         self.kb["agent_statuses"]["relationships"] = {"status": "completed", "wave": 3}
-        # COMMENTED OUT: self.kb["agent_statuses"]["image_generation"] = {"status": "completed", "wave": 3}
-        self.storage.save_character_kb(self.kb)
 
-        # Create checkpoint for relationships only
+        # Create checkpoint for relationships
         await self._create_checkpoint(
             checkpoint_number=6,
             agent_name="relationships",
@@ -314,21 +377,34 @@ class CharacterOrchestrator:
             agent_time=wave_time
         )
 
-        # COMMENTED OUT: Image generation checkpoint
-        # await self._create_checkpoint(
-        #     checkpoint_number=7,
-        #     agent_name="image_generation",
-        #     wave=3,
-        #     output=image_output,
-        #     narrative=image_narrative,
-        #     tokens_used=5160,
-        #     agent_time=wave_time / 2
-        # )
+        # If image generation was enabled, process results and create checkpoint
+        if image_result:
+            image_output, image_narrative = image_result
+            self.kb["image_generation"] = image_output
+            self.kb["agent_statuses"]["image_generation"] = {"status": "completed", "wave": 3}
+            self.storage.save_character_kb(self.kb)
+
+            await self._create_checkpoint(
+                checkpoint_number=7,
+                agent_name="image_generation",
+                wave=3,
+                output=image_output,
+                narrative=image_narrative,
+                tokens_used=5160,
+                agent_time=wave_time / 2
+            )
+        else:
+            # Save KB even if no image generation
+            self.storage.save_character_kb(self.kb)
+
+        agents_completed = ["relationships"]
+        if IMAGE_GENERATION_ENABLED and self.gemini_api_key and image_result:
+            agents_completed.append("image_generation")
 
         await self._send_update({
             "type": "wave_complete",
             "wave": 3,
-            "agents_completed": ["relationships"],  # FIX: Removed image_generation
+            "agents_completed": agents_completed,
             "next_wave": "final"
         })
 
@@ -339,25 +415,31 @@ class CharacterOrchestrator:
         metadata = self.storage.load_metadata(self.character_id)
 
         # Create overview
+        importance_value = 5  # Default
+        if "importance" in character and character["importance"]:
+            importance_value = parse_importance_to_int(character["importance"])
+
         overview: CharacterOverview = {
             "name": character["name"],
             "role": self.kb["story_arc"]["role"] if self.kb.get("story_arc") else character["role"],
-            "importance": 5,  # Can be calculated or configured
+            "importance": importance_value,
             "one_line": f"{character['name']} - {character['role']}"
         }
 
-        # Create visual data (COMMENTED OUT: Image generation disabled)
-        # image_urls = []
-        # if self.kb.get("image_generation"):
-        #     for img in self.kb["image_generation"]["images"]:
-        #         image_urls.append({
-        #             "type": img["type"],
-        #             "url": img["path"]
-        #         })
+        # Create visual data (conditional based on image generation)
+        image_urls = []
+        style_notes = ""
+        if self.kb.get("image_generation"):
+            for img in self.kb["image_generation"]["images"]:
+                image_urls.append({
+                    "type": img["type"],
+                    "url": img["path"]
+                })
+            style_notes = self.kb["image_generation"].get("style_profile", "")
 
         visual_data = {
-            "images": [],  # FIX: Empty since image generation is disabled
-            "style_notes": ""  # FIX: No style notes without image generation
+            "images": image_urls,
+            "style_notes": style_notes
         }
 
         # Validate required fields before creating final profile
@@ -384,18 +466,21 @@ class CharacterOrchestrator:
             "metadata": {
                 "mode": self.kb["mode"],
                 "development_time_minutes": 0,  # Calculate if needed
-                "total_checkpoints": 7,  # FIX: Changed from 8 (no image generation)
+                "total_checkpoints": metadata.get("total_checkpoints", 7),
                 "regenerations": metadata.get("regenerations", 0),
-                "total_tokens": 10000  # FIX: Reduced from 12000 (no image gen)
+                "total_tokens": 12000 if self.kb.get("image_generation") else 10000
             }
         }
 
         # Save final profile
         self.storage.save_final_profile(self.character_id, final_profile)
 
+        # Determine final checkpoint number (7 without images, 8 with images)
+        final_checkpoint_number = 8 if self.kb.get("image_generation") else 7
+
         # Create final checkpoint
         await self._create_checkpoint(
-            checkpoint_number=7,  # FIX: Changed from 8 (now final checkpoint)
+            checkpoint_number=final_checkpoint_number,
             agent_name="final_consolidation",
             wave=4,
             output=final_profile,  # type: ignore
@@ -413,9 +498,37 @@ class CharacterOrchestrator:
         return final_profile
 
     async def run_all_waves(self):
-        """Execute all waves sequentially"""
+        """Execute all waves sequentially with approval gates"""
+        # Wave 1: Foundation
         await self.run_wave_1()
+        await self._send_update({
+            "type": "awaiting_approval",
+            "wave": 1,
+            "message": "Wave 1 (Foundation) complete. Awaiting approval to continue to Wave 2.",
+            "checkpoints": [1, 2]
+        })
+        await self.approval_events[1].wait()  # PAUSE HERE until approved
+
+        # Wave 2: Expression
         await self.run_wave_2()
+        await self._send_update({
+            "type": "awaiting_approval",
+            "wave": 2,
+            "message": "Wave 2 (Expression) complete. Awaiting approval to continue to Wave 3.",
+            "checkpoints": [3, 4, 5]
+        })
+        await self.approval_events[2].wait()  # PAUSE HERE until approved
+
+        # Wave 3: Social
         await self.run_wave_3()
+        await self._send_update({
+            "type": "awaiting_approval",
+            "wave": 3,
+            "message": "Wave 3 (Social) complete. Awaiting approval to create final profile.",
+            "checkpoints": [6, 7]
+        })
+        await self.approval_events[3].wait()  # PAUSE HERE until approved
+
+        # Final profile creation
         final_profile = await self.create_final_profile()
         return final_profile
