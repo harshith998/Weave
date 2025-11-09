@@ -1,0 +1,43 @@
+{
+  "checkpoint_number": 1,
+  "agent": "personality",
+  "status": "awaiting_approval",
+  "output": {
+    "narrative": "# MARCUS: PSYCHOLOGICAL PROFILE\n\n## NARRATIVE\n\nMarcus exists in a perpetual state of self-imposed penance, his determination less a virtue than a compulsion\u2014a way to outrun the ghosts that pursue him up every vertical surface he encounters. His resilience isn't the cheerful bounce-back of an optimist; it's the grim, jaw-clenched endurance of someone who has learned that surrender means drowning in regret. The weathering visible on his face reflects not just exposure to elements, but exposure to his own failures\u2014each line a marker of a compromise made, a person let down, a promise broken. Beneath his mysterious exterior lies not enigmatic wisdom but rather a man so fractured by his past that he's learned to present only the polished surfaces: the capable hands, the steady gaze, the unwavering focus. What others interpret as strength is often just the armor he's constructed to prevent anyone from seeing the cracks beneath.\n\nThe contradiction at his core is profound: Marcus is simultaneously running toward redemption and running away from it. He seeks the summit as though enlightenment waits there, yet he's terrified that when he reaches it, he'll discover that no amount of physical suffering can absolve his internal sins. His mystery isn't intentional mystique\u2014it's the natural result of a man who has learned that vulnerability is a luxury he cannot afford, that revealing his doubts is equivalent to admitting defeat. He moves through the world with a peculiar isolation, capable of extraordinary physical feats yet incapable of genuine human connection, because connection requires honesty, and honesty might shatter the fragile narrative he's constructed about who he is and what he deserves.\n\nHis relationship with the climb itself is deeply psychological: the chapel represents not just a physical challenge but a literal ascension toward grace, toward the possibility that he might rise above his failures. Yet each handhold is also a meditation on his limitations, each moment of doubt a conversation with the version of himself he's trying to escape. The climb is simultaneously his therapy, his punishment, and his last desperate hope that the universe might offer him a second chance.\n\n---\n\n## STRUCTURED\n\n```json",
+    "structured": {
+      "core_traits": [
+        "Determined - bordering on obsessive; uses goal-setting as a mechanism for self-control and meaning-making",
+        "Resilient - not naturally optimistic, but grimly persistent; refuses to quit as a form of control over his narrative",
+        "Mysterious - protective of his inner world; guards information about his past as though exposure would invalidate his present",
+        "Self-Punishing - frames challenges as deserved suffering; conflates difficulty with moral cleansing",
+        "Compartmentalized - excels at isolating emotions and functions; treats his body as separate from his mind",
+        "Introspective but Avoidant - deeply self-aware yet uses that awareness to rationalize rather than change patterns"
+      ],
+      "fears": [
+        "That redemption is impossible - that no amount of physical suffering or achievement can erase what he's done or who he failed",
+        "That he is fundamentally unworthy of forgiveness - not just from others, but from himself; that his self-loathing is justified",
+        "That connection will expose him - that anyone who truly knows him will confirm his worst suspicions about himself",
+        "That the climb won't change anything - that reaching the summit will bring only hollow victory and the realization that he's been running in circles"
+      ],
+      "secrets": [
+        "He carries responsibility for a specific failure or loss (details intentionally vague) that he believes makes him undeserving of happiness or peace",
+        "He doesn't actually believe the climb will save him; he's performing redemption rather than pursuing it, hoping that if he acts redeemed long enough, it might become true",
+        "He's afraid that his determination and resilience are just elaborate avoidance mechanisms\u2014that he's climbing to avoid the real work of facing what he's done and making amends to those he's hurt"
+      ],
+      "emotional_baseline": "Controlled tension with undercurrents of melancholy and rage. Publicly: calm, focused, almost serene. Internally: a constant low-level anxiety punctuated by sharp spikes of grief or anger that he quickly suppresses. He exists in a state of managed desperation, where every moment requires active emotional regulation. His default is to feel nothing while appearing to feel everything necessary.",
+      "triggers": [
+        "Failure or setback - any moment where his control slips or his body betrays him taps into his core fear that he cannot overcome his limitations",
+        "Unexpected kindness or offers of help - destabilizes his narrative that he deserves suffering; makes him defensive and withdrawn",
+        "Specific people or situations from his past - certain names, locations, or scenarios create dissociative episodes where he mentally relocates to the climb, the only place he feels safe",
+        "Questions about 'why' he climbs - forces him to articulate his redemption narrative, which he cannot do honestly without unraveling his entire constructed identity",
+        "Moments of genuine peace or beauty - paradoxically triggers anxiety and guilt, as though he has no right to experience joy or rest"
+      ]
+    }
+  },
+  "metadata": {
+    "wave": 1,
+    "timestamp": "2025-11-09T17:21:20.933494",
+    "tokens_used": 1500,
+    "agent_time_seconds": 18.244627
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "characters": [
+    {
+      "name": "Alexis",
+      "appearance": "Black man with long hair",
+      "personality": "Bold and determined",
+      "role": "Co-climber, adventurous explorer",
+      "importance": "main",
+      "appears_in_scenes": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Cameron",
+      "appearance": "Asian man",
+      "personality": "Energetic and cautious",
+      "role": "Co-climber, adventure partner",
+      "importance": "main",
+      "appears_in_scenes": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "storyline": {
+    "overview": "Two friends, Alexis and Cameron, undertake a thrilling and dramatic free-climbing adventure inside the Sistine Chapel. They ascend the towering interior walls in an intense climb, experience a heart-stopping near-fall moment, successfully descend, and escape with exhilaration and joy.",
+    "tone": "Dramatic, adventurous, intense",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "duration": "8s",
+        "title": "The Arrival",
+        "description": "Alexis and Cameron stand inside the magnificent Sistine Chapel, gazing up at the soaring interior walls and iconic ceiling. They exchange determined glances, adjust their gear, and prepare themselves mentally. The camera pans across the grand architecture as they position themselves at the base of the wall, ready to begin their daring climb.",
+        "characters_involved": [
+          "Alexis",
+          "Cameron"
+        ],
+        "setting": "Interior of the Sistine Chapel, at ground level near the base of the towering walls",
+        "mood": "Anticipation, focus, determination"
+      },
+      {
+        "scene_number": 2,
+        "duration": "8s",
+        "title": "The Ascent",
+        "description": "Alexis and Cameron begin their intense free-climb, scaling the interior walls with focus and precision. Midway through, one of them loses grip and begins to slip\u2014a terrifying moment of danger. They catch themselves, hearts pounding, and continue upward with renewed determination. The camera captures their powerful movements and the dramatic tension as they push toward the top.",
+        "characters_involved": [
+          "Alexis",
+          "Cameron"
+        ],
+        "setting": "Interior Sistine Chapel walls, climbing higher toward the ceiling",
+        "mood": "Intense, thrilling, dangerous, heart-pounding"
+      },
+      {
+        "scene_number": 3,
+        "duration": "8s",
+        "title": "The Descent",
+        "description": "Having reached near the top, Alexis and Cameron begin their controlled descent down the chapel walls. Moving methodically and carefully, they navigate their way back down without incident, their movements smooth and confident. The camera shows them descending past the remarkable frescoes and architectural features of the chapel.",
+        "characters_involved": [
+          "Alexis",
+          "Cameron"
+        ],
+        "setting": "Interior Sistine Chapel walls, descending from height to ground level",
+        "mood": "Focused, controlled, building anticipation"
+      },
+      {
+        "scene_number": 4,
+        "duration": "8s",
+        "title": "The Escape",
+        "description": "As their feet touch the ground, Alexis and Cameron burst into motion, running toward the chapel exit with pure exhilaration and joy radiating from them. They move with explosive energy, adrenaline pumping, their faces filled with triumph and happiness. The camera captures their dynamic sprint as they rush out of the chapel, victorious and alive with the thrill of their accomplishment.",
+        "characters_involved": [
+          "Alexis",
+          "Cameron"
+        ],
+        "setting": "Interior Sistine Chapel transitioning to the chapel exit",
+        "mood": "Triumphant, exhilarating, joyful, energetic"
+      }
+    ]
+  },
+  "visual_style": {
+    "description": "Anime-style visual design with dynamic action sequences, dramatic lighting, and vibrant colors. Featuring expressive character animation, intense facial expressions during dangerous moments, and fluid movement capture.",
+    "image_path": "output/style_examples/style_20251109_102428.png"
+  }
+}

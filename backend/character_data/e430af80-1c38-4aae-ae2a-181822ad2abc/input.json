@@ -1,0 +1,57 @@
+{
+  "characters": [
+    {
+      "name": "Marcus",
+      "appearance": "Middle-aged man with weathered features, worn climbing gear, muscular build, determined expression",
+      "personality": "Determined, resilient, mysterious",
+      "role": "The climber seeking redemption",
+      "importance": "Main character"
+    }
+  ],
+  "storyline": {
+    "overview": "A man undertakes a perilous climb up the exterior of an ancient stone chapel, pushing himself to the physical and emotional limits. As he ascends higher, his past and present collide, leading to a moment of profound realization at the summit.",
+    "tone": "Dramatic, introspective, tense with moments of triumph",
+    "scenes": [
+      {
+        "title": "The Approach",
+        "description": "Marcus arrives at the base of the towering stone chapel at sunrise. Golden light bathes the ancient stone walls. He touches the rough surface, looks up at the impossible height ahead, and begins securing his climbing gear. His hands tremble slightly as he checks each knot. The chapel bells toll in the distance.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Base of historic stone chapel, misty morning with golden sunrise light",
+        "mood": "Contemplative, nervous anticipation"
+      },
+      {
+        "title": "The Ascent Begins",
+        "description": "Marcus starts climbing, gripping weathered handholds carved into centuries-old stone. Sweat drips down his face. He moves methodically upward, each movement deliberate and careful. The ground falls away below him. Birds circle the chapel spire. His breathing becomes labored as he pushes higher.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "The stone exterior wall of the chapel, hundreds of feet up",
+        "mood": "Intense, physically demanding, adrenaline-fueled"
+      },
+      {
+        "title": "The Breaking Point",
+        "description": "Halfway up, Marcus pauses on a narrow ledge. He looks down at the vast distance below. His face shows internal struggle\u2014fear, doubt, determination mixed together. He grips the stone, knuckles white, breathing heavily. A moment of hesitation. Then he closes his eyes, takes a deep breath, and continues upward.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Midway point on the chapel wall, exposed ledge with tremendous height",
+        "mood": "Vulnerable, psychological struggle, moment of doubt"
+      },
+      {
+        "title": "The Summit",
+        "description": "Marcus pulls himself onto the chapel roof near the spire. He collapses briefly, breathing hard, then stands and faces the expansive view below\u2014the entire landscape spreads out beneath him. Golden sunlight illuminates his face. He raises his hand toward the sky. A look of peace and accomplishment washes over him. The bells toll once more as wind whips around the spire.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Top of the chapel at the spire, overlooking vast landscape with golden hour lighting",
+        "mood": "Triumphant, peaceful, cathartic, transcendent"
+      }
+    ]
+  },
+  "visual_style": {
+    "description": "Cinematic live-action realistic style with dramatic lighting, natural outdoor photography aesthetic, golden hour lighting, professional cinematography quality",
+    "image_path": "output/style_examples/style_20251109_091928.png"
+  }
+}

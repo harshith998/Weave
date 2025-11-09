@@ -1,0 +1,12 @@
+{
+  "character_id": "dde52c3f-2e50-42cf-9089-63c4ec38b7d4",
+  "created_at": "2025-11-09T17:40:50.030947",
+  "status": "completed",
+  "mode": "balanced",
+  "current_wave": 1,
+  "current_checkpoint": 7,
+  "completed_checkpoints": 7,
+  "total_checkpoints": 7,
+  "regenerations": 0,
+  "completed_at": "2025-11-09T17:44:53.855390"
+}

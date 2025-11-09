@@ -323,14 +323,9 @@ class CharacterOrchestrator:
         })
 
     async def run_wave_3(self):
-        """Execute Wave 3: Social (Relationships + optional Image Generation)"""
+        """Execute Wave 3: Social (Relationships + Image Generation)"""
 
-        # Check if image generation is enabled
-        IMAGE_GENERATION_ENABLED = os.getenv("IMAGE_GENERATION_ENABLED", "false").lower() == "true"
-
-        agents_list = ["relationships"]
-        if IMAGE_GENERATION_ENABLED and self.gemini_api_key:
-            agents_list.append("image_generation")
+        agents_list = ["relationships", "image_generation"]
 
         await self._send_update({
             "type": "wave_started",
@@ -345,22 +340,30 @@ class CharacterOrchestrator:
         # Run agents
         start_time = datetime.now()
 
-        if IMAGE_GENERATION_ENABLED and self.gemini_api_key:
-            # Run both relationships and image generation
-            relationships_task = relationships_agent(self.kb, self.anthropic_api_key)
-            image_task = image_generation_agent(self.kb, self.gemini_api_key, self.storage)
+        # Run both relationships and image generation with error handling
+        relationships_task = relationships_agent(self.kb, self.anthropic_api_key)
+        image_task = image_generation_agent(self.kb, self.gemini_api_key, self.storage)
 
-            relationships_result, image_result = await asyncio.gather(relationships_task, image_task)
-        else:
-            # Run only relationships
-            relationships_result = await relationships_agent(self.kb, self.anthropic_api_key)
-            image_result = None
+        # Use gather with return_exceptions to handle failures gracefully
+        results = await asyncio.gather(relationships_task, image_task, return_exceptions=True)
+        relationships_result = results[0]
+        image_result = results[1]
 
         end_time = datetime.now()
         wave_time = (end_time - start_time).total_seconds()
 
-        # Unpack results
-        relationships_output, relationships_narrative = relationships_result
+        # Process relationships result
+        if isinstance(relationships_result, Exception):
+            await self._send_update({
+                "type": "agent_failed",
+                "agent": "relationships",
+                "error": str(relationships_result)
+            })
+            # Create minimal placeholder
+            relationships_output = {"relationships": [], "dynamics": "Failed to generate"}
+            relationships_narrative = f"Relationships agent failed: {str(relationships_result)}"
+        else:
+            relationships_output, relationships_narrative = relationships_result
 
         # Update KB
         self.kb["relationships"] = relationships_output
@@ -377,29 +380,39 @@ class CharacterOrchestrator:
             agent_time=wave_time
         )
 
-        # If image generation was enabled, process results and create checkpoint
-        if image_result:
-            image_output, image_narrative = image_result
-            self.kb["image_generation"] = image_output
-            self.kb["agent_statuses"]["image_generation"] = {"status": "completed", "wave": 3}
-            self.storage.save_character_kb(self.kb)
-
-            await self._create_checkpoint(
-                checkpoint_number=7,
-                agent_name="image_generation",
-                wave=3,
-                output=image_output,
-                narrative=image_narrative,
-                tokens_used=5160,
-                agent_time=wave_time / 2
-            )
+        # Process image generation result with error handling
+        if isinstance(image_result, Exception):
+            # Image generation failed - continue with placeholder
+            await self._send_update({
+                "type": "agent_failed",
+                "agent": "image_generation",
+                "error": str(image_result)
+            })
+            # Create placeholder output
+            image_output = {
+                "images": [],
+                "style_profile": "Image generation failed - continuing without images"
+            }
+            image_narrative = f"Image generation failed: {str(image_result)}\n\nCharacter development will continue without images. You can regenerate images later if needed."
         else:
-            # Save KB even if no image generation
-            self.storage.save_character_kb(self.kb)
+            image_output, image_narrative = image_result
 
-        agents_completed = ["relationships"]
-        if IMAGE_GENERATION_ENABLED and self.gemini_api_key and image_result:
-            agents_completed.append("image_generation")
+        # Always save image generation results (even if failed with placeholder)
+        self.kb["image_generation"] = image_output
+        self.kb["agent_statuses"]["image_generation"] = {"status": "completed" if not isinstance(image_result, Exception) else "failed", "wave": 3}
+        self.storage.save_character_kb(self.kb)
+
+        await self._create_checkpoint(
+            checkpoint_number=7,
+            agent_name="image_generation",
+            wave=3,
+            output=image_output,
+            narrative=image_narrative,
+            tokens_used=5160 if not isinstance(image_result, Exception) else 0,
+            agent_time=wave_time / 2
+        )
+
+        agents_completed = ["relationships", "image_generation"]
 
         await self._send_update({
             "type": "wave_complete",
@@ -426,16 +439,20 @@ class CharacterOrchestrator:
             "one_line": f"{character['name']} - {character['role']}"
         }
 
-        # Create visual data (conditional based on image generation)
+        # Create visual data (always present, even if images failed)
         image_urls = []
         style_notes = ""
-        if self.kb.get("image_generation"):
+        if self.kb.get("image_generation") and self.kb["image_generation"].get("images"):
             for img in self.kb["image_generation"]["images"]:
-                image_urls.append({
-                    "type": img["type"],
-                    "url": img["path"]
-                })
+                if img.get("path"):  # Only include successfully generated images
+                    image_urls.append({
+                        "type": img["type"],
+                        "url": img["path"]
+                    })
             style_notes = self.kb["image_generation"].get("style_profile", "")
+        else:
+            # Images failed or missing - note this in style_notes
+            style_notes = "Images not generated (failure or error occurred)"
 
         visual_data = {
             "images": image_urls,
@@ -468,15 +485,15 @@ class CharacterOrchestrator:
                 "development_time_minutes": 0,  # Calculate if needed
                 "total_checkpoints": metadata.get("total_checkpoints", 7),
                 "regenerations": metadata.get("regenerations", 0),
-                "total_tokens": 12000 if self.kb.get("image_generation") else 10000
+                "total_tokens": 12000  # Always include image generation tokens
             }
         }
 
         # Save final profile
         self.storage.save_final_profile(self.character_id, final_profile)
 
-        # Determine final checkpoint number (7 without images, 8 with images)
-        final_checkpoint_number = 8 if self.kb.get("image_generation") else 7
+        # Final checkpoint number is always 7 (includes image_generation)
+        final_checkpoint_number = 7
 
         # Create final checkpoint
         await self._create_checkpoint(

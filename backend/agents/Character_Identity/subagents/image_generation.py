@@ -9,11 +9,11 @@ Generates character images using Google Gemini API including:
 """
 
 import os
-import base64
 import json
 from typing import Tuple, List
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from io import BytesIO
+from PIL import Image
 
 from ..schemas import CharacterKnowledgeBase, ImageGenerationOutput, GeneratedImage
 
@@ -34,8 +34,9 @@ async def image_generation_agent(
     Returns:
         Tuple of (ImageGenerationOutput, narrative_description)
     """
-    # Initialize Gemini client (NEW API)
-    client = genai.Client(api_key=api_key)
+    # Initialize Gemini like Entry Agent does
+    genai.configure(api_key=api_key)
+    image_model = genai.GenerativeModel('gemini-2.5-flash-image-preview')
 
     # Extract comprehensive character data
     character = kb["input_data"]["characters"][0]
@@ -69,18 +70,12 @@ async def image_generation_agent(
 
     visual_context = "\n".join(visual_context_parts)
 
-    # Define style profile based on story tone
-    tone_to_style = {
-        "cinematic": "Realistic cinematic photography, dramatic lighting, film-like quality",
-        "dramatic": "High-contrast dramatic photography, intense lighting, emotional depth",
-        "dark": "Dark moody photography, noir aesthetic, shadows and atmosphere",
-        "gritty": "Raw realistic style, textured and weathered, documentary feel",
-        "elegant": "Refined elegant photography, sophisticated lighting, polished aesthetic",
-        "whimsical": "Stylized artistic photography, creative lighting, imaginative aesthetic"
-    }
-
-    story_tone_lower = storyline["tone"].lower()
-    style_profile = tone_to_style.get(story_tone_lower, "Realistic photography with attention to detail")
+    # Use Entry Agent's visual_style directly instead of deriving from tone
+    if "visual_style" in kb["input_data"] and "description" in kb["input_data"]["visual_style"]:
+        style_profile = kb["input_data"]["visual_style"]["description"]
+    else:
+        # Fallback if visual_style is missing (shouldn't happen but be defensive)
+        style_profile = "Realistic cinematic photography with dramatic lighting, film-like quality, and attention to detail"
 
     # Create 4 different image prompts
     image_prompts = []
@@ -144,38 +139,30 @@ Intimate, emotionally revealing."""
 
     image_prompts.append(("expression", expression_prompt, "1:1"))
 
-    # Generate images using Gemini (NEW API)
+    # Generate images using Gemini (matching Entry Agent pattern)
     generated_images: List[GeneratedImage] = []
-    model_name = "gemini-2.5-flash-image"  # Updated model for image generation
 
     for image_type, prompt, aspect_ratio in image_prompts:
         try:
             print(f"Generating {image_type} image...")
 
-            # Generate image using Gemini NEW API
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_modalities=["IMAGE"],
-                    response_mime_type="image/png"
-                )
-            )
+            # Generate image like Entry Agent does
+            response = image_model.generate_content([prompt])
 
-            # Extract image data from response (NEW API structure)
+            # Extract image data from response (Entry Agent pattern)
             if response.candidates and len(response.candidates) > 0:
                 candidate = response.candidates[0]
                 if candidate.content and candidate.content.parts:
                     for part in candidate.content.parts:
                         if hasattr(part, 'inline_data') and part.inline_data:
-                            # Get base64 image data
-                            image_data = part.inline_data.data
+                            # Convert inline_data to bytes using PIL like Entry Agent
+                            image_data = BytesIO(part.inline_data.data)
+                            img = Image.open(image_data)
 
-                            # Decode base64 to bytes
-                            if isinstance(image_data, str):
-                                image_bytes = base64.b64decode(image_data)
-                            else:
-                                image_bytes = image_data
+                            # Convert PIL Image to bytes for storage
+                            img_byte_arr = BytesIO()
+                            img.save(img_byte_arr, format='PNG')
+                            image_bytes = img_byte_arr.getvalue()
 
                             # Save image using storage
                             image_path = storage.save_image(
@@ -192,7 +179,11 @@ Intimate, emotionally revealing."""
                                 "approved": False
                             }
                             generated_images.append(generated_image)
+
+                            # Show absolute path for user to view
+                            absolute_path = storage.get_image_path(kb["character_id"], image_type)
                             print(f"✓ {image_type} image generated and saved")
+                            print(f"  → View it here: {absolute_path}")
                             break
 
         except Exception as e:
@@ -205,6 +196,19 @@ Intimate, emotionally revealing."""
                 "approved": False
             }
             generated_images.append(generated_image)
+
+    # Display summary of all generated images
+    print("\n" + "="*65)
+    print("📸 CHARACTER IMAGES GENERATED")
+    print("="*65)
+    for img in generated_images:
+        if not img["path"].startswith("/placeholder"):
+            abs_path = storage.get_image_path(kb["character_id"], img["type"])
+            # Show relative path from backend/ for cleaner display
+            rel_path = f"character_data/{kb['character_id']}/images/{img['type']}.png"
+            print(f"{img['type'].upper():13} → backend/{rel_path}")
+    print("\n→ Open these files to view your character images!")
+    print("="*65 + "\n")
 
     # Create narrative description
     narrative = f"""Visual Style Profile: {style_profile}

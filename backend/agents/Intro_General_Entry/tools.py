@@ -57,12 +57,17 @@ TOOLS = [
                         "type": "object",
                         "properties": {
                             "name": {"type": "string"},
-                            "appearance": {"type": "string", "description": "Detailed visual description"},
+                            "appearance": {"type": "string", "description": "Brief visual description (detailed development happens in Character Identity agent)"},
                             "personality": {"type": "string"},
                             "role": {"type": "string", "description": "Role in the story"},
-                            "importance": {"type": "string", "description": "Importance in story (main character, side character, antagonist, etc.)"}
+                            "importance": {"type": "string", "description": "Importance level: 'main', 'supporting', or 'minor'"},
+                            "appears_in_scenes": {
+                                "type": "array",
+                                "description": "Which scene numbers this character appears in (e.g., [1, 2, 4])",
+                                "items": {"type": "integer"}
+                            }
                         },
-                        "required": ["name", "appearance", "role"]
+                        "required": ["name", "appearance", "role", "importance", "appears_in_scenes"]
                     }
                 },
                 "storyline": {
@@ -76,6 +81,8 @@ TOOLS = [
                             "items": {
                                 "type": "object",
                                 "properties": {
+                                    "scene_number": {"type": "integer", "description": "Scene number (1, 2, 3, or 4)"},
+                                    "duration": {"type": "string", "description": "Duration of this scene (always '30s')"},
                                     "title": {"type": "string", "description": "Scene title or label"},
                                     "description": {"type": "string", "description": "Detailed visual description of what happens in this scene"},
                                     "characters_involved": {
@@ -86,7 +93,7 @@ TOOLS = [
                                     "setting": {"type": "string", "description": "Location and environment for this scene"},
                                     "mood": {"type": "string", "description": "Emotional tone of this specific scene"}
                                 },
-                                "required": ["title", "description", "characters_involved", "setting"]
+                                "required": ["scene_number", "duration", "title", "description", "characters_involved", "setting"]
                             }
                         },
                         "tone": {"type": "string", "description": "Overall tone/style"}

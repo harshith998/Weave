@@ -1,0 +1,57 @@
+{
+  "characters": [
+    {
+      "name": "Marcus Chen",
+      "appearance": "35-year-old man with shoulder-length dark hair, weathered contemplative face with deep eyes. Wears a worn dark jacket. Physically exhausted but maintains quiet dignity. His expression shifts from despair to wonder throughout the piece.",
+      "role": "The dreamer seeking redemption",
+      "personality": "Introspective, broken but resilient, desperate but ultimately hopeful. Carries the weight of failed dreams but discovers grace in the unexpected.",
+      "importance": "Main character - the entire narrative centers on his transformation"
+    }
+  ],
+  "storyline": {
+    "overview": "Marcus Chen, a despondent 35-year-old architect, climbs the railing of the Golden Gate Bridge to end his suffering. But at the moment of surrender, he experiences a miraculous transformation\u2014instead of falling, he begins to fly, ascending above San Francisco with ethereal grace. What begins as an act of desperation becomes a journey of transcendence and rebirth, ending with Marcus landing peacefully on a hillside overlooking the city, transformed by the experience and grateful to be alive.",
+    "tone": "Dramatic magical realism\u2014hopeful transformation with melancholy undertones and profound wonder",
+    "scenes": [
+      {
+        "title": "The Weight",
+        "description": "Marcus walks slowly across the Golden Gate Bridge during golden hour. The camera captures his exhausted face, the wind pulling at his dark jacket. Pedestrians blur past him, indifferent. He reaches the bridge's midpoint, grips the cold metal railing, and methodically climbs over the edge to the outer side. Close-ups of his hands trembling, his final breath before surrender. The bay stretches far below.",
+        "characters_involved": [
+          "Marcus Chen"
+        ],
+        "setting": "Golden Gate Bridge, late afternoon with warm golden light",
+        "mood": "Despair, isolation, finality, suffocating weight of hopelessness"
+      },
+      {
+        "title": "The Moment",
+        "description": "Marcus stands on the outer edge with arms outstretched, the wind whipping around him. The water below seems to pull him downward. Then\u2014a rush of golden ethereal light engulfs his body. His skin begins to glow with supernatural luminescence. His eyes widen in shock. Instead of falling, his body becomes weightless. The laws of physics dissolve. He begins to float, then gently glide upward, defying gravity. Wonder floods his face as tears stream down his cheeks.",
+        "characters_involved": [
+          "Marcus Chen"
+        ],
+        "setting": "Mid-air at the Golden Gate Bridge, suspended between sky and water",
+        "mood": "Shock, wonder, supernatural transformation, disbelief turning to awe"
+      },
+      {
+        "title": "Ascension",
+        "description": "Marcus soars through the air with impossible grace, his body glowing with golden light. The camera follows him in wide spiraling arcs, climbing higher and higher. Below, San Francisco unfolds\u2014the crimson bridge, the sprawling city streets, the bay reflecting light like scattered diamonds. He moves like a bird, then like something more than human. His fear has completely dissolved into euphoria. He laughs and cries simultaneously, arms still outstretched, experiencing pure liberation. The city becomes smaller as he rises toward the glowing sunset sky.",
+        "characters_involved": [
+          "Marcus Chen"
+        ],
+        "setting": "Above San Francisco, soaring above the Golden Gate Bridge with the cityscape spreading beneath",
+        "mood": "Awe, liberation, transcendence, euphoria, profound spiritual awakening"
+      },
+      {
+        "title": "Rebirth",
+        "description": "Marcus lands gracefully on a hillside overlooking the city as the sun sets in brilliant oranges and pinks. His feet touch solid ground and he staggers slightly, breathing heavily, as if returning from another world. He touches his own face and body in amazement, verifying his existence. He looks back toward the Golden Gate Bridge visible in the distance, its cables glowing in the sunset. A gentle, grateful smile spreads across his face. The camera pulls back to reveal him standing small against the vast landscape, no longer diminished but at peace, connected to something larger than his pain. The sky above transitions from gold to deep indigo.",
+        "characters_involved": [
+          "Marcus Chen"
+        ],
+        "setting": "San Francisco hillside with sweeping cityscape view, golden sunset transitioning to dusk",
+        "mood": "Peace, gratitude, redemption, new beginning, hope, spiritual wholeness"
+      }
+    ]
+  },
+  "visual_style": {
+    "description": "Realistic cinematic photography with magical realism elements. Golden hour lighting on the Golden Gate Bridge, dramatic atmospheric effects with ethereal glowing light. Dreamlike yet grounded in reality, with stunning color grading (warm golds, deep blues of the bay, sunset oranges). Photorealistic characters and environments with subtle supernatural glow effects during the flight sequence.",
+    "image_path": "output/style_examples/style_20251109_093037.png"
+  }
+}

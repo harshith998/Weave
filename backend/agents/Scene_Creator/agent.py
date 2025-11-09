@@ -11,9 +11,7 @@ from typing import List, Dict, Any, Optional
 from anthropic import AsyncAnthropic  # FIX: Use AsyncAnthropic for async functions
 from agent_types import AgentLevel
 from .tools import TOOLS, execute_tool
-import sys
 import json
-sys.path.append('../..')
 from utils.state_manager import read_project_state, update_project_mode
 
 # Import mode system prompts
@@ -38,8 +36,10 @@ class SceneCreatorAgent:
         # Load current mode from project state
         self.current_mode = self._load_current_mode()
 
-        # Store scene data when extracted from Entry Agent
+        # Store scene data when loaded from state
         self.scene_data = None
+        self.current_scene_index = 0
+        self.total_scenes = 0
 
     def _load_current_mode(self) -> str:
         """Load current mode from project state."""
@@ -84,9 +84,12 @@ class SceneCreatorAgent:
         Returns:
             Agent's response string
         """
-        # Check for scene data from Entry Agent in conversation history (first time only)
+        # Load scene data from state (first time only)
         if self.scene_data is None and user_input.lower() == "start":
-            self._extract_scene_data(conversation_history)
+            if not self._load_scene_data():
+                return "Error: No scene data found in state. Please complete Entry Agent first."
+            # Auto-start with Scene 1
+            return await self._process_scene_simple(0)
 
         # Check for mode switch command
         if user_input.lower().startswith("/mode "):
@@ -95,6 +98,13 @@ class SceneCreatorAgent:
                 return f"Mode switched to {requested_mode}. Conversation history preserved. I'll now operate with {requested_mode.replace('_', ' ')} personality."
             else:
                 return f"Failed to switch mode. Valid modes: creative_overview, analytical, deep_dive"
+
+        # Check for "next scene" command
+        if user_input.lower() in ["next", "next scene", "continue"]:
+            next_index = self.current_scene_index + 1
+            if next_index >= self.total_scenes:
+                return f"✓ All {self.total_scenes} scenes complete! Ready for video generation with Agent 4."
+            return await self._process_scene_simple(next_index)
 
         # Build messages list with scene context if available
         if self.scene_data and user_input.lower() == "start":
@@ -178,23 +188,51 @@ Which scene would you like to work on first, or would you like me to review all 
         text_content = [block.text for block in response.content if hasattr(block, "text")]
         return " ".join(text_content)
 
-    def _extract_scene_data(self, conversation_history: List[Dict[str, str]]) -> None:
-        """Extract detailed scene data from Entry Agent output in conversation history."""
-        for msg in reversed(conversation_history):
-            if msg["role"] == "assistant" and "FINAL OUTPUT:" in msg["content"]:
-                try:
-                    # Extract JSON from Entry Agent output
-                    json_start = msg["content"].index("{")
-                    json_end = msg["content"].rindex("}") + 1
-                    json_str = msg["content"][json_start:json_end]
-                    entry_data = json.loads(json_str)
+    def _load_scene_data(self) -> bool:
+        """Load scene data from project state (not conversation history)."""
+        from utils.state_manager import read_storyline
 
-                    # Extract storyline with detailed scenes
-                    if "storyline" in entry_data:
-                        self.scene_data = entry_data["storyline"]
-                        scene_count = len(self.scene_data.get('scenes', []))
-                        print(f"✓ Loaded {scene_count} detailed scene(s) from Entry Agent")
-                        print(f"  Storyline: {self.scene_data.get('overview', 'No overview')[:60]}...")
-                    break
-                except (ValueError, json.JSONDecodeError, KeyError):
-                    continue
+        storyline = read_storyline(self.project_id)
+        if storyline:
+            self.scene_data = storyline
+            self.total_scenes = len(storyline.get('scenes', []))
+            print(f"✓ Loaded {self.total_scenes} scenes from project state")
+            print(f"  Storyline: {self.scene_data.get('overview', 'No overview')[:60]}...")
+            return True
+        else:
+            print("⚠ No storyline found in project state")
+            self.scene_data = None
+            self.total_scenes = 0
+            return False
+
+    async def _process_scene_simple(self, scene_index: int) -> str:
+        """
+        Process a single scene with simple output (no complex tool calling).
+
+        Args:
+            scene_index: 0-based scene index
+
+        Returns:
+            Simple confirmation message
+        """
+        if scene_index >= self.total_scenes:
+            return "All scenes complete!"
+
+        scene = self.scene_data['scenes'][scene_index]
+        self.current_scene_index = scene_index
+
+        # Simple output for now - just acknowledge the scene
+        return f"""
+=== Scene {scene_index + 1} of {self.total_scenes} ===
+
+Title: {scene.get('title', 'Untitled')}
+Duration: {scene.get('duration', '8s')}
+Description: {scene.get('description', '')}
+Characters: {', '.join(scene.get('characters_involved', []))}
+Setting: {scene.get('setting', 'Not specified')}
+Mood: {scene.get('mood', 'Not specified')}
+
+✓ Scene {scene_index + 1} ready for cinematography refinement.
+
+Type 'next' to proceed to Scene {scene_index + 2 if scene_index + 1 < self.total_scenes else 'complete'}.
+"""

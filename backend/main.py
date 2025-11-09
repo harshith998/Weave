@@ -10,6 +10,7 @@ from agent_types import AgentLevel
 from agents.Intro_General_Entry.agent import EntryAgent
 from agents.Scene_Creator.agent import SceneCreatorAgent
 from agents.Character_Identity.agent import CharacterIdentityAgent
+from agents.Combiner.agent import CombinerAgent
 
 
 async def main():
@@ -56,38 +57,112 @@ async def main():
             # If switching to Character_Identity and we have Entry Agent output, auto-start
             if AgentLevel(agent_counter) == AgentLevel.Character_Identity:
                 # Check if we have Entry Agent JSON in history
-                has_entry_output = any(
-                    msg["role"] == "assistant" and "FINAL OUTPUT:" in msg["content"]
-                    for msg in conversation_history
-                )
-                if has_entry_output:
-                    print("\n→ Detected character data from Entry Agent")
-                    print("→ Starting character development automatically...\n")
-                    try:
-                        response = await current_agent.run("start", conversation_history)
-                        print(f"\nAgent: {response}")
-                        conversation_history.append({"role": "user", "content": "start"})
-                        conversation_history.append({"role": "assistant", "content": response})
-                    except Exception as e:
-                        print(f"\nError: {str(e)}")
-                        import traceback
-                        traceback.print_exc()
+                import json
+                entry_data = None
+                for msg in reversed(conversation_history):
+                    if msg["role"] == "assistant" and "FINAL OUTPUT:" in msg["content"]:
+                        try:
+                            json_start = msg["content"].index("{")
+                            json_end = msg["content"].rindex("}") + 1
+                            json_str = msg["content"][json_start:json_end]
+                            entry_data = json.loads(json_str)
+                            break
+                        except:
+                            continue
 
-            # If switching to Scene_Creator and we have Character data, show mode options
+                if entry_data:
+                    # Get important characters (main + supporting)
+                    all_characters = entry_data.get("characters", [])
+                    important_characters = [c for c in all_characters
+                                          if c.get("importance") in ["main", "supporting"]]
+
+                    print(f"\n→ Found {len(important_characters)} important character(s) to develop:")
+                    for i, char in enumerate(important_characters, 1):
+                        print(f"   {i}. {char.get('name')} ({char.get('importance')})")
+
+                    print("\n→ Starting character development sequentially...\n")
+
+                    # Process each important character
+                    for i, char in enumerate(important_characters, 1):
+                        print(f"\n{'='*60}")
+                        print(f"CHARACTER {i}/{len(important_characters)}: {char.get('name')}")
+                        print(f"{'='*60}\n")
+
+                        try:
+                            response = await current_agent.run("start", conversation_history)
+                            print(f"\nAgent: {response}")
+                            conversation_history.append({"role": "user", "content": "start"})
+                            conversation_history.append({"role": "assistant", "content": response})
+                        except Exception as e:
+                            print(f"\nError: {str(e)}")
+                            import traceback
+                            traceback.print_exc()
+
+                    print(f"\n✓ All {len(important_characters)} character(s) developed!")
+                    print("→ Type '/next' to proceed to Scene Creator")
+
+            # If switching to Scene_Creator, auto-start scene processing
             elif AgentLevel(agent_counter) == AgentLevel.Scene_Creator:
-                # Check if we have Character Identity output
-                has_character_output = any(
-                    msg["role"] == "assistant" and "CHARACTER DEVELOPMENT COMPLETE" in msg["content"]
-                    for msg in conversation_history
-                )
-                if has_character_output:
-                    print("\n→ Detected completed character profiles")
-                    print("→ Ready for scene creation!\n")
-                    print("Scene Creator Modes:")
-                    print("  /mode creative_overview - Fast prototyping (2-3 concepts → rapid execution)")
-                    print("  /mode analytical        - Production quality (comprehensive validation)")
-                    print("  /mode deep_dive         - Maximum control (2 options per decision)\n")
-                    print("Or just describe your first scene to start with default mode.\n")
+                print("\n→ Starting scene creation (4 scenes × 30s each)...")
+                print("→ Processing scenes sequentially...\n")
+
+                # Auto-start with Scene 1
+                try:
+                    response = await current_agent.run("start", conversation_history)
+                    print(f"\nAgent: {response}")
+                    conversation_history.append({"role": "user", "content": "start"})
+                    conversation_history.append({"role": "assistant", "content": response})
+
+                    # Process remaining scenes (2, 3, 4)
+                    for scene_num in range(2, 5):  # Scenes 2, 3, 4
+                        print(f"\n→ Type 'next' to proceed to Scene {scene_num}")
+                        user_input = input("\nYou: ").strip()
+
+                        if user_input.lower() == "next":
+                            response = await current_agent.run("next", conversation_history)
+                            print(f"\nAgent: {response}")
+                            conversation_history.append({"role": "user", "content": "next"})
+                            conversation_history.append({"role": "assistant", "content": response})
+                        else:
+                            print(f"Pausing at Scene {scene_num - 1}. Type 'next' when ready to continue.")
+                            break
+
+                    print("\n✓ Scene creation complete!")
+                    print("→ Type '/next' to proceed to Agent 4 (Combiner)")
+
+                except Exception as e:
+                    print(f"\nError: {str(e)}")
+                    import traceback
+                    traceback.print_exc()
+
+            # If switching to Combiner, auto-start video generation
+            elif AgentLevel(agent_counter) == AgentLevel.Combiner:
+                print("\n→ Starting video generation for 4 scenes (30s each)...")
+                print("→ Each 30s scene will be subdivided into ~4 × 8s video chunks\n")
+
+                # Auto-start video generation for all 4 scenes
+                try:
+                    for scene_num in range(1, 5):
+                        print(f"\n{'='*60}")
+                        print(f"PROCESSING SCENE {scene_num}/4")
+                        print(f"{'='*60}\n")
+
+                        # Agent 4 will subdivide scene and generate videos
+                        response = await current_agent.run(f"generate_scene_{scene_num}", conversation_history)
+                        print(f"\n{response}")
+
+                        conversation_history.append({"role": "user", "content": f"generate_scene_{scene_num}"})
+                        conversation_history.append({"role": "assistant", "content": response})
+
+                    print(f"\n{'='*60}")
+                    print("✓ ALL 4 SCENES GENERATED!")
+                    print(f"{'='*60}\n")
+                    print("→ Your 2-minute video is complete!")
+
+                except Exception as e:
+                    print(f"\nError: {str(e)}")
+                    import traceback
+                    traceback.print_exc()
 
             continue
 
@@ -126,6 +201,9 @@ def get_agent_by_level(level: int, api_key: str):
     elif agent_level == AgentLevel.Scene_Creator:
         print("Initializing Scene Creator Agent...")
         return SceneCreatorAgent(api_key=api_key, level=agent_level)
+    elif agent_level == AgentLevel.Combiner:
+        print("Initializing Combiner Agent (Video Generation)...")
+        return CombinerAgent(api_key=api_key, level=agent_level)
     else:
         print(f"Agent for {agent_level.name} not yet implemented, using EntryAgent as fallback")
         return EntryAgent(api_key=api_key, level=agent_level)

@@ -18,7 +18,8 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 # Add backend directory to Python path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BACKEND_DIR))
 
 # Load environment
 load_dotenv()
@@ -68,7 +69,7 @@ def parse_importance(importance_str: str) -> int:
 
 def save_entry_session(session_id: str, session_data: Dict):
     """Save Entry Agent session to disk for persistence"""
-    session_dir = Path("./backend/session_data")
+    session_dir = BACKEND_DIR / "session_data"
     session_dir.mkdir(exist_ok=True)
 
     # Don't serialize the agent object, only the data
@@ -85,7 +86,7 @@ def save_entry_session(session_id: str, session_data: Dict):
 
 def load_entry_session(session_id: str, anthropic_api_key: str) -> Optional[Dict]:
     """Load Entry Agent session from disk"""
-    session_file = Path("./backend/session_data") / f"entry_{session_id}.json"
+    session_file = BACKEND_DIR / "session_data" / f"entry_{session_id}.json"
 
     if not session_file.exists():
         return None
@@ -104,7 +105,7 @@ def load_entry_session(session_id: str, anthropic_api_key: str) -> Optional[Dict
 
 def save_scene_session(session_id: str, session_data: Dict):
     """Save Scene Creator session to disk for persistence"""
-    session_dir = Path("./backend/session_data")
+    session_dir = BACKEND_DIR / "session_data"
     session_dir.mkdir(exist_ok=True)
 
     # Don't serialize the agent object, only the data
@@ -122,7 +123,7 @@ def save_scene_session(session_id: str, session_data: Dict):
 
 def load_scene_session(session_id: str, anthropic_api_key: str) -> Optional[Dict]:
     """Load Scene Creator session from disk"""
-    session_file = Path("./backend/session_data") / f"scene_{session_id}.json"
+    session_file = BACKEND_DIR / "session_data" / f"scene_{session_id}.json"
 
     if not session_file.exists():
         return None
@@ -193,8 +194,9 @@ app.add_middleware(
 )
 
 # Serve character data as static files
-if os.path.exists("./backend/character_data"):
-    app.mount("/character_data", StaticFiles(directory="./backend/character_data"), name="character_data")
+character_data_dir = BACKEND_DIR / "character_data"
+if character_data_dir.exists():
+    app.mount("/character_data", StaticFiles(directory=str(character_data_dir)), name="character_data")
 
 # Initialize agent
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")

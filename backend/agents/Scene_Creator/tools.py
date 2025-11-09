@@ -18,8 +18,6 @@ from .subagents.subagent import (
 )
 
 # Import Veo video generator tool
-import sys
-sys.path.append('../..')
 from video_test.veo_video_generator import veo_video_generator, VEO_TOOL
 
 

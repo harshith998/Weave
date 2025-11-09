@@ -1,0 +1,57 @@
+{
+  "characters": [
+    {
+      "name": "Marcus",
+      "appearance": "55 years old, weather-worn and strong despite his age. Salt-and-pepper hair, lean muscular build. Moves with quiet purpose and deliberation. Face shows lines of age and experience, weathered by sun and time.",
+      "role": "A solitary man returning to a place from his past",
+      "personality": "Quiet, introspective, carries emotional weight. Contemplative and somewhat guarded, but capable of vulnerability and deep feeling.",
+      "importance": "Main character"
+    }
+  ],
+  "storyline": {
+    "overview": "Marcus returns to a remote beach he hasn't visited in decades. What starts as a routine swim becomes a journey of confronting lost memories, regret, and ultimately, acceptance. Through the act of swimming, he processes his past and emerges with a sense of peace and closure.",
+    "tone": "Contemplative, melancholic, but ultimately hopeful. Realistic and intimate.",
+    "scenes": [
+      {
+        "title": "The Return",
+        "description": "Marcus drives up to an empty beach at dawn in soft morning light. He sits in his car for a long moment, staring at the water through the windshield. Visible hesitation and emotional weight. He slowly exits the car and walks across the sand toward the shoreline. The beach is foggy and empty, with mournful atmosphere. His pace is deliberate but heavy.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Remote beach at dawn, foggy morning light, empty and desolate",
+        "mood": "Melancholic, hesitant, introspective"
+      },
+      {
+        "title": "The Descent",
+        "description": "Marcus enters the cold water, wading deeper with measured steps. He begins to swim, moving into the vastness. As he swims, brief flash-images surface: younger versions of himself, a woman's face, a child laughing. The visuals blur between past and present moments, creating a dreamlike quality. The water is calm but immense.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Open water at dawn, calm but vast expanse of ocean",
+        "mood": "Vulnerable, reflective, emotionally charged"
+      },
+      {
+        "title": "Deep Water",
+        "description": "Marcus is far out in the water, treading and floating. Alone in the vastness of the ocean. He is crying, tears mixing with seawater. A moment of complete vulnerability and release. The camera pulls back to show his solitary figure against the enormous expanse of water and sky.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Deep open water, expansive ocean horizon",
+        "mood": "Raw, vulnerable, cathartic"
+      },
+      {
+        "title": "The Return to Shore",
+        "description": "Marcus swims back toward shore with stronger, more purposeful strokes. His movements show renewed energy and determination. He reaches the beach and walks out of the water, dripping. He stops on the sand and turns to look back at the ocean. His expression has visibly shifted\u2014something has settled inside him. A sense of peace and acceptance replaces the earlier anguish.",
+        "characters_involved": [
+          "Marcus"
+        ],
+        "setting": "Beach shoreline at dawn, golden light beginning to break through fog",
+        "mood": "Hopeful, peaceful, resolved"
+      }
+    ]
+  },
+  "visual_style": {
+    "description": "Realistic cinematic drama style. Dawn light over a misty beach with authentic natural lighting and soft golden hour tones. Grounded, intimate visual language suitable for a contemplative character study. Film-quality cinematography with depth and atmospheric mood.",
+    "image_path": "style_reference_realistic_cinematic_beach_drama"
+  }
+}

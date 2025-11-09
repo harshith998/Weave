@@ -319,7 +319,7 @@ Please ensure the Entry Agent has completed successfully and outputted storyline
         print("CHARACTER DEVELOPMENT SYSTEM")
         print("="*60)
         print(f"\nReceived character data: {entry_json.get('characters', [{}])[0].get('name', 'Unknown')}")
-        print("Starting 6-agent character development pipeline...")  # FIX: Changed from 7 (no image gen)
+        print("Starting 7-agent character development pipeline...")  # personality, backstory, voice, physical, story_arc, relationships, image_generation
         print("\nMode: balanced (can be changed in future)")
         print("="*60 + "\n")
 
@@ -338,7 +338,7 @@ CHARACTER DEVELOPMENT COMPLETE
 Character: {final_profile['overview']['name']}
 Role: {final_profile['overview']['role']}
 
-✓ All 8 checkpoints completed
+✓ All 7 checkpoints completed
 ✓ Character profile saved
 ✓ Images generated
 
@@ -379,6 +379,36 @@ Type '/next' to proceed to Scene Creator, or continue refining this character.
             elif msg_type == "agent_completed":
                 agent = message.get("agent", "")
                 print(f"  ✓ {agent} complete")
+
+            elif msg_type == "agent_failed":
+                agent = message.get("agent", "")
+                error = message.get("error", "Unknown error")
+                print(f"  ✗ {agent} FAILED: {error}")
+                print(f"  → Continuing with remaining agents...")
+
+            elif msg_type == "awaiting_approval":
+                wave = message.get("wave", 0)
+                checkpoints = message.get("checkpoints", [])
+                msg = message.get("message", "")
+
+                print(f"\n{'='*60}")
+                print(f"WAVE {wave} COMPLETE")
+                print(f"{'='*60}")
+                print(f"Checkpoints approved: {checkpoints}")
+                print(msg)
+                print(f"{'='*60}\n")
+
+                while True:
+                    wave_approval = input("Continue to next wave? (y/n): ").strip().lower()
+                    if wave_approval == 'y':
+                        orchestrator.approve_wave(wave)
+                        print(f"✓ Wave {wave} approved - continuing...\n")
+                        break
+                    elif wave_approval == 'n':
+                        print("Development paused. Press Ctrl+C to exit.")
+                        break
+                    else:
+                        print("Please enter 'y' or 'n'")
 
             elif msg_type == "checkpoint_ready":
                 checkpoint_num = message.get("checkpoint_number", message.get("checkpoint", 0))

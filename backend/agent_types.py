@@ -11,3 +11,4 @@ class AgentLevel(IntEnum):
     Intro_General_Entry = 1      # Main entry point overview agent
     Character_Identity = 2       # Character discussion agent
     Scene_Creator = 3            # Scene flow discussion agent
+    Combiner = 4                 # Video prompt generation and Veo orchestration

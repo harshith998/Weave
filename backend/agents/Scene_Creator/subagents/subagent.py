@@ -8,7 +8,7 @@ import json
 import base64
 from io import BytesIO
 from typing import Dict, Any, List, Optional
-from anthropic import Anthropic
+from anthropic import AsyncAnthropic
 
 try:
     from google import genai
@@ -17,13 +17,11 @@ except ImportError:
     NANO_BANANA_AVAILABLE = False
     # FIX: Suppressed warning - google-genai is now installed via requirements.txt
 
-import sys
-sys.path.append('../../..')
 from utils.state_manager import read_scene, get_global_continuity
 
 
-# Initialize clients
-anthropic_client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Initialize clients (AsyncAnthropic for proper async/await)
+anthropic_client = AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 MODEL = "claude-sonnet-4-5-20250929"
 
 if NANO_BANANA_AVAILABLE:
@@ -105,14 +103,21 @@ Return as JSON:
   ]
 }}"""
 
-    response = anthropic_client.messages.create(
-        model=MODEL,
-        max_tokens=4096,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}]
-    )
-
-    return response.content[0].text
+    try:
+        response = await anthropic_client.messages.create(
+            model=MODEL,
+            max_tokens=4096,
+            timeout=60.0,  # 60 second timeout to prevent hanging
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        return response.content[0].text
+    except Exception as e:
+        return json.dumps({
+            "error": f"Cinematography designer failed: {str(e)}",
+            "status": "failed",
+            "fallback": "Unable to generate cinematography options. Please try again."
+        })
 
 
 # ============================================================================
@@ -175,14 +180,21 @@ Return as JSON:
   }}
 }}"""
 
-    response = anthropic_client.messages.create(
-        model=MODEL,
-        max_tokens=2048,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}]
-    )
-
-    return response.content[0].text
+    try:
+        response = await anthropic_client.messages.create(
+            model=MODEL,
+            max_tokens=2048,
+            timeout=60.0,  # 60 second timeout to prevent hanging
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        return response.content[0].text
+    except Exception as e:
+        return json.dumps({
+            "error": f"Aesthetic generator failed: {str(e)}",
+            "status": "failed",
+            "fallback": "Unable to generate aesthetic concepts. Please try again."
+        })
 
 
 # ============================================================================
@@ -240,14 +252,21 @@ Return validation report as JSON:
   "recommendations": ["list of improvements"]
 }}"""
 
-    response = anthropic_client.messages.create(
-        model=MODEL,
-        max_tokens=4096,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}]
-    )
-
-    return response.content[0].text
+    try:
+        response = await anthropic_client.messages.create(
+            model=MODEL,
+            max_tokens=4096,
+            timeout=60.0,  # 60 second timeout to prevent hanging
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        return response.content[0].text
+    except Exception as e:
+        return json.dumps({
+            "error": f"Scene validator failed: {str(e)}",
+            "status": "failed",
+            "fallback": "Unable to validate scene. Please try again."
+        })
 
 
 # ============================================================================
@@ -394,14 +413,21 @@ Return as JSON:
   "recommendations": ["timeline improvements"]
 }}"""
 
-    response = anthropic_client.messages.create(
-        model=MODEL,
-        max_tokens=2048,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}]
-    )
-
-    return response.content[0].text
+    try:
+        response = await anthropic_client.messages.create(
+            model=MODEL,
+            max_tokens=2048,
+            timeout=60.0,  # 60 second timeout to prevent hanging
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        return response.content[0].text
+    except Exception as e:
+        return json.dumps({
+            "error": f"Timeline validator failed: {str(e)}",
+            "status": "failed",
+            "fallback": "Unable to validate timeline. Please try again."
+        })
 
 
 # ============================================================================
@@ -514,11 +540,18 @@ Return as JSON:
   "retakeReasons": ["if true, list reasons"]
 }}"""
 
-    response = anthropic_client.messages.create(
-        model=MODEL,
-        max_tokens=4096,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}]
-    )
-
-    return response.content[0].text
+    try:
+        response = await anthropic_client.messages.create(
+            model=MODEL,
+            max_tokens=4096,
+            timeout=60.0,  # 60 second timeout to prevent hanging
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}]
+        )
+        return response.content[0].text
+    except Exception as e:
+        return json.dumps({
+            "error": f"Visual continuity checker failed: {str(e)}",
+            "status": "failed",
+            "fallback": "Unable to check visual continuity. Please try again."
+        })

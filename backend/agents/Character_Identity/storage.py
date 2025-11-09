@@ -22,7 +22,11 @@ from .schemas import (
 class CharacterStorage:
     """Manages file-based storage for character development data"""
 
-    def __init__(self, base_path: str = "./backend/character_data"):
+    def __init__(self, base_path: str = None):
+        if base_path is None:
+            # Calculate absolute path from file location to avoid nesting issues
+            backend_dir = Path(__file__).resolve().parent.parent.parent
+            base_path = str(backend_dir / "character_data")
         self.base_path = Path(base_path)
         self.base_path.mkdir(parents=True, exist_ok=True)
 
@@ -68,9 +72,8 @@ class CharacterStorage:
             json.dump(input_data, f, indent=2)
 
         # Initialize metadata
-        # Determine total checkpoints based on image generation setting
-        IMAGE_GENERATION_ENABLED = os.getenv("IMAGE_GENERATION_ENABLED", "false").lower() == "true"
-        total_checkpoints = 8 if IMAGE_GENERATION_ENABLED else 7
+        # Always include image generation (7 checkpoints total)
+        total_checkpoints = 7
 
         metadata = {
             "character_id": character_id,
