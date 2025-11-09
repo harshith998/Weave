@@ -26,10 +26,11 @@ env/
 ENV/
 .venv
 
-# Environment Variables
+# Environment Variables - NEVER commit API keys!
 .env
 .env.local
 .env.*.local
+local.env
 
 # IDE
 .vscode/
@@ -54,6 +55,3 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Character Development Data
-backend/character_data/

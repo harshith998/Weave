@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from agent_types import AgentLevel
 from agents.Intro_General_Entry.agent import EntryAgent
+from agents.Scene_Creator.agent import SceneCreatorAgent
 from agents.Character_Identity.agent import CharacterIdentityAgent
 
 
@@ -25,6 +26,7 @@ async def main():
 
     print("Weave Agent System")
     print("Type 'exit' to quit, '/next' to move to next agent, '/reset' to restart")
+    print("Scene Creator mode switching: '/mode creative_overview', '/mode analytical', '/mode deep_dive'")
     print("-" * 60)
 
     # Initialize first agent
@@ -82,13 +84,16 @@ def get_agent_by_level(level: int, api_key: str):
     if agent_level == AgentLevel.Intro_General_Entry:
         return EntryAgent(api_key=api_key, level=agent_level)
     elif agent_level == AgentLevel.Character_Identity:
+        # TODO: return CharacterIdentityAgent(api_key=api_key, level=agent_level)
+        print("Character_Identity agent not yet implemented, using EntryAgent as fallback")
+        return EntryAgent(api_key=api_key, level=agent_level)
         return CharacterIdentityAgent(api_key=api_key, level=agent_level)
     elif agent_level == AgentLevel.Scene_Creator:
-        # TODO: return SceneCreatorAgent(api_key=api_key, level=agent_level)
-        print("Scene_Creator agent not yet implemented, using ExampleAgent")
-        return ExampleAgent(api_key=api_key, level=agent_level)
+        print("Initializing Scene Creator Agent...")
+        return SceneCreatorAgent(api_key=api_key, level=agent_level)
     else:
-        return ExampleAgent(api_key=api_key, level=agent_level)
+        print(f"Agent for {agent_level.name} not yet implemented, using EntryAgent as fallback")
+        return EntryAgent(api_key=api_key, level=agent_level)
 
 
 if __name__ == "__main__":

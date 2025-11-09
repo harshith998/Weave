@@ -3,6 +3,12 @@
 # Anthropic API
 anthropic>=0.39.0
 
+# Nano Banana (Gemini 2.5 Flash Image) for reference image generation
+google-genai>=0.8.0
+
+# Image processing
+pillow>=10.0.0
+
 # Environment variables
 python-dotenv>=1.0.0
 
