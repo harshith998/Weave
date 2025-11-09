@@ -237,7 +237,7 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
     let currentX = offsetX;
     const childStartX = currentX;
     
-    children.forEach((child, index) => {
+    children.forEach((child) => {
       // Determine edge color based on child status
       let edgeColor = '#6B7280';
       let edgeGlow = 'rgba(107, 114, 128, 0.3)';
