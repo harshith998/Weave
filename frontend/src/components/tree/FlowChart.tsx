@@ -93,23 +93,23 @@ function CustomNode({ data }: { data: any }) {
           top: 0,
           left: 0,
           right: 0,
-          height: '4px',
+          height: '6px',
           background: accentColor,
-          borderRadius: '12px 12px 0 0',
+          borderRadius: '16px 16px 0 0',
         }}
       />
       
-      <div style={{ lineHeight: '1.5', wordBreak: 'break-word' }}>{data.label}</div>
+      <div style={{ lineHeight: '1.6', wordBreak: 'break-word' }}>{data.label}</div>
       
       {data.progress !== undefined && data.progress > 0 && (
         <div
           style={{
-            marginTop: '10px',
-            height: '6px',
+            marginTop: '16px',
+            height: '10px',
             background: 'rgba(255,255,255,0.08)',
-            borderRadius: '3px',
+            borderRadius: '5px',
             overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '2px solid rgba(255,255,255,0.1)',
           }}
         >
           <div
@@ -117,8 +117,8 @@ function CustomNode({ data }: { data: any }) {
               width: `${data.progress}%`,
               height: '100%',
               background: `linear-gradient(90deg, ${accentColor} 0%, ${borderColor} 100%)`,
-              borderRadius: '3px',
-              boxShadow: `0 0 10px ${glowColor}`,
+              borderRadius: '5px',
+              boxShadow: `0 0 12px ${glowColor}`,
               transition: 'width 0.5s ease',
             }}
           />
