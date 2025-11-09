@@ -54,3 +54,7 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+-e 
+# Environment files
+*.env
+*.env.*
