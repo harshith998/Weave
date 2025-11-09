@@ -13,11 +13,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Image generation feature flag (currently disabled but available)
-IMAGE_GENERATION_ENABLED = False
+IMAGE_GENERATION_ENABLED = True
 
-# COMMENTED OUT: Initialize NanoBanana (Gemini 2.5 Flash Image)
-# genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-# image_model = genai.GenerativeModel('gemini-2.5-flash-image-preview')
+# Initialize NanoBanana (Gemini 2.5 Flash Image) when enabled
+if IMAGE_GENERATION_ENABLED:
+    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+    image_model = genai.GenerativeModel('gemini-2.5-flash-image-preview')
+else:
+    image_model = None
 
 
 # Tool definitions in Anthropic format
@@ -124,108 +127,44 @@ async def generate_style_image(style_description: str, context: str = "") -> str
         return ("Image generation is currently disabled. "
                 "To enable: Set IMAGE_GENERATION_ENABLED = True in tools.py and ensure GEMINI_API_KEY is set.")
 
-    # COMMENTED OUT: Image generation logic (enable by setting IMAGE_GENERATION_ENABLED = True)
-    # Initialize model if not already done
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    image_model = genai.GenerativeModel('gemini-2.5-flash-image-preview')
-
-    # print("\n" + "="*60)
-    # print("🔧 DEBUG: generate_style_image called")
-    # print("="*60)
-    # print(f"📝 Style Description: {style_description}")
-    # print(f"📝 Context: {context}")
-
-    # Check API key
-    api_key = os.getenv("GEMINI_API_KEY")
-    if api_key:
-        print(f"🔑 API Key Found: {api_key[:10]}...{api_key[-4:]}")
-    else:
-        print("❌ API Key NOT FOUND in environment")
-        return "Error: GEMINI_API_KEY not found in environment"
-
     try:
+        # Check API key
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            return "Error: GEMINI_API_KEY not found in environment. Please set it in your .env file."
         # Build prompt for image generation
         prompt = f"Generate a visual style example image: {style_description}"
         if context:
             prompt += f". Context: {context}"
 
-        # print(f"💬 Full Prompt: {prompt}")
-        # print("🚀 Calling NanoBanana API...")
-
-        # Generate image using NanoBanana
+        # Generate image using NanoBanana (Gemini 2.5 Flash Image)
         response = image_model.generate_content([prompt])
 
-        # print("✅ API call completed")
-        # print(f"📦 Response type: {type(response)}")
-        # print(f"📦 Response attributes: {dir(response)}")
+        # Check response structure and extract image data
+        if hasattr(response, 'candidates') and response.candidates:
+            candidate = response.candidates[0]
 
-        # Check response structure
-        if hasattr(response, 'candidates'):
-            # print(f"✅ Response has candidates: {len(response.candidates)} candidates")
-            if response.candidates:
-                candidate = response.candidates[0]
-                # print(f"📦 Candidate type: {type(candidate)}")
-                # print(f"📦 Candidate attributes: {dir(candidate)}")
+            if hasattr(candidate, 'content') and hasattr(candidate.content, 'parts'):
+                for part in candidate.content.parts:
+                    if hasattr(part, 'inline_data') and part.inline_data:
+                        # Create output directory if it doesn't exist
+                        output_dir = "backend/output/style_examples"
+                        os.makedirs(output_dir, exist_ok=True)
 
-                if hasattr(candidate, 'content'):
-                    # print(f"✅ Candidate has content")
-                    # print(f"📦 Content type: {type(candidate.content)}")
+                        # Generate unique filename with timestamp
+                        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                        filename = f"{output_dir}/style_{timestamp}.png"
 
-                    if hasattr(candidate.content, 'parts'):
-                        # print(f"✅ Content has parts: {len(candidate.content.parts)} parts")
+                        # Save image
+                        image_data = BytesIO(part.inline_data.data)
+                        img = Image.open(image_data)
+                        img.save(filename)
 
-                        for i, part in enumerate(candidate.content.parts):
-                            # print(f"\n--- Part {i} ---")
-                            # print(f"📦 Part type: {type(part)}")
-                            # print(f"📦 Part attributes: {dir(part)}")
+                        return f"Image generated successfully! View it here: {filename}"
 
-                            if hasattr(part, 'inline_data'):
-                                # print(f"✅ Part has inline_data")
-                                if part.inline_data:
-                                    # print(f"📦 inline_data type: {type(part.inline_data)}")
-                                    # print(f"📦 inline_data attributes: {dir(part.inline_data)}")
-
-                                    # Create output directory if it doesn't exist
-                                    output_dir = "output/style_examples"
-                                    os.makedirs(output_dir, exist_ok=True)
-                                    # print(f"📁 Output directory created/verified: {output_dir}")
-
-                                    # Generate unique filename with timestamp
-                                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                                    filename = f"{output_dir}/style_{timestamp}.png"
-                                    # print(f"📝 Filename: {filename}")
-
-                                    # Save image
-                                    image_data = BytesIO(part.inline_data.data)
-                                    img = Image.open(image_data)
-                                    img.save(filename)
-                                    # print(f"💾 Image saved successfully!")
-
-                                    return f"Image generated successfully! View it here: {filename}"
-                                else:
-                                    print("❌ inline_data is None")
-                            else:
-                                print("❌ Part does not have inline_data attribute")
-                                if hasattr(part, 'text'):
-                                    print(f"📝 Part has text: {part.text}")
-                    else:
-                        print("❌ Content does not have parts")
-                else:
-                    print("❌ Candidate does not have content")
-            else:
-                print("❌ No candidates in response")
-        else:
-            print("❌ Response does not have candidates attribute")
-
-        print("\n❌ No image data found in response structure")
-        return "Error: No image data in response"
+        return "Error: No image data found in response. The AI may have refused to generate the image."
 
     except Exception as e:
-        print(f"\n❌ EXCEPTION OCCURRED")
-        print(f"Exception type: {type(e)}")
-        print(f"Exception message: {str(e)}")
-        import traceback
-        print(f"Traceback:\n{traceback.format_exc()}")
         return f"Error generating image: {str(e)}"
 
 
