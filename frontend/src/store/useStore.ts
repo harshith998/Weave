@@ -19,437 +19,82 @@ interface WeaveStore {
   setActiveAgent: (agent: Agent) => void;
 
   conversations: Conversation[];
+  
+  // Layout state
+  leftPanelWidth: number;
+  setLeftPanelWidth: (width: number) => void;
 }
 
-// Mock data for initial state - Complete video production workflow
+// Mock data for initial state - Simplified high-level workflow
 const mockNodes: TreeNode[] = [
   {
     id: 'root',
     name: 'South Park AI Episode',
     status: 'progress',
     progress: 62,
+    description: 'Complete AI-generated South Park episode with character consistency and narrative flow',
+    importance: 'Root project orchestrating all video production workflows',
   },
 
-  // Character Generation Pipeline
+  // High-level Pipeline Stages
   {
     id: 'characters',
-    name: 'Character Pipeline',
+    name: 'Character & Asset Creation',
     status: 'completed',
     progress: 100,
     parent: 'root',
-    children: [
-      {
-        id: 'char-models',
-        name: 'Character Models',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-        children: [
-          {
-            id: 'char-cartman',
-            name: 'Cartman - AI Mayor',
-            status: 'completed',
-            parent: 'char-models',
-          },
-          {
-            id: 'char-kyle',
-            name: 'Kyle - Resistance Leader',
-            status: 'completed',
-            parent: 'char-models',
-          },
-          {
-            id: 'char-stan',
-            name: 'Stan - Skeptic',
-            status: 'completed',
-            parent: 'char-models',
-          },
-        ],
-      },
-      {
-        id: 'char-voices',
-        name: 'Voice Synthesis',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-        children: [
-          {
-            id: 'voice-training',
-            name: 'Voice Model Training',
-            status: 'completed',
-            parent: 'char-voices',
-          },
-          {
-            id: 'voice-samples',
-            name: 'Sample Generation',
-            status: 'completed',
-            parent: 'char-voices',
-          },
-        ],
-      },
-      {
-        id: 'char-animations',
-        name: 'Animation Rigs',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-      },
-    ],
+    description: 'All character models, voices, and animation rigs for the episode',
+    importance: 'Foundation for consistent characters across all scenes',
   },
 
-  // Scene 1: Town Hall Meeting
+  // Simplified Scenes
   {
     id: 'scene1',
-    name: 'Scene 1: Town Hall',
+    name: 'Act 1: Setup',
     status: 'completed',
     progress: 100,
     parent: 'root',
-    metadata: {
-      duration: '45s',
-      lastUpdate: '5m ago',
-    },
-    children: [
-      {
-        id: 'scene1-storyboard',
-        name: 'Storyboard',
-        status: 'completed',
-        parent: 'scene1',
-      },
-      {
-        id: 'scene1-bg',
-        name: 'Background Assets',
-        status: 'completed',
-        parent: 'scene1',
-        children: [
-          {
-            id: 'scene1-bg-hall',
-            name: 'Town Hall Interior',
-            status: 'completed',
-            parent: 'scene1-bg',
-          },
-          {
-            id: 'scene1-bg-crowd',
-            name: 'Crowd Fill',
-            status: 'completed',
-            parent: 'scene1-bg',
-          },
-        ],
-      },
-      {
-        id: 'scene1-camera',
-        name: 'Camera Work',
-        status: 'completed',
-        parent: 'scene1',
-        children: [
-          {
-            id: 'scene1-cam-wide',
-            name: 'Wide Establishing Shot',
-            status: 'completed',
-            parent: 'scene1-camera',
-          },
-          {
-            id: 'scene1-cam-close',
-            name: 'Character Close-ups',
-            status: 'completed',
-            parent: 'scene1-camera',
-          },
-        ],
-      },
-      {
-        id: 'scene1-dialogue',
-        name: 'Dialogue & Timing',
-        status: 'completed',
-        parent: 'scene1',
-      },
-      {
-        id: 'scene1-lighting',
-        name: 'Lighting (Warm)',
-        status: 'completed',
-        progress: 100,
-        parent: 'scene1',
-      },
-    ],
+    description: 'Town hall meeting where Cartman reveals AI takeover plan',
+    importance: 'Establishes conflict and sets episode tone',
   },
 
-  // Scene 2: Kyle's House
   {
     id: 'scene2',
-    name: 'Scene 2: Kyle\'s House',
+    name: 'Act 2: Rising Action',
     status: 'active',
     progress: 73,
     parent: 'root',
-    metadata: {
-      workingOn: 'Audio synchronization',
-      duration: '38s',
-      lastUpdate: '12s ago',
-    },
-    children: [
-      {
-        id: 'scene2-storyboard',
-        name: 'Storyboard',
-        status: 'completed',
-        parent: 'scene2',
-      },
-      {
-        id: 'scene2-bg',
-        name: 'Background Assets',
-        status: 'completed',
-        parent: 'scene2',
-      },
-      {
-        id: 'scene2-animation',
-        name: 'Character Animation',
-        status: 'progress',
-        progress: 85,
-        parent: 'scene2',
-        children: [
-          {
-            id: 'scene2-anim-kyle',
-            name: 'Kyle Gestures',
-            status: 'completed',
-            parent: 'scene2-animation',
-          },
-          {
-            id: 'scene2-anim-stan',
-            name: 'Stan Reactions',
-            status: 'progress',
-            progress: 60,
-            parent: 'scene2-animation',
-          },
-        ],
-      },
-      {
-        id: 'scene2-audio',
-        name: 'Audio Mix',
-        status: 'progress',
-        progress: 45,
-        parent: 'scene2',
-        children: [
-          {
-            id: 'scene2-dialogue',
-            name: 'Dialogue Tracks',
-            status: 'completed',
-            parent: 'scene2-audio',
-          },
-          {
-            id: 'scene2-sfx',
-            name: 'Sound Effects',
-            status: 'progress',
-            progress: 30,
-            parent: 'scene2-audio',
-          },
-        ],
-      },
-      {
-        id: 'scene2-lighting',
-        name: 'Lighting',
-        status: 'completed',
-        parent: 'scene2',
-      },
-    ],
+    description: 'Kyle and Stan plan resistance while AI interference escalates',
+    importance: 'Currently in progress - Character development and tension building',
   },
 
-  // Scene 3: AI Takeover Montage
   {
     id: 'scene3',
-    name: 'Scene 3: AI Montage',
+    name: 'Act 3: Climax',
     status: 'progress',
     progress: 35,
     parent: 'root',
-    metadata: {
-      workingOn: 'Generating montage clips',
-      duration: '52s',
-      estimatedTime: '3m 15s',
-    },
-    children: [
-      {
-        id: 'scene3-storyboard',
-        name: 'Storyboard',
-        status: 'completed',
-        parent: 'scene3',
-      },
-      {
-        id: 'scene3-clips',
-        name: 'Montage Clips',
-        status: 'progress',
-        progress: 40,
-        parent: 'scene3',
-        children: [
-          {
-            id: 'scene3-clip1',
-            name: 'Robot Police Cars',
-            status: 'completed',
-            parent: 'scene3-clips',
-          },
-          {
-            id: 'scene3-clip2',
-            name: 'AI Traffic Lights',
-            status: 'completed',
-            parent: 'scene3-clips',
-          },
-          {
-            id: 'scene3-clip3',
-            name: 'Digital Billboards',
-            status: 'progress',
-            progress: 60,
-            parent: 'scene3-clips',
-          },
-          {
-            id: 'scene3-clip4',
-            name: 'Surveillance Drones',
-            status: 'pending',
-            parent: 'scene3-clips',
-          },
-        ],
-      },
-      {
-        id: 'scene3-music',
-        name: 'Background Music',
-        status: 'progress',
-        progress: 70,
-        parent: 'scene3',
-      },
-      {
-        id: 'scene3-effects',
-        name: 'Visual Effects',
-        status: 'pending',
-        parent: 'scene3',
-      },
-    ],
+    description: 'Fast-paced montage of AI systems taking over South Park',
+    importance: 'Visual showcase of stakes and scope of the conflict',
   },
 
-  // Scene 4: Confrontation
   {
     id: 'scene4',
-    name: 'Scene 4: Showdown',
+    name: 'Act 4: Resolution',
     status: 'pending',
     parent: 'root',
-    metadata: {
-      duration: '1m 12s',
-      estimatedTime: '8m 45s',
-    },
-    children: [
-      {
-        id: 'scene4-storyboard',
-        name: 'Storyboard',
-        status: 'pending',
-        parent: 'scene4',
-      },
-      {
-        id: 'scene4-bg',
-        name: 'Background Assets',
-        status: 'pending',
-        parent: 'scene4',
-      },
-      {
-        id: 'scene4-animation',
-        name: 'Character Animation',
-        status: 'pending',
-        parent: 'scene4',
-      },
-      {
-        id: 'scene4-vfx',
-        name: 'Special Effects',
-        status: 'pending',
-        parent: 'scene4',
-      },
-    ],
+    description: 'Final confrontation and episode conclusion',
+    importance: 'Wraps up the story arc and provides satisfying ending',
   },
 
-  // Post-Production Pipeline
+  // Post-Production
   {
-    id: 'postprod',
-    name: 'Post-Production',
+    id: 'post',
+    name: 'Final Polish & Export',
     status: 'pending',
     parent: 'root',
-    metadata: {
-      estimatedTime: '12m 30s',
-    },
-    children: [
-      {
-        id: 'transitions',
-        name: 'Scene Transitions',
-        status: 'pending',
-        parent: 'postprod',
-        children: [
-          {
-            id: 'trans-1-2',
-            name: 'Scene 1 → 2',
-            status: 'pending',
-            parent: 'transitions',
-          },
-          {
-            id: 'trans-2-3',
-            name: 'Scene 2 → 3',
-            status: 'pending',
-            parent: 'transitions',
-          },
-          {
-            id: 'trans-3-4',
-            name: 'Scene 3 → 4',
-            status: 'pending',
-            parent: 'transitions',
-          },
-        ],
-      },
-      {
-        id: 'color-grade',
-        name: 'Color Grading',
-        status: 'pending',
-        parent: 'postprod',
-      },
-      {
-        id: 'master-audio',
-        name: 'Master Audio Mix',
-        status: 'pending',
-        parent: 'postprod',
-        children: [
-          {
-            id: 'audio-dialogue',
-            name: 'Dialogue Balance',
-            status: 'pending',
-            parent: 'master-audio',
-          },
-          {
-            id: 'audio-music',
-            name: 'Music Levels',
-            status: 'pending',
-            parent: 'master-audio',
-          },
-          {
-            id: 'audio-sfx',
-            name: 'SFX Mix',
-            status: 'pending',
-            parent: 'master-audio',
-          },
-        ],
-      },
-      {
-        id: 'final-render',
-        name: 'Final Render',
-        status: 'pending',
-        parent: 'postprod',
-        children: [
-          {
-            id: 'render-preview',
-            name: 'Preview Quality (720p)',
-            status: 'pending',
-            parent: 'final-render',
-          },
-          {
-            id: 'render-full',
-            name: 'Full Quality (4K)',
-            status: 'pending',
-            parent: 'final-render',
-          },
-        ],
-      },
-      {
-        id: 'export',
-        name: 'Export & Delivery',
-        status: 'pending',
-        parent: 'postprod',
-      },
-    ],
+    description: 'Color grading, audio mastering, and final render',
+    importance: 'Professional finishing touches for broadcast quality',
   },
 ];
 
@@ -622,4 +267,8 @@ export const useStore = create<WeaveStore>((set) => ({
   setActiveAgent: (agent) => set({ activeAgent: agent }),
 
   conversations: mockConversations,
+  
+  // Layout state
+  leftPanelWidth: 400,
+  setLeftPanelWidth: (width) => set({ leftPanelWidth: width }),
 }));

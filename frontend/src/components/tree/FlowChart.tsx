@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -6,69 +6,167 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   MarkerType,
+  Position,
+  Handle,
   type Node,
   type Edge,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import './FlowChart.css';
 import { useStore } from '../../store/useStore';
 import type { TreeNode } from '../../types';
 
 // Custom node component for our tree nodes
-function CustomNode({ data }: { data: any }) {
+function CustomNode({ data }: { data: { label: string; status: string; progress?: number; description?: string; importance?: string } }) {
+  const [showTooltip, setShowTooltip] = useState(false);
   const status = data.status;
 
-  let bgColor = '#252528';
+  let bgColor = '#1A1A1D';
   let borderColor = '#6B7280';
-  let textColor = '#EEEFF1';
+  let glowColor = 'rgba(107, 114, 128, 0.3)';
+  let accentColor = '#6B7280';
+  const textColor = '#EEEFF1';
 
   switch (status) {
     case 'completed':
       borderColor = '#10B981';
+      glowColor = 'rgba(16, 185, 129, 0.4)';
+      accentColor = '#10B981';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(16, 185, 129, 0.1) 100%)';
       break;
     case 'progress':
       borderColor = '#F59E0B';
+      glowColor = 'rgba(245, 158, 11, 0.4)';
+      accentColor = '#F59E0B';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(245, 158, 11, 0.15) 100%)';
       break;
     case 'active':
       borderColor = '#8B5CF6';
-      bgColor = '#8B5CF6';
-      textColor = '#FFFFFF';
+      glowColor = 'rgba(139, 92, 246, 0.5)';
+      accentColor = '#8B5CF6';
+      bgColor = 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.05) 100%)';
       break;
     case 'pending':
       borderColor = '#3B82F6';
-      bgColor = '#1A1A1D';
+      glowColor = 'rgba(59, 130, 246, 0.3)';
+      accentColor = '#3B82F6';
+      bgColor = 'linear-gradient(135deg, #1A1A1D 0%, rgba(59, 130, 246, 0.08) 100%)';
       break;
   }
 
   return (
     <div
       style={{
-        padding: '12px 16px',
-        borderRadius: '6px',
-        border: `2px solid ${borderColor}`,
+        padding: '32px 40px',
+        borderRadius: '16px',
+        border: `4px solid ${borderColor}`,
         background: bgColor,
         color: textColor,
-        minWidth: '160px',
-        fontSize: '14px',
-        fontWeight: 500,
+        minWidth: '450px',
+        maxWidth: '600px',
+        fontSize: '20px',
+        fontWeight: 600,
+        boxShadow: `0 0 30px ${glowColor}, 0 6px 20px rgba(0,0,0,0.4)`,
+        position: 'relative',
+        transition: 'all 0.3s ease',
       }}
+      className="custom-node"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
     >
-      <div>{data.label}</div>
+      {/* Connection handles */}
+      <Handle
+        type="target"
+        position={Position.Top}
+        style={{ background: borderColor, border: '3px solid #1A1A1D', width: 18, height: 18 }}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        style={{ background: borderColor, border: '3px solid #1A1A1D', width: 18, height: 18 }}
+      />
+      
+      {/* Top accent bar */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '6px',
+          background: accentColor,
+          borderRadius: '16px 16px 0 0',
+        }}
+      />
+      
+      <div style={{ lineHeight: '1.6', wordBreak: 'break-word' }}>{data.label}</div>
+      
       {data.progress !== undefined && data.progress > 0 && (
         <div
           style={{
-            marginTop: '6px',
-            height: '4px',
-            background: 'rgba(255,255,255,0.1)',
-            borderRadius: '2px',
+            marginTop: '16px',
+            height: '10px',
+            background: 'rgba(255,255,255,0.08)',
+            borderRadius: '5px',
             overflow: 'hidden',
+            border: '2px solid rgba(255,255,255,0.1)',
           }}
         >
           <div
             style={{
               width: `${data.progress}%`,
               height: '100%',
-              background: borderColor,
-              borderRadius: '2px',
+              background: `linear-gradient(90deg, ${accentColor} 0%, ${borderColor} 100%)`,
+              borderRadius: '5px',
+              boxShadow: `0 0 12px ${glowColor}`,
+              transition: 'width 0.5s ease',
+            }}
+          />
+        </div>
+      )}
+      
+      {/* Tooltip */}
+      {showTooltip && (data.description || data.importance) && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            marginBottom: '20px',
+            padding: '20px 24px',
+            borderRadius: '12px',
+            background: 'linear-gradient(135deg, #2D2D32 0%, #1A1A1D 100%)',
+            border: `3px solid ${borderColor}`,
+            boxShadow: `0 0 30px ${glowColor}, 0 12px 24px rgba(0,0,0,0.5)`,
+            minWidth: '400px',
+            maxWidth: '550px',
+            zIndex: 1000,
+            pointerEvents: 'none',
+          }}
+        >
+          {data.description && (
+            <div style={{ fontSize: '16px', lineHeight: '1.6', marginBottom: '12px', color: '#E0E0E2' }}>
+              {data.description}
+            </div>
+          )}
+          {data.importance && (
+            <div style={{ fontSize: '14px', lineHeight: '1.5', color: '#9CA3AF', fontStyle: 'italic', marginTop: '12px', borderTop: `2px solid ${borderColor}`, paddingTop: '12px' }}>
+              <strong style={{ color: accentColor }}>Why it matters:</strong> {data.importance}
+            </div>
+          )}
+          {/* Tooltip arrow */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 0,
+              height: 0,
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderTop: `12px solid ${borderColor}`,
             }}
           />
         </div>
@@ -86,9 +184,9 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
   const flowNodes: Node[] = [];
   const flowEdges: Edge[] = [];
 
-  // Layout configuration
-  const horizontalSpacing = 280;
-  const verticalSpacing = 120;
+  // Layout configuration - vertical layout with large nodes
+  const horizontalSpacing = 600;
+  const verticalSpacing = 480;
 
   // Build a map of children by parent ID
   const childrenMap = new Map<string, TreeNode[]>();
@@ -101,26 +199,25 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
     }
   });
 
-  // Track vertical position for each level
-  let nodeCounter = 0;
-
-  // Build flow nodes with positioning
-  const layoutNode = (node: TreeNode, level: number, yOffset: number = 0): number => {
-    const x = level * horizontalSpacing;
-    const y = nodeCounter * verticalSpacing;
+  // Build flow nodes with positioning - top-down layout
+  const layoutNode = (node: TreeNode, level: number, offsetX: number): number => {
+    const y = level * verticalSpacing;
+    const x = offsetX;
 
     flowNodes.push({
       id: node.id,
       type: 'custom',
       position: { x, y },
+      sourcePosition: Position.Bottom,
+      targetPosition: Position.Top,
       data: {
         label: node.name,
         status: node.status,
         progress: node.progress,
+        description: node.description,
+        importance: node.importance,
       },
     });
-
-    nodeCounter++;
 
     // Process children (both from children array and from parent relationships)
     let children: TreeNode[] = [];
@@ -133,31 +230,78 @@ function treeToFlow(nodes: TreeNode[]): { nodes: Node[]; edges: Edge[] } {
       children = childrenMap.get(node.id)!;
     }
 
-    let maxY = y;
+    if (children.length === 0) {
+      return x + horizontalSpacing;
+    }
+
+    let currentX = offsetX;
+    const childStartX = currentX;
+    
     children.forEach((child) => {
+      // Determine edge color based on child status
+      let edgeColor = '#6B7280';
+      let edgeGlow = 'rgba(107, 114, 128, 0.3)';
+      
+      switch (child.status) {
+        case 'completed':
+          edgeColor = '#10B981';
+          edgeGlow = 'rgba(16, 185, 129, 0.5)';
+          break;
+        case 'progress':
+          edgeColor = '#F59E0B';
+          edgeGlow = 'rgba(245, 158, 11, 0.5)';
+          break;
+        case 'active':
+          edgeColor = '#8B5CF6';
+          edgeGlow = 'rgba(139, 92, 246, 0.6)';
+          break;
+        case 'pending':
+          edgeColor = '#3B82F6';
+          edgeGlow = 'rgba(59, 130, 246, 0.4)';
+          break;
+      }
+      
       flowEdges.push({
         id: `${node.id}-${child.id}`,
         source: node.id,
         target: child.id,
         type: 'smoothstep',
+        animated: child.status === 'progress' || child.status === 'active',
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          color: '#6B7280',
+          color: edgeColor,
         },
-        style: { stroke: '#6B7280', strokeWidth: 2 },
+        style: { 
+          stroke: edgeColor, 
+          strokeWidth: 3,
+          filter: `drop-shadow(0 0 4px ${edgeGlow})`,
+        },
       });
 
-      const childMaxY = layoutNode(child, level + 1, maxY);
-      maxY = Math.max(maxY, childMaxY);
+      currentX = layoutNode(child, level + 1, currentX);
     });
 
-    return maxY;
+    // Center parent above children
+    const childEndX = currentX;
+    const parentCenterX = childStartX + (childEndX - childStartX - horizontalSpacing) / 2;
+    flowNodes.find(n => n.id === node.id)!.position.x = parentCenterX;
+
+    return currentX;
   };
 
-  // Process root nodes
+  // Process root nodes - arrange them horizontally at the top
   const rootNodes = nodes.filter((n) => !n.parent);
-  rootNodes.forEach((node) => {
-    layoutNode(node, 0, 0);
+  
+  // Calculate total width needed for root nodes
+  const totalRootWidth = rootNodes.length * horizontalSpacing;
+  const startX = -totalRootWidth / 2;
+  
+  let currentX = startX;
+  rootNodes.forEach((node, index) => {
+    currentX = layoutNode(node, 0, currentX);
+    if (index < rootNodes.length - 1) {
+      currentX += horizontalSpacing * 0.5; // Reduced spacing between root trees
+    }
   });
 
   return { nodes: flowNodes, edges: flowEdges };
@@ -197,7 +341,12 @@ export function FlowChart() {
         attributionPosition="bottom-left"
         className="bg-bg-primary"
       >
-        <Background color="#2D2D32" gap={16} />
+        <Background 
+          color="rgba(139, 92, 246, 0.15)" 
+          gap={20} 
+          size={1.5}
+          style={{ backgroundColor: '#1A1A1D' }}
+        />
         <Controls className="bg-bg-secondary border-border-subtle" />
         <MiniMap
           nodeColor={(node) => {

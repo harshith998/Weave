@@ -23,27 +23,7 @@ export function ChatInput() {
 
   return (
     <div className="p-4 pt-2 border-t border-border-subtle">
-      <AnimatePresence>
-        {selectedNodeId && selectedNode && (
-          <motion.div
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="mb-2 inline-flex items-center gap-2 px-2 py-1 bg-bg-tertiary/50 rounded text-xs text-text-secondary"
-          >
-            <span>💬</span>
-            <span>{selectedNode.name}</span>
-            <button
-              onClick={() => useStore.setState({ selectedNodeId: null })}
-              className="ml-1 hover:text-text-primary transition-colors"
-            >
-              ×
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="relative">
         <input
           type="text"
           value={input}
@@ -51,6 +31,11 @@ export function ChatInput() {
           placeholder="Type message..."
           className="w-full h-9 px-3 bg-bg-secondary border border-border-subtle rounded text-sm placeholder:text-text-tertiary focus:outline-none focus:border-status-active/50 transition-colors"
         />
+        {!input && (
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary pointer-events-none">
+            <span className="inline-block animate-blink">|</span>
+          </span>
+        )}
       </form>
     </div>
   );

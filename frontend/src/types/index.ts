@@ -5,6 +5,8 @@ export interface TreeNode {
   progress?: number;
   children?: TreeNode[];
   parent?: string;
+  description?: string;
+  importance?: string;
   metadata?: {
     workingOn?: string;
     estimatedTime?: string;
