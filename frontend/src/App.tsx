@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { TopBar } from './components/layout/TopBar';
 import { LeftPanel } from './components/layout/LeftPanel';
 import { RightPanel } from './components/layout/RightPanel';
