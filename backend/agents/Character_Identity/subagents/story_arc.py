@@ -72,7 +72,11 @@ CHARACTER OVERVIEW:
 - Basic Role: {character["role"]}
 - Story Context: {storyline["overview"]}
 - Story Tone: {storyline["tone"]}
-- Scenes in Story: {", ".join(storyline.get("scenes", [])[:5])}
+- Scenes in Story: {", ".join([
+    scene.get('title', scene.get('description', 'Untitled')[:50] + '...' if len(scene.get('description', '')) > 50 else scene.get('description', 'Untitled'))
+    if isinstance(scene, dict) else scene
+    for scene in storyline.get("scenes", [])[:5]
+])}
 
 {full_context}
 

@@ -5,7 +5,7 @@ This module defines all TypedDicts and data structures used across
 the character development multi-agent system.
 """
 
-from typing import TypedDict, List, Dict, Literal, Optional
+from typing import TypedDict, List, Dict, Literal, Optional, Union
 
 
 # ============================================================================
@@ -20,11 +20,20 @@ class CharacterInput(TypedDict):
     role: str
 
 
+class SceneInput(TypedDict, total=False):
+    """Scene from Entry Agent output (enhanced format after merge)"""
+    title: str
+    description: str
+    characters_involved: List[str]
+    setting: str
+    mood: str
+
+
 class StorylineInput(TypedDict):
     """Storyline context from Entry Agent"""
     overview: str
     tone: str
-    scenes: List[str]
+    scenes: List[Union[str, SceneInput]]  # Support both old (str) and new (dict) formats
 
 
 class EntryAgentOutput(TypedDict):
