@@ -4,6 +4,7 @@ Defines all specialized subagent tools in Anthropic format.
 """
 
 from typing import Any, Dict
+import json
 
 # Import all specialized subagents
 from .subagents.subagent import (
@@ -15,6 +16,11 @@ from .subagents.subagent import (
     checkpoint_manager,
     visual_continuity_checker
 )
+
+# Import Veo video generator tool
+import sys
+sys.path.append('../..')
+from tools.veo_video_generator import veo_video_generator, VEO_TOOL
 
 
 # Tool definitions in Anthropic format
@@ -199,7 +205,8 @@ TOOLS = [
             },
             "required": ["character_id"]
         }
-    }
+    },
+    VEO_TOOL  # Veo 3.1 video generation tool
 ]
 
 
@@ -267,10 +274,23 @@ async def execute_tool(tool_name: str, **kwargs) -> str:
             data_type=kwargs.get("data_type", "full")
         )
 
+    elif tool_name == "veo_video_generator":
+        return await veo_video_generator(
+            prompt=kwargs.get("prompt", ""),
+            image_paths=kwargs.get("image_paths", []),
+            resolution=kwargs.get("resolution", "720p"),
+            duration_seconds=kwargs.get("duration_seconds", 8),
+            negative_prompt=kwargs.get("negative_prompt", None),
+            enhance_prompt=kwargs.get("enhance_prompt", True),
+            model=kwargs.get("model", "veo-3.1-fast-generate-preview")
+        )
+
+    else:
+        return f"Error: Unknown tool '{tool_name}'"
+
 
 async def get_character_data(character_id: str, data_type: str = "full") -> str:
     """Retrieve character data from Character Development system"""
-    import json
     from pathlib import Path
 
     character_data_dir = Path(__file__).parent.parent.parent / "character_data"

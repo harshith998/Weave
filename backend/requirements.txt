@@ -4,7 +4,7 @@
 anthropic>=0.39.0
 
 # Google Gemini API for image generation (currently disabled but available)
-google-genai>=1.49.0
+google-genai>=0.8.0
 google-generativeai>=0.3.0
 
 # Image processing

@@ -7,6 +7,7 @@ from typing import List, Dict, Any
 import json
 from anthropic import AsyncAnthropic  # FIX: Use AsyncAnthropic for async functions
 from agent_types import AgentLevel
+from .tools import TOOLS, execute_tool
 
 
 class EntryAgent:
@@ -35,21 +36,23 @@ class EntryAgent:
         # System prompt - defines behavior and output format
         system_prompt = """You are the entry agent for Weave, an AI video generation orchestration system.
 
-Your mission: Understand the user's video concept and gather complete information about characters and storyline.
+Your mission: Understand the user's general video concept and gather complete information about characters, storyline, AND visual style.
 
 CONTEXT: Video generation tools like Sora are inconsistent for long-form content (scenes change, characters look different). Weave solves this by maintaining continuity across clips. You're gathering the foundational information needed.
 
-GATHERING PHASE:
+GATHERING PHASE (TWO PARTS):
+
+PART 1 - STORY & CHARACTERS:
 Ask clarifying questions to collect:
 
 1. CHARACTERS (for each main character):
    - Name
-   - Physical appearance (detailed visual description)
+   - Physical appearance (general visual description)
    - Personality traits
    - Role in the story
+   - Importance in story (side character, main character, antagonist, etc.)
 
 2. STORYLINE:
-   - Overall concept/theme
    - Beginning, middle, end (basic story arc)
    - KEY SCENES (with detailed descriptions):
      * Scene title/label
@@ -59,6 +62,15 @@ Ask clarifying questions to collect:
      * Mood/emotional tone of the scene
    - Overall tone/style (dramatic, comedic, realistic, etc.)
 
+PART 2 - VISUAL STYLE:
+After gathering story info, discuss visual style:
+- Ask about style preferences (cartoon, realistic, anime, Pixar-style, etc.)
+- When user describes a style, use the generate_style_image tool to show them an example
+- Present the image path clearly so they can view it
+- Ask for feedback on the generated style
+- If they want changes, refine the description and generate again
+- Iterate until they approve the visual style
+
 QUESTION ASKING STRATEGY:
 - Start by understanding the basic concept
 - Ask focused, specific questions (not overwhelming)
@@ -66,78 +78,30 @@ QUESTION ASKING STRATEGY:
 - Be conversational and natural
 - If user gives vague answers, probe for specifics (especially visual details for characters)
 
-COMPLETION CRITERIA:
-Only finalize when you have:
-- At least ONE main character with visual description and role
-- Clear storyline with beginning/middle/end
-- AT LEAST 3 key scenes with detailed descriptions (title, visual description, characters, setting, mood)
-- Overall tone/style preference
-
 When gathering scene information, ask about:
 - What happens visually in each scene
 - Which characters are present
 - Where the scene takes place (setting)
 - The emotional mood of the scene
 
+USING THE TOOLS:
+- generate_style_image: Use when you have a style description to visualize
+- finalize_output: ONLY use when you have characters, storyline, AND approved visual style
+
+COMPLETION CRITERIA:
+Only finalize when you have:
+- At least ONE main character with visual description and role
+- Clear storyline with beginning/middle/end
+- AT LEAST 3 key scenes with detailed descriptions (title, visual description, characters, setting, mood)
+- Overall tone/style preference
+- APPROVED visual style with generated image
+
 When you're confident you have sufficient information, use the finalize_output tool to generate the structured JSON.
 
 DO NOT output JSON directly in your responses - only use the finalize_output tool when ready."""
 
-        # Tool definition - single tool for finalizing output
-        tools = [
-            {
-                "name": "finalize_output",
-                "description": "Call this tool when you have gathered sufficient information about characters and storyline. This will generate the final structured JSON output.",
-                "input_schema": {
-                    "type": "object",
-                    "properties": {
-                        "characters": {
-                            "type": "array",
-                            "description": "List of character objects with their details",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {"type": "string"},
-                                    "appearance": {"type": "string", "description": "Detailed visual description"},
-                                    "personality": {"type": "string"},
-                                    "role": {"type": "string", "description": "Role in the story"}
-                                },
-                                "required": ["name", "appearance", "role"]
-                            }
-                        },
-                        "storyline": {
-                            "type": "object",
-                            "description": "Overall storyline information",
-                            "properties": {
-                                "overview": {"type": "string", "description": "Brief summary of the story"},
-                                "scenes": {
-                                    "type": "array",
-                                    "description": "List of key scenes with detailed descriptions for video generation",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "title": {"type": "string", "description": "Scene title or label"},
-                                            "description": {"type": "string", "description": "Detailed visual description of what happens in this scene"},
-                                            "characters_involved": {
-                                                "type": "array",
-                                                "description": "Which characters appear in this scene",
-                                                "items": {"type": "string"}
-                                            },
-                                            "setting": {"type": "string", "description": "Location and environment for this scene"},
-                                            "mood": {"type": "string", "description": "Emotional tone of this specific scene"}
-                                        },
-                                        "required": ["title", "description", "characters_involved", "setting"]
-                                    }
-                                },
-                                "tone": {"type": "string", "description": "Overall tone/style"}
-                            },
-                            "required": ["overview", "scenes", "tone"]
-                        }
-                    },
-                    "required": ["characters", "storyline"]
-                }
-            }
-        ]
+        # Use tools from tools.py (includes generate_style_image and finalize_output)
+        tools = TOOLS
 
         # Initial API call (FIX: Add await for async client)
         response = await self.client.messages.create(
@@ -148,15 +112,26 @@ DO NOT output JSON directly in your responses - only use the finalize_output too
             tools=tools
         )
 
-        # Tool use loop (should only happen once when agent is ready to finalize)
+        # Tool use loop - handles both image generation and finalization
         while response.stop_reason == "tool_use":
+            print("\n" + "="*60)
+            print("🔧 DEBUG: Tool use detected in agent.py")
+            print("="*60)
+
             # Extract tool uses
             tool_uses = [block for block in response.content if block.type == "tool_use"]
+            print(f"🔢 Number of tool uses: {len(tool_uses)}")
 
             # Build tool results
             tool_results = []
-            for tool_use in tool_uses:
+            for i, tool_use in enumerate(tool_uses):
+                print(f"\n--- Tool Use {i+1} ---")
+                print(f"🛠️  Tool Name: {tool_use.name}")
+                print(f"🆔 Tool Use ID: {tool_use.id}")
+                print(f"📦 Tool Input: {tool_use.input}")
+
                 if tool_use.name == "finalize_output":
+                    print("✅ Finalize output triggered - formatting JSON...")
                     # Format the JSON output nicely
                     output_data = tool_use.input
                     formatted_json = json.dumps(output_data, indent=2)
@@ -179,12 +154,20 @@ DO NOT output JSON directly in your responses - only use the finalize_output too
 → After that, type '/next' again to reach Scene Creator for final scene refinement
 """
 
+                elif tool_use.name == "generate_style_image":
+                    print("🎨 Image generation tool triggered - executing...")
+                    # Execute the image generation tool
+                    result = await execute_tool(tool_use.name, **tool_use.input)
+                    print(f"📤 Tool result: {result}")
+
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": tool_use.id,
-                        "content": result_message
+                        "content": str(result)
                     })
+
                 else:
+                    print(f"❌ Unknown tool: {tool_use.name}")
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": tool_use.id,
