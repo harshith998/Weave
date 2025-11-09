@@ -25,7 +25,7 @@ interface WeaveStore {
   setLeftPanelWidth: (width: number) => void;
 }
 
-// Mock data for initial state - Complete video production workflow
+// Mock data for initial state - Simplified high-level workflow
 const mockNodes: TreeNode[] = [
   {
     id: 'root',
@@ -36,72 +36,15 @@ const mockNodes: TreeNode[] = [
     importance: 'Root project orchestrating all video production workflows',
   },
 
-  // Character Generation Pipeline
+  // High-level Pipeline Stages
   {
     id: 'characters',
-    name: 'Character Pipeline',
+    name: 'Character & Asset Creation',
     status: 'completed',
     progress: 100,
     parent: 'root',
-    description: 'Generates consistent character models and voices for all episode characters',
-    importance: 'Essential for maintaining character identity across all scenes',
-    children: [
-      {
-        id: 'char-models',
-        name: 'Character Models',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-        children: [
-          {
-            id: 'char-cartman',
-            name: 'Cartman - AI Mayor',
-            status: 'completed',
-            parent: 'char-models',
-          },
-          {
-            id: 'char-kyle',
-            name: 'Kyle - Resistance Leader',
-            status: 'completed',
-            parent: 'char-models',
-          },
-          {
-            id: 'char-stan',
-            name: 'Stan - Skeptic',
-            status: 'completed',
-            parent: 'char-models',
-          },
-        ],
-      },
-      {
-        id: 'char-voices',
-        name: 'Voice Synthesis',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-        children: [
-          {
-            id: 'voice-training',
-            name: 'Voice Model Training',
-            status: 'completed',
-            parent: 'char-voices',
-          },
-          {
-            id: 'voice-samples',
-            name: 'Sample Generation',
-            status: 'completed',
-            parent: 'char-voices',
-          },
-        ],
-      },
-      {
-        id: 'char-animations',
-        name: 'Animation Rigs',
-        status: 'completed',
-        progress: 100,
-        parent: 'characters',
-      },
-    ],
+    description: 'All character models, voices, and animation rigs for the episode',
+    importance: 'Foundation for consistent characters across all scenes',
   },
 
   // Scene 1: Town Hall Meeting
