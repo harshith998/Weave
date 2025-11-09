@@ -1,0 +1,43 @@
+{
+  "checkpoint_number": 1,
+  "agent": "personality",
+  "status": "awaiting_approval",
+  "output": {
+    "narrative": "# PSYCHOLOGICAL PROFILE: THE MAN\n\n## NARRATIVE\n\nThe Man exists in a state of paradoxical consciousness\u2014simultaneously broken and unbreakable. His desperation is not weakness but rather the crystallized essence of his will to persist; every muscle fiber, every labored breath, every decision to push forward another mile downriver is an act of defiance against obliteration. Yet beneath this iron determination lies a man fractured by what he has witnessed and what he has abandoned. He carries the weight of survival guilt\u2014the knowledge that while he escapes, others burn. This creates an internal schism: part of him believes he *deserves* to drown in that river, that his escape is an act of cowardice masquerading as pragmatism. He has learned to compartmentalize this conflict, burying moral anguish beneath layers of tactical thinking and immediate necessity. His mind has become a survival instrument, calculating odds and conserving emotional energy for the singular goal of reaching Rome.\n\nPsychologically, The Man operates from a place of profound isolation. The trauma of watching his world incinerate has fundamentally altered his capacity for connection\u2014he trusts nothing and no one, viewing other humans primarily as potential threats or obstacles. This isn't misanthropy born from philosophical conviction but rather a trauma response that has hardened into his operating system. He speaks little, observes constantly, and has developed an almost preternatural ability to read danger in subtle environmental cues. His determination, while admirable, masks a deeper terror: that if he stops moving, if he allows himself a moment of stillness, the full weight of his losses will crush him completely. Movement is not just survival strategy; it is psychological necessity, a way of outrunning the ghosts that pursue him.\n\nHis emotional life has contracted to a narrow bandwidth. The capacity for joy, for tenderness, for hope has been cauterized by fire and fear. What remains is a grim, almost mechanical resilience punctuated by sudden, violent emotional ruptures\u2014moments where grief or rage breach his carefully constructed defenses before he forces them back down. He has become a man of extremes: either numbly functional or dangerously volatile, with little middle ground. This volatility is dangerous precisely because it emerges unpredictably, a pressure valve releasing when the psychological pressure becomes unbearable.\n\n---\n\n## STRUCTURED DATA\n\n```json",
+    "structured": {
+      "core_traits": [
+        "Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit",
+        "Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse",
+        "Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior",
+        "Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety",
+        "Guilt-burdened survivor - internal conflict between will-to-live and shame of escape",
+        "Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure"
+      ],
+      "fears": [
+        "Annihilation of purpose - the existential terror that reaching Rome will prove meaningless, that survival itself is hollow",
+        "Stillness and introspection - fear that stopping movement will force confrontation with unbearable losses and survivor's guilt",
+        "Loss of control - having endured catastrophic loss of control during the burning, he fears any situation where agency is stripped away",
+        "Being forgotten - deep fear that those he lost will be erased from existence, and that his own survival means nothing if he cannot honor their memory"
+      ],
+      "secrets": [
+        "He abandoned someone to save himself - a specific person whose face haunts him, whose death he could have prevented, whose abandonment he cannot speak aloud",
+        "He is uncertain he wants to survive - beneath the survival drive lies a death wish he refuses to acknowledge, a part of him that welcomes the river's pull",
+        "He questions his own humanity - the things he has done or considered doing to survive have made him doubt whether he is still the man he was before the fire"
+      ],
+      "emotional_baseline": "Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.",
+      "triggers": [
+        "Sounds of fire or burning - auditory flashbacks that temporarily override present reality, inducing panic response",
+        "Offers of help or compassion - unexpected kindness destabilizes his emotional walls, creating vulnerability that terrifies him more than danger",
+        "Questions about his past or origin - any inquiry into who he was before forces confrontation with identity loss and abandonment guilt",
+        "Moments of safety or stillness - paradoxically, reaching safety triggers anxiety rather than relief; stillness allows intrusive thoughts to surface",
+        "Other survivors or refugees - seeing others who escaped creates both desperate connection-hunger and violent resentment at their presence"
+      ]
+    }
+  },
+  "metadata": {
+    "wave": 1,
+    "timestamp": "2025-11-09T19:19:02.832035",
+    "tokens_used": 1500,
+    "agent_time_seconds": 14.7469035
+  }
+}

@@ -311,5 +311,50 @@ def read_storyline(project_id: str = "default") -> Optional[Dict[str, Any]]:
     return state.get("storyline")
 
 
+def write_character_mapping(character_name: str, character_uuid: str, project_id: str = "default") -> bool:
+    """
+    Write character name -> UUID mapping to project state.
+
+    Args:
+        character_name: Character name from Entry Agent
+        character_uuid: UUID from Character Identity agent
+        project_id: Project identifier
+
+    Returns:
+        True if successful
+    """
+    state = read_project_state(project_id)
+    if "characterMapping" not in state:
+        state["characterMapping"] = {}
+    state["characterMapping"][character_name] = character_uuid
+    return write_project_state(state, project_id)
+
+
+def read_character_mapping(project_id: str = "default") -> Dict[str, str]:
+    """
+    Read character name -> UUID mapping from project state.
+
+    Returns:
+        Dict mapping character names to UUIDs, or empty dict if not found
+    """
+    state = read_project_state(project_id)
+    return state.get("characterMapping", {})
+
+
+def get_character_uuid(character_name: str, project_id: str = "default") -> Optional[str]:
+    """
+    Get character UUID by name.
+
+    Args:
+        character_name: Character name
+        project_id: Project identifier
+
+    Returns:
+        Character UUID or None if not found
+    """
+    mapping = read_character_mapping(project_id)
+    return mapping.get(character_name)
+
+
 # Initialize directories on import
 ensure_directories()

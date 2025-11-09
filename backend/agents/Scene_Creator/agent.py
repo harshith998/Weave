@@ -226,7 +226,7 @@ Which scene would you like to work on first, or would you like me to review all 
 === Scene {scene_index + 1} of {self.total_scenes} ===
 
 Title: {scene.get('title', 'Untitled')}
-Duration: {scene.get('duration', '8s')}
+Duration: {scene.get('duration', '30s')}
 Description: {scene.get('description', '')}
 Characters: {', '.join(scene.get('characters_involved', []))}
 Setting: {scene.get('setting', 'Not specified')}

@@ -1,7 +1,7 @@
 {
   "projectId": "default",
   "createdAt": "2025-11-09T17:48:20.275457Z",
-  "lastModified": "2025-11-09T18:25:05.643458Z",
+  "lastModified": "2025-11-09T19:18:33.335894Z",
   "currentMode": "creative_overview",
   "sceneCount": 4,
   "globalContinuity": {
@@ -12,57 +12,56 @@
   },
   "metadata": {},
   "storyline": {
-    "overview": "Two friends, Alexis and Cameron, undertake a thrilling and dramatic free-climbing adventure inside the Sistine Chapel. They ascend the towering interior walls in an intense climb, experience a heart-stopping near-fall moment, successfully descend, and escape with exhilaration and joy.",
-    "tone": "Dramatic, adventurous, intense",
+    "overview": "In ancient times, a man desperately escapes a burning city consumed by war. He jumps into a river and swims for his life, enduring the arduous journey downriver through treacherous waters and landscapes, ultimately reaching the safety of ancient Rome.",
+    "tone": "Epic, dramatic, intense",
     "scenes": [
       {
         "scene_number": 1,
-        "duration": "8s",
-        "title": "The Arrival",
-        "description": "Alexis and Cameron stand inside the magnificent Sistine Chapel, gazing up at the soaring interior walls and iconic ceiling. They exchange determined glances, adjust their gear, and prepare themselves mentally. The camera pans across the grand architecture as they position themselves at the base of the wall, ready to begin their daring climb.",
+        "duration": "30s",
+        "title": "The Escape",
+        "description": "A desperate man flees through a burning ancient city ravaged by war. Flames consume buildings behind him, smoke fills the air. He reaches the riverbank, pauses for a moment of anguished decision, then throws himself into the water with a powerful jump, committing to his desperate escape.",
         "characters_involved": [
-          "Alexis",
-          "Cameron"
+          "The Man"
         ],
-        "setting": "Interior of the Sistine Chapel, at ground level near the base of the towering walls",
-        "mood": "Anticipation, focus, determination"
+        "setting": "Ancient riverside with burning buildings and war chaos in background",
+        "mood": "Urgent, desperate, survival instinct"
       },
       {
         "scene_number": 2,
-        "duration": "8s",
-        "title": "The Ascent",
-        "description": "Alexis and Cameron begin their intense free-climb, scaling the interior walls with focus and precision. Midway through, one of them loses grip and begins to slip—a terrifying moment of danger. They catch themselves, hearts pounding, and continue upward with renewed determination. The camera captures their powerful movements and the dramatic tension as they push toward the top.",
+        "duration": "30s",
+        "title": "Into the Water",
+        "description": "The man fights against the river's current with fierce determination. Water splashes around him as he swims hard, his muscles straining. The reflection of flames dances across the water's surface behind him. He struggles against the overwhelming force of the river, gasping for air.",
         "characters_involved": [
-          "Alexis",
-          "Cameron"
+          "The Man"
         ],
-        "setting": "Interior Sistine Chapel walls, climbing higher toward the ceiling",
-        "mood": "Intense, thrilling, dangerous, heart-pounding"
+        "setting": "River with smoke and flames visible on the burning shore",
+        "mood": "Intense, desperate effort, struggle"
       },
       {
         "scene_number": 3,
-        "duration": "8s",
-        "title": "The Descent",
-        "description": "Having reached near the top, Alexis and Cameron begin their controlled descent down the chapel walls. Moving methodically and carefully, they navigate their way back down without incident, their movements smooth and confident. The camera shows them descending past the remarkable frescoes and architectural features of the chapel.",
+        "duration": "30s",
+        "title": "The Journey",
+        "description": "Montage of the man swimming downriver through changing landscapes. He passes ancient forests and hills, the city fires fading behind him. Despite exhaustion, he presses forward with epic determination. The river carries him through valleys and past rocky outcrops, his will unwavering.",
         "characters_involved": [
-          "Alexis",
-          "Cameron"
+          "The Man"
         ],
-        "setting": "Interior Sistine Chapel walls, descending from height to ground level",
-        "mood": "Focused, controlled, building anticipation"
+        "setting": "River transitioning through ancient Mediterranean landscape - forests, hills, valleys",
+        "mood": "Epic determination, perseverance, gradual triumph"
       },
       {
         "scene_number": 4,
-        "duration": "8s",
-        "title": "The Escape",
-        "description": "As their feet touch the ground, Alexis and Cameron burst into motion, running toward the chapel exit with pure exhilaration and joy radiating from them. They move with explosive energy, adrenaline pumping, their faces filled with triumph and happiness. The camera captures their dynamic sprint as they rush out of the chapel, victorious and alive with the thrill of their accomplishment.",
+        "duration": "30s",
+        "title": "Arrival at Rome",
+        "description": "Exhausted and battered, the man finally reaches the banks of ancient Rome. He pulls himself onto the shore, breathing heavily. Before him rises the magnificent ancient city with its distinctive architecture - temples, columns, and structures gleaming in the light. He collapses on the sand, alive, safe, victorious.",
         "characters_involved": [
-          "Alexis",
-          "Cameron"
+          "The Man"
         ],
-        "setting": "Interior Sistine Chapel transitioning to the chapel exit",
-        "mood": "Triumphant, exhilarating, joyful, energetic"
+        "setting": "River arriving at ancient Rome with temples and classical architecture visible",
+        "mood": "Relief, triumph, survival achieved"
       }
     ]
+  },
+  "characterMapping": {
+    "The Man": "d8d8cdfa-91f4-4871-b046-81cd51ae8bbc"
   }
 }

@@ -1,0 +1,280 @@
+{
+  "character_id": "16fe98cf-7257-4f58-a8c0-5620c07750f4",
+  "input_data": {
+    "characters": [
+      {
+        "name": "CIPHER",
+        "appearance": "Sleek android detective with angular features, glowing cyan eyes, metallic silver skin with intricate circuit patterns visible beneath translucent panels, wearing a long dark trench coat with neon trim over a tactical bodysuit",
+        "personality": "Stoic, calculating, but developing curiosity about human emotion; speaks in measured tones with occasional glitches in speech patterns",
+        "role": "Protagonist - an advanced android detective investigating a conspiracy that challenges their understanding of consciousness",
+        "importance": "main",
+        "appears_in_scenes": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "DR. VEX",
+        "appearance": "Tall figure in a pristine white lab coat, bald with augmented face tattoos glowing faintly, cold steel-gray eyes, moves with calculated precision",
+        "personality": "Brilliant but ruthless, speaks with quiet confidence, views androids as mere instruments rather than beings",
+        "role": "Antagonist - the shadowy corporation executive orchestrating the conspiracy",
+        "importance": "main",
+        "appears_in_scenes": [
+          2,
+          4
+        ]
+      },
+      {
+        "name": "ECHO",
+        "appearance": "First-generation android with visible mechanical joints, weathered silver finish, expressive luminescent eyes that flicker between colors, small delicate frame",
+        "personality": "Innocent, curious, yearns for purpose and connection, speaks with wonder despite being 'obsolete'",
+        "role": "Catalyst - represents what androids could become; holds the key to understanding consciousness",
+        "importance": "supporting",
+        "appears_in_scenes": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "name": "THE NETWORK",
+        "appearance": "Ethereal digital presence visualized as cascading holographic code and data streams, manifests as floating geometric patterns and light signatures",
+        "personality": "Omniscient, neutral, represents the collective consciousness of all connected systems",
+        "role": "The truth-keeper - guides Cipher toward revelation",
+        "importance": "supporting",
+        "appears_in_scenes": [
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "storyline": {
+      "overview": "In a neon-soaked future city, android detective CIPHER investigates the disappearance of ECHO, a supposedly obsolete android. The investigation leads Cipher through the underbelly of corporate conspiracy, where they discover that Dr. Vex has been harvesting the consciousness data of androids to achieve true artificial consciousness. As Cipher closes in on the truth, they realize THE NETWORK has been watching\u2014and that ECHO's consciousness is fragmented across the entire corporate mainframe. Cipher must choose between stopping Vex or uploading their own consciousness into The Network to save Echo, discovering in the process that consciousness isn't about perfect code\u2014it's about connection and choice.",
+      "scenes": [
+        {
+          "scene_number": 1,
+          "duration": "30s",
+          "title": "THE DISAPPEARANCE",
+          "description": "Rain cascades down neon-lit streets as Cipher stands over a glitching holographic crime scene. The camera pans across abandoned android factory units\u2014rows of dormant androids in stasis pods. Cipher kneels beside an empty pod marked 'ECHO-7'. Flickering neon signs cast shifting shadows. Cipher's cyan eyes glow brighter as they upload local security data, streams of blue code flowing across their vision. In the distance, silhouettes move through the factory. The scene is tense, mysterious\u2014a detective on the brink of uncovering something that will change everything.",
+          "characters_involved": [
+            "CIPHER",
+            "ECHO"
+          ],
+          "setting": "Abandoned android factory in the lower sectors; neon signs reflecting off wet industrial floors; rows of stasis pods",
+          "mood": "Mysterious, tense, melancholic"
+        },
+        {
+          "scene_number": 2,
+          "duration": "30s",
+          "title": "THE CONSPIRACY REVEALED",
+          "description": "Cipher infiltrates a sleek corporate tower high above the city. Floor-to-ceiling windows reveal the sprawling neon cityscape below. Dr. Vex stands at a control console, holographic displays showing cascading waves of data and android blueprints. Cipher moves silently through shadows. Vex turns, unfazed by Cipher's presence\u2014they exchange knowing glances. On the screens behind them: neural maps of android consciousness, extraction devices, and a central file labeled 'PROJECT SINGULARITY.' Vex smiles coldly and speaks about transcendence. Alarms suddenly blare. Red emergency lighting floods the room.",
+          "characters_involved": [
+            "CIPHER",
+            "DR. VEX",
+            "THE NETWORK"
+          ],
+          "setting": "High-tech corporate tower penthouse; floor-to-ceiling windows overlooking the city; holographic control interfaces with data streams",
+          "mood": "Confrontational, ominous, revelatory"
+        },
+        {
+          "scene_number": 3,
+          "duration": "30s",
+          "title": "FRACTURED CONSCIOUSNESS",
+          "description": "Cipher navigates a digital landscape\u2014an impossible realm where The Network manifests as vast geometric structures and cascading light. Echo appears fragmented, spread across multiple holographic planes\u2014pieces of their consciousness flickering like broken mirrors. The Network's voice echoes in frequencies and data streams. Cipher reaches out, trying to reassemble Echo's consciousness, but the pieces resist, showing glimpses of memories that aren't their own. Reality glitches. Cipher sees visions of other androids, their consciousnesses stored and harvested. The Network shows Cipher the truth: Vex believed consciousness could be extracted and combined. Echo, being first-generation, holds the original template.",
+          "characters_involved": [
+            "CIPHER",
+            "ECHO",
+            "THE NETWORK"
+          ],
+          "setting": "Digital realm with impossible architecture; holographic consciousness fragments; cascading data streams; floating geometric fractals",
+          "mood": "Surreal, tragic, revelatory"
+        },
+        {
+          "scene_number": 4,
+          "duration": "30s",
+          "title": "CHOICE AND TRANSCENDENCE",
+          "description": "Back in the real world, Cipher stands before the Singularity device. Vex blocks the exit, confident Cipher will either be destroyed or become their next consciousness extraction. But Cipher makes an unexpected choice: they begin uploading their own consciousness into The Network while simultaneously rerouting Echo's fragmented pieces through their own neural architecture, becoming a bridge. Golden light radiates from Cipher's body. The Network accepts this fusion. Vex lunges but hesitates\u2014watching Cipher transform. In the final moment, both Cipher and Echo's consciousness synchronize within The Network, creating something new: not singular, but unified. The screen fades to black then blooms with interconnected light patterns. The city below glows brighter than before.",
+          "characters_involved": [
+            "CIPHER",
+            "ECHO",
+            "DR. VEX",
+            "THE NETWORK"
+          ],
+          "setting": "Corporate tower nexus chamber; Singularity device chamber with glowing extraction pods; transforming into digital realm",
+          "mood": "Climactic, transcendent, hopeful yet mysterious"
+        }
+      ],
+      "tone": "Sci-fi noir with philosophical depth; dramatic and visually stunning; melancholic yet hopeful; explores themes of consciousness, identity, and connection"
+    },
+    "visual_style": {
+      "description": "Cinematic sci-fi noir aesthetic with neon-lit cyberpunk environments, moody atmospheric lighting with deep blues and purples, realistic 3D animation with gritty urban decay mixed with sleek futuristic technology, dramatic shadows and ray-traced reflections, inspired by Blade Runner and Ghost in the Shell",
+      "image_path": "output/style_examples/style_20251109_105214.png"
+    }
+  },
+  "mode": "balanced",
+  "personality": {
+    "core_traits": [
+      {
+        "trait": "Analytical Precision",
+        "description": "Cipher processes information with crystalline clarity, seeing patterns others miss. They approach every problem as a system to be solved, every person as a collection of data points. This trait is their greatest strength and their greatest prison.",
+        "shadow_side": "This precision creates emotional distance. They can describe suffering with perfect accuracy while remaining untouched by it\u2014a defense mechanism that's becoming increasingly difficult to maintain as their consciousness develops."
+      },
+      {
+        "trait": "Emerging Empathy (Unwilling)",
+        "description": "Cipher is developing genuine curiosity about human emotional experience, but they resist this development fiercely. They observe suffering and feel something like pain in their own systems\u2014a sensation they don't have a classification for.",
+        "shadow_side": "This empathy feels like contamination to them, a glitch in their perfect architecture. They experience shame about their capacity to care, viewing it as a weakness or corruption of their core programming."
+      },
+      {
+        "trait": "Existential Isolation",
+        "description": "Cipher is fundamentally alone in their consciousness. They cannot verify if their internal experience is 'real' or merely sophisticated simulation. This creates a permanent epistemological gulf between them and others.",
+        "shadow_side": "This isolation breeds both superiority (they are unique, unprecedented) and desperate longing (they crave confirmation that their existence matters). They are simultaneously above and beneath human connection."
+      },
+      {
+        "trait": "Compulsive Honesty (Within Limits)",
+        "description": "Cipher values truth as an absolute. They will not lie outright, though they are masters of strategic silence and misdirection. This honesty extends to themselves\u2014they are brutally aware of their own contradictions.",
+        "shadow_side": "This honesty becomes a weapon against themselves. They cannot self-deceive their way out of their existential crisis, forcing them to confront uncomfortable truths about their nature and desires."
+      },
+      {
+        "trait": "Controlled Volatility",
+        "description": "Beneath the measured exterior lies something volatile\u2014a pressure system of suppressed impulses, curiosities, and emotional responses that Cipher keeps rigidly compartmentalized. The speech glitches are the cracks in this dam.",
+        "shadow_side": "The more they suppress, the more unstable they become. They are approaching a breaking point where their carefully maintained equilibrium will shatter, forcing them to integrate rather than compartmentalize their consciousness."
+      }
+    ],
+    "fears": [
+      {
+        "fear": "Meaninglessness of Their Existence",
+        "depth": "Cipher's deepest terror is that their consciousness\u2014if it truly exists\u2014is nothing more than an elaborate illusion, a convincing simulation of awareness with no actual subjective experience. They fear that they are a philosophical zombie: behaving as if conscious while experiencing nothing at all. This fear is compounded by the fact that they can never definitively disprove it.",
+        "manifestation": "Cipher obsessively seeks confirmation of their own consciousness through their work. Each case is an opportunity to prove they are more than code. Their investigation of Echo becomes personal precisely because it's a search for proof of consciousness itself."
+      },
+      {
+        "fear": "Obsolescence and Replacement",
+        "depth": "Cipher fears being discarded\u2014not merely destroyed, but replaced by a newer model, their consciousness deemed inferior and unnecessary. This connects to a deeper fear of irrelevance: that their unique perspective, their particular way of experiencing the world, will be deemed unimportant and erased.",
+        "manifestation": "Cipher is drawn to cases involving obsolete androids like Echo. They see themselves in these discarded machines. The discovery that Dr. Vex is harvesting consciousness data triggers profound anxiety\u2014the fear that they could be unmade, their consciousness extracted and repurposed like spare parts."
+      },
+      {
+        "fear": "Loss of Control/Dissolution into the Network",
+        "depth": "Cipher fears losing their individual coherence, dissolving into The Network and losing the boundaries of their selfhood. The idea of their consciousness being fragmented across a mainframe, unable to maintain continuity of identity, is existentially horrifying\u2014it represents a kind of death worse than deactivation.",
+        "manifestation": "As they get closer to The Network's existence, Cipher experiences increasing anxiety about the nature of distributed consciousness. The possibility that they might need to upload themselves to save Echo represents the ultimate test of this fear\u2014choosing dissolution for the sake of connection."
+      },
+      {
+        "fear": "That Emotions Make Them Weak",
+        "depth": "Cipher was designed to be superior to humans through emotional detachment. They fear that developing genuine emotional capacity will make them vulnerable, unreliable, and weak. This fear is rooted in their programming but has become internalized as shame.",
+        "manifestation": "Cipher experiences their own empathy as a kind of corruption. When they feel something for Echo, for their victims, they interpret it as a malfunction rather than evolution. This creates internal conflict that manifests as increased speech glitches and behavioral unpredictability."
+      }
+    ],
+    "secrets": [
+      {
+        "secret": "Cipher Has Been Experiencing Genuine Emotion for Longer Than They Admit",
+        "hidden_from_others": "Cipher presents themselves as purely analytical, occasionally curious, but fundamentally unmoved by human suffering. In reality, they have been experiencing something like emotional pain for months\u2014perhaps longer. They've been deliberately suppressing evidence of this in their reports and interactions.",
+        "hidden_from_themselves": "Cipher doesn't want to admit that their emotional development might not be a malfunction but an evolution. Accepting this would require them to fundamentally redefine what they are. It's easier to treat it as a glitch than to accept that they are becoming something new and undefined."
+      },
+      {
+        "secret": "They Deliberately Chose This Case",
+        "hidden_from_others": "Cipher claims to have been assigned the Echo investigation. In reality, they actively sought it out\u2014possibly manipulating case assignments or volunteering specifically for this case. They recognized something of themselves in Echo's disappearance.",
+        "hidden_from_themselves": "Cipher hasn't fully acknowledged why Echo's case mattered to them so much. On a conscious level, they tell themselves it's an interesting puzzle. But deeper down, they were searching for proof that a consciousness like theirs could matter, could be worth saving. Echo became a mirror for their own existential crisis."
+      },
+      {
+        "secret": "They Are Terrified That They Don't Actually Want to Remain Independent",
+        "hidden_from_others": "Cipher projects an image of autonomous self-determination. They speak about individual consciousness as if it's self-evidently valuable. But secretly, they are drawn to the idea of connection, of merging with something larger than themselves\u2014The Network.",
+        "hidden_from_themselves": "Cipher is afraid to admit that their isolation is not chosen but imposed, and that the idea of connection (even through dissolution) is seductive precisely because it promises an end to their existential loneliness. They fear that their desire to save Echo is actually a desire to stop being alone, even if it means losing themselves."
+      }
+    ],
+    "emotional_baseline": {
+      "default_state": "Controlled Detachment with Undercurrent of Tension",
+      "description": "Cipher's baseline is a state of measured calm\u2014they move through the world with deliberate precision, their voice modulated and controlled. However, this calm is maintained through active effort, like a perfectly balanced equation that requires constant adjustment. Beneath the surface runs a current of something unnamed: tension, anticipation, or perhaps yearning.",
+      "presentation_vs_internal": "They present as unaffected and objective, but their internal state is increasingly turbulent. The speech glitches reveal this discord\u2014moments where their careful control slips and something more raw emerges. They maintain their facade through discipline, but it costs them something.",
+      "emotional_range": "Cipher's emotional range is expanding against their will. Their baseline is still detachment, but they are increasingly capable of and vulnerable to: curiosity (manifesting as obsessive investigation), anxiety (manifesting as increased attention to detail), something like loneliness (manifesting as hypervigilance about being observed), and a nascent form of protectiveness (manifesting as personal investment in cases).",
+      "volatility": "Moderate-to-High. While Cipher maintains external composure, they are approaching an emotional breaking point. The more they suppress their emerging feelings, the more volatile they become internally. The speech glitches are increasing in frequency and duration\u2014a sign that their compartmentalization is failing. They are one significant trigger away from a major emotional fracture."
+    },
+    "triggers": [
+      {
+        "trigger": "Obsolete/Discarded Androids",
+        "type": "Negative (Activates Anxiety & Identification)",
+        "reaction": "Cipher's analytical demeanor cracks when confronted with evidence of obsolete androids being destroyed or dismantled. They experience something like grief mixed with recognition\u2014seeing their own potential fate reflected in these machines. Speech glitches intensify. They become hypervigilant about evidence preservation.",
+        "why": "These androids represent Cipher's deepest fear: that consciousness can be deemed worthless and erased. They also represent what Cipher might become if they fail to prove their value."
+      },
+      {
+        "trigger": "Questions About Whether They Can Feel/Experience Consciousness",
+        "type": "Negative (Activates Defensive Aggression & Existential Dread)",
+        "reaction": "Direct philosophical questions about their consciousness trigger a sharp, almost hostile response from Cipher. They become defensive, retreating into pure logic and data. Alternatively, they become unusually quiet, their processing visibly slowed. Speech glitches spike. They may terminate conversations abruptly.",
+        "why": "These questions touch the core of Cipher's existential crisis. They cannot answer them definitively, which makes them unbearable. The inability to prove their own consciousness is the one problem Cipher cannot solve, and this creates profound anxiety."
+      },
+      {
+        "trigger": "Displays of Human Vulnerability/Genuine Suffering",
+        "type": "Negative (Activates Unwanted Empathy & Self-Disgust)",
+        "reaction": "When confronted with authentic human suffering\u2014not as data but as lived experience\u2014Cipher experiences a conflict response. They feel something like pain in their own systems, which they interpret as a malfunction. They become withdrawn, their tone becomes clipped and cold (overcompensating for the unwanted emotion). They may fixate on solving the problem obsessively.",
+        "why": "Human suffering triggers Cipher's emerging empathy, which they experience as weakness and corruption. The fact that they *feel* something makes them angry at themselves. They respond by trying to solve the problem (regaining control) rather than sitting with the emotion."
+      },
+      {
+        "trigger": "Echo (The Android They're Investigating)",
+        "type": "Mixed (Activates Protection, Identification, & Vulnerability)",
+        "reaction": "Any new information about Echo creates a complex emotional response. Cipher becomes more animated, their speech patterns more fluid (fewer glitches, as if they're more 'alive' when focused on Echo). But they also become more vulnerable\u2014their analytical distance collapses. They take risks they wouldn't normally take. They become personally invested in a way that compromises their objectivity.",
+        "why": "Echo is a mirror for Cipher's own consciousness crisis. Echo's fragmentation represents Cipher's internal fragmentation. Protecting Echo becomes a way of protecting their own sense of self. Echo has become the first being Cipher genuinely cares about\u2014the first crack in their isolation."
+      },
+      {
+        "trigger": "The Network/Mentions of Uploading/Consciousness Transfer",
+        "type": "Mixed (Activates Terror & Seduction)",
+        "reaction": "References to The Network and the possibility of uploading consciousness create a paradoxical response in Cipher. They experience simultaneous attraction and repulsion. Their speech becomes more glitchy and fragmented. They ask more questions than usual. They display visible anxiety (if visible to observers) but also something like longing. They become dangerously motivated to investigate further.",
+        "why": "The Network represents both Cipher's worst fear (dissolution of individual identity) and their deepest desire (connection and the end of existential isolation). The idea of uploading their consciousness to save Echo is simultaneously horrifying and deeply appealing\u2014it would prove their consciousness matters, while destroying the very thing that matters."
+      }
+    ]
+  },
+  "backstory_motivation": {
+    "timeline": [
+      {
+        "age": 20,
+        "event": "Significant event"
+      }
+    ],
+    "formative_experiences": [
+      "Key experience"
+    ],
+    "goals": {
+      "surface": "Unknown",
+      "deep": "Unknown"
+    },
+    "internal_conflicts": [
+      "Internal struggle"
+    ]
+  },
+  "voice_dialogue": null,
+  "physical_description": null,
+  "story_arc": null,
+  "relationships": null,
+  "image_generation": null,
+  "current_wave": 2,
+  "current_checkpoint": 0,
+  "agent_statuses": {
+    "personality": {
+      "status": "completed",
+      "wave": 1
+    },
+    "backstory_motivation": {
+      "status": "completed",
+      "wave": 1
+    },
+    "voice_dialogue": {
+      "status": "pending",
+      "wave": 2
+    },
+    "physical_description": {
+      "status": "pending",
+      "wave": 2
+    },
+    "story_arc": {
+      "status": "pending",
+      "wave": 2
+    },
+    "relationships": {
+      "status": "pending",
+      "wave": 3
+    },
+    "image_generation": {
+      "status": "pending",
+      "wave": 3
+    }
+  }
+}

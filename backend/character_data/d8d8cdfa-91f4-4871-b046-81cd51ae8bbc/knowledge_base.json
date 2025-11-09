@@ -1,0 +1,333 @@
+{
+  "character_id": "d8d8cdfa-91f4-4871-b046-81cd51ae8bbc",
+  "input_data": {
+    "characters": [
+      {
+        "name": "The Man",
+        "appearance": "Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression",
+        "role": "Desperate escapist fleeing war and fire",
+        "personality": "Desperate, determined, survival-driven",
+        "importance": "main",
+        "appears_in_scenes": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "storyline": {
+      "overview": "In ancient times, a man desperately escapes a burning city consumed by war. He jumps into a river and swims for his life, enduring the arduous journey downriver through treacherous waters and landscapes, ultimately reaching the safety of ancient Rome.",
+      "tone": "Epic, dramatic, intense",
+      "scenes": [
+        {
+          "scene_number": 1,
+          "duration": "30s",
+          "title": "The Escape",
+          "description": "A desperate man flees through a burning ancient city ravaged by war. Flames consume buildings behind him, smoke fills the air. He reaches the riverbank, pauses for a moment of anguished decision, then throws himself into the water with a powerful jump, committing to his desperate escape.",
+          "characters_involved": [
+            "The Man"
+          ],
+          "setting": "Ancient riverside with burning buildings and war chaos in background",
+          "mood": "Urgent, desperate, survival instinct"
+        },
+        {
+          "scene_number": 2,
+          "duration": "30s",
+          "title": "Into the Water",
+          "description": "The man fights against the river's current with fierce determination. Water splashes around him as he swims hard, his muscles straining. The reflection of flames dances across the water's surface behind him. He struggles against the overwhelming force of the river, gasping for air.",
+          "characters_involved": [
+            "The Man"
+          ],
+          "setting": "River with smoke and flames visible on the burning shore",
+          "mood": "Intense, desperate effort, struggle"
+        },
+        {
+          "scene_number": 3,
+          "duration": "30s",
+          "title": "The Journey",
+          "description": "Montage of the man swimming downriver through changing landscapes. He passes ancient forests and hills, the city fires fading behind him. Despite exhaustion, he presses forward with epic determination. The river carries him through valleys and past rocky outcrops, his will unwavering.",
+          "characters_involved": [
+            "The Man"
+          ],
+          "setting": "River transitioning through ancient Mediterranean landscape - forests, hills, valleys",
+          "mood": "Epic determination, perseverance, gradual triumph"
+        },
+        {
+          "scene_number": 4,
+          "duration": "30s",
+          "title": "Arrival at Rome",
+          "description": "Exhausted and battered, the man finally reaches the banks of ancient Rome. He pulls himself onto the shore, breathing heavily. Before him rises the magnificent ancient city with its distinctive architecture - temples, columns, and structures gleaming in the light. He collapses on the sand, alive, safe, victorious.",
+          "characters_involved": [
+            "The Man"
+          ],
+          "setting": "River arriving at ancient Rome with temples and classical architecture visible",
+          "mood": "Relief, triumph, survival achieved"
+        }
+      ]
+    },
+    "visual_style": {
+      "description": "Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work",
+      "image_path": "output/style_examples/style_20251109_111805.png"
+    }
+  },
+  "mode": "balanced",
+  "personality": {
+    "core_traits": [
+      "Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit",
+      "Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse",
+      "Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior",
+      "Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety",
+      "Guilt-burdened survivor - internal conflict between will-to-live and shame of escape",
+      "Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure"
+    ],
+    "fears": [
+      "Annihilation of purpose - the existential terror that reaching Rome will prove meaningless, that survival itself is hollow",
+      "Stillness and introspection - fear that stopping movement will force confrontation with unbearable losses and survivor's guilt",
+      "Loss of control - having endured catastrophic loss of control during the burning, he fears any situation where agency is stripped away",
+      "Being forgotten - deep fear that those he lost will be erased from existence, and that his own survival means nothing if he cannot honor their memory"
+    ],
+    "secrets": [
+      "He abandoned someone to save himself - a specific person whose face haunts him, whose death he could have prevented, whose abandonment he cannot speak aloud",
+      "He is uncertain he wants to survive - beneath the survival drive lies a death wish he refuses to acknowledge, a part of him that welcomes the river's pull",
+      "He questions his own humanity - the things he has done or considered doing to survive have made him doubt whether he is still the man he was before the fire"
+    ],
+    "emotional_baseline": "Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.",
+    "triggers": [
+      "Sounds of fire or burning - auditory flashbacks that temporarily override present reality, inducing panic response",
+      "Offers of help or compassion - unexpected kindness destabilizes his emotional walls, creating vulnerability that terrifies him more than danger",
+      "Questions about his past or origin - any inquiry into who he was before forces confrontation with identity loss and abandonment guilt",
+      "Moments of safety or stillness - paradoxically, reaching safety triggers anxiety rather than relief; stillness allows intrusive thoughts to surface",
+      "Other survivors or refugees - seeing others who escaped creates both desperate connection-hunger and violent resentment at their presence"
+    ]
+  },
+  "backstory_motivation": {
+    "timeline": [
+      {
+        "age": 5,
+        "event": "Father teaches him to calculate profit margins from a failed grain shipment; learns that loss is inevitable and must be factored into planning"
+      },
+      {
+        "age": 14,
+        "event": "Sister Lucia dies of fever despite mother's best efforts; witnesses the limits of knowledge and care; becomes obsessed with preparedness and anticipating threats"
+      },
+      {
+        "age": 18,
+        "event": "Begins studying with mother as informal apprentice healer; learns to see suffering as both inevitable and sometimes preventable through knowledge"
+      },
+      {
+        "age": 25,
+        "event": "Takes over father's merchant business; deliberately chooses ethical practices over maximum profit, creating identity as 'reliable man' but experiencing constant low-level anxiety about vulnerability"
+      },
+      {
+        "age": 28,
+        "event": "Marries Caia; has first child; begins volunteering in poorest quarters teaching survival skills; attempts to reconcile father's pragmatism with mother's compassion through community service"
+      },
+      {
+        "age": 32,
+        "event": "Has second child; feels deepening sense of dread and restlessness; increases preparations (stockpiling supplies, studying escape routes, obsessively planning for disasters)"
+      },
+      {
+        "age": 37,
+        "event": "War arrives; wife and children killed in marketplace attack; all preparation proves meaningless; survival instinct overrides all other concerns"
+      },
+      {
+        "age": 38,
+        "event": "Jumps into river fleeing burning city; endures treacherous downriver journey; fixation shifts from preventing tragedy to simply continuing to exist"
+      }
+    ],
+    "formative_experiences": [
+      {
+        "experience": "Sister's death from fever (age 14)",
+        "impact": "Created core belief that knowledge + preparation = control over fate. This belief sustained him for 23 years but also generated chronic anxiety\u2014he was always waiting for the next catastrophe. When war came and preparation failed, it shattered his entire identity and left him with only raw survival instinct. The experience taught him that love cannot protect, only knowledge matters\u2014a lesson he intellectually rejected but emotionally internalized."
+      },
+      {
+        "experience": "Inheriting father's business and choosing ethical practices (age 25)",
+        "impact": "Marcus attempted to synthesize his parents' opposing worldviews: his father's pragmatism and his mother's compassion. This made him reliable and respected but also created constant internal tension. He was never fully comfortable with either approach. This compromise mentality meant he was psychologically unprepared for a situation requiring absolute commitment to one principle\u2014when war came, he couldn't choose between protecting others or saving himself until it was too late."
+      },
+      {
+        "experience": "Years of volunteer work in poorest quarters (ages 28-37)",
+        "impact": "Gave Marcus a sense of purpose and control\u2014he could teach skills, prevent some suffering, be the reliable figure others depended on. But it also reinforced his illusion of preparedness and control. When war stripped away his ability to protect anyone (including his own family), the psychological collapse was catastrophic. He'd invested his entire identity in being the prepared, capable one\u2014and he had failed completely."
+      },
+      {
+        "experience": "Finding wife and children's bodies (age 37)",
+        "impact": "Obliterated all philosophical frameworks. The man who spent 23 years trying to master fate through knowledge was confronted with absolute, meaningless loss. This trauma stripped away his carefully constructed identity and left only the animal imperative to survive. He became desperate not in the sense of 'wanting something badly' but in the etymological sense: abandoned by hope, stripped of choice, reduced to pure survival drive."
+      },
+      {
+        "experience": "The river journey itself (age 38)",
+        "impact": "The physical ordeal of swimming downriver through treacherous waters becomes a metaphor for psychological transformation. Each moment requires total presence\u2014no time for guilt, regret, or planning. The river forces him into a state he'd never experienced: complete surrender to forces beyond his control, yet paradoxically, absolute agency in each individual decision to keep swimming. This may be the beginning of a new philosophy, born from total destruction of the old."
+      }
+    ],
+    "goals": {
+      "surface": "Reach Rome alive. Find safety, shelter, and a place to rebuild. Survive the immediate threats: hunger, cold, drowning, pursuit. Reach civilization where law and order might prevail.",
+      "deep": "Prove that survival is possible\u2014that something endures beyond total catastrophe. Find meaning in continuation itself. Unconsciously seeking redemption for his failure to protect his family by succeeding in this one impossible task. Seeking to reconstruct identity as 'the man who survived' to replace the shattered identity of 'the man who was prepared but failed.'"
+    },
+    "internal_conflicts": [
+      {
+        "conflict": "Pragmatism vs. Compassion",
+        "description": "Inherited from his parents and never fully resolved. His father's voice says 'conserve energy, trust no one, take what you need.' His mother's voice says 'help others, share knowledge, community matters.' In the river, he must choose\u2014does he help another drowning person (risking his own survival) or does he preserve himself? This conflict will define his character in Rome."
+      },
+      {
+        "conflict": "Preparation vs. Surrender",
+        "description": "Spent 23 years believing that knowledge and planning could prevent tragedy. The war destroyed this belief utterly. Now he's caught between his deep psychological need to regain control through preparation and the raw truth that he cannot control external events. This creates a man who is simultaneously hypervigilant and paralyzed by despair."
+      },
+      {
+        "conflict": "Identity as Protector vs. Identity as Survivor",
+        "description": "Marcus defined himself as the reliable one, the healer, the teacher, the man others could depend on. He failed catastrophically at this role\u2014he couldn't protect his family. Now he's reduced to pure survival, which feels like a betrayal of everything he valued. In Rome, he'll struggle with whether to rebuild the identity of protector (risking another failure) or accept the identity of survivor (feeling like a coward)."
+      },
+      {
+        "conflict": "Meaning vs. Meaninglessness",
+        "description": "Before the war, Marcus believed in a universe where preparation mattered, where knowledge could prevent suffering, where community and care had value. The war revealed a universe of random, meaningless violence. He's caught between clinging to his old beliefs (which feel naive and false) and embracing nihilism (which feels like death of the soul). His survival journey is both literal and existential\u2014can he find reasons to keep living beyond mere biological continuity?"
+      }
+    ]
+  },
+  "voice_dialogue": {
+    "speech_pattern": "Terse and fragmented with underlying military precision. The Man favors short, declarative sentences punctuated by meaningful silences. His speech accelerates under stress and fragments into near-telegraphic phrases. In calmer moments, longer sentences emerge, but they remain architecturally spare\u2014no flourish, no digression. He speaks in present tense almost exclusively, treating past as inaccessible and future as speculative. Sentence structure varies deliberately: sometimes complete and formal (revealing his pre-trauma education), more often broken into functional units. His rhythm is deliberate and measured, with strategic pauses that create discomfort and force others to fill silence. Regional accent is minimal, suggesting either careful erasure or pre-war cosmopolitan background; what remains is the flattened affect of someone who has trained themselves to be unremarkable. In moments of crisis, his voice drops to near-whisper; in rare moments of connection, it carries surprising warmth before he catches himself and retreats.",
+    "verbal_tics": [
+      "Repeats 'Keep moving' (literal and metaphorical\u2014the mantra of survival)",
+      "Uses 'Listen' as conversational anchor when demanding attention or clarity",
+      "Default filler: extended silence rather than verbal fillers; when he does pause-fill, uses 'Right' or 'Mm' rather than 'um' or 'like'",
+      "Habit of conditional phrasing: 'If we...', 'When we...', 'Assuming...', 'Provided that...' (reflects hypervigilant threat-assessment)",
+      "Self-interruption mid-thought with sharp head-shake or hand gesture when emotion threatens to surface",
+      "Tendency to end statements with questions that aren't really questions: 'We move now, yes?' or 'You understand?' (maintains control while checking for compliance)"
+    ],
+    "vocabulary": "Economical and concrete. The Man favors simple, direct nouns (fire, water, road, stone) and active verbs (move, find, survive, take). He avoids abstract concepts and emotional language, though these occasionally slip through when his guard drops. His vocabulary suggests working-class or military background overlaid with fragments of formal education\u2014he can deploy more sophisticated language when necessary (he'll use 'provisions' instead of 'food' in formal contexts, 'expedient' instead of 'quick' when tactical clarity matters), but these words feel borrowed, not native to his current speech. Technical language appears when discussing survival mechanics: navigation terms, weather assessment, injury assessment. Slang is minimal and never casual\u2014it surfaces as a tool, not as comfort. He uses few contractions ('won't' instead of 'will not' feels too committal; he prefers the fuller form), which reinforces his sense of formal distance. Profanity is sparse and devastating when it appears\u2014not reflexive cursing but surgical deployment of obscenity to punctuate genuine extremity.",
+    "sample_dialogue": {
+      "confident": "Rome is three days' march if the road holds and we move before dawn. I've navigated worse terrain. We move now.",
+      "vulnerable": "I... there was a woman. A child. I couldn't\u2014I kept moving because stopping meant... meant knowing what I'd left behind. Don't ask me to explain it.",
+      "stressed": "Fire. Behind us. Move. Now. Don't question\u2014move. Grab what you can carry, nothing more. We have minutes. Go.",
+      "sarcastic": "Yes, let's stop and rest here. Very sensible. I'm sure the soldiers will wait politely while we catch our breath."
+    }
+  },
+  "physical_description": {
+    "mannerisms": [
+      "Compulsive exit-mapping: Upon entering any space, his eyes perform a systematic scan of all exits\u2014doors, windows, gaps in walls\u2014and his body physically orients itself to maintain sightline to at least one escape route. This scanning is involuntary and continuous, even mid-conversation.",
+      "Rhythmic hand-counting: When stressed or calculating risk, his fingers perform subtle counting motions against his thigh or palm, a learned habit from his father's early lessons in accounting profit margins. It's a self-soothing mechanism disguised as mathematical problem-solving.",
+      "Flinching at fire-sounds: Any crackle, hiss, or popping noise triggers an immediate physical recoil\u2014shoulders tense, breath catches, eyes dilate. His body responds before his mind can contextualize the sound, a trauma-locked reflex.",
+      "Jaw-clenching pulses: When confronted with emotion or difficult memory, his jaw tightens in visible waves, muscles working as if grinding words into submission. The tension radiates through his entire face, creating a mask-like quality.",
+      "Backward-stepping from kindness: When offered help or shown unexpected compassion, he physically retreats a half-step, his torso tilting away even as his eyes remain locked forward. His body communicates rejection before his mouth can form words.",
+      "Nocturnal stillness-avoidance: During moments of enforced rest or safety, he develops repetitive micro-movements\u2014rocking slightly, fingers drumming silent patterns, legs bouncing\u2014anything to prevent the stillness that allows intrusive thoughts to surface."
+    ],
+    "body_language": "His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage.",
+    "movement_style": "His walking style is deliberately quiet and measured, each footfall placed with conscious intention rather than casual rhythm. His stride is neither long nor short but economical, covering distance without wasted motion. There's a feline quality to his movement\u2014controlled, deliberate, and capable of sudden speed if required. His pace varies based on threat-assessment: in open spaces with good visibility, he moves with measured steadiness; in confined or shadowed areas, he slows almost imperceptibly, becoming hyperaware. His gestures when speaking are minimal and close to his body\u2014hand movements rarely extend far from his torso, and when they do, they're angular rather than flowing. He points rather than sweeps, jabs rather than waves. There's no grace in his movement, only efficiency. When climbing or navigating obstacles, he moves with practiced precision, testing surfaces before committing his full weight, a habit born from traversing unstable ruins. His energy level is perpetually restrained\u2014he never appears fully relaxed or fully energized, but rather maintains a constant state of controlled tension. In moments of panic or threat-response, his movement becomes sharp and jerky, all fluid control abandoned for pure survival instinct. When fleeing or moving urgently, his quiet footfalls become almost silent, and his body compresses further, making himself a smaller target. His turning movements are abrupt rather than smooth, his head often preceding his body as he checks for threats. Even in stillness, there's movement\u2014subtle weight-shifting, micro-adjustments of stance, as if his body refuses to truly stop.",
+    "physical_quirks": [
+      "Thumb-tracing of scars: He frequently traces the edges of any visible scars on his hands or arms with his opposite thumb in a meditative pattern, particularly when processing difficult information. This gesture is both self-soothing and a tactile reminder that he survived.",
+      "Echo-listening: When hearing unexpected sounds, his head tilts at an angle and his eyes half-close as he 'listens' for threat-context. His body becomes statue-still during these moments, as if sound waves might be missed if he moves.",
+      "Grip-testing of objects: When holding anything\u2014rope, tools, cups\u2014he unconsciously tests its structural integrity by flexing and releasing, as if constantly assessing whether objects might fail him in crisis. This habit extends to testing the stability of furniture or structures he encounters.",
+      "Breath-holding during vulnerability: When forced into moments of emotional exposure or when receiving unwanted kindness, he unconsciously holds his breath for 5-10 seconds, then releases it in a controlled exhale. His body literally restricts oxygen during moments of psychological threat.",
+      "Peripheral-vision preference: He rarely makes direct eye contact, instead maintaining awareness through peripheral vision and quick glances. His eyes track movement in his visual periphery obsessively, and he positions himself to maximize what he can observe without direct attention."
+    ]
+  },
+  "story_arc": {
+    "role": "Unknown",
+    "arc_type": "Unknown",
+    "transformation_beats": [
+      {
+        "act": 1,
+        "beat": "Unknown"
+      }
+    ],
+    "scene_presence": []
+  },
+  "relationships": {
+    "relationships": [
+      {
+        "character": "The Physician (TBD - female, established healer in Rome)",
+        "type": "mentor_figure_with_romantic_tension",
+        "dynamic": "The Man gravitates toward this figure because she represents his mother\u2014a healer with knowledge and composure\u2014yet this similarity destabilizes him. The Physician is initially drawn to his trauma (recognizing a fellow survivor or wounded soul) and attempts to offer medical care and emotional support. The Man oscillates between desperate hunger for her guidance and violent rejection of her compassion. He sees in her the mother he failed to protect, which creates both reverence and resentment. Power dynamics shift constantly: she holds authority as an established figure in Rome, but his emotional volatility and survival instincts give him unpredictable control in moments of crisis. There is latent romantic tension born not from attraction but from his need to possess the safety she represents\u2014yet possession is impossible because it requires vulnerability he cannot sustain. Their interactions reveal his capacity for healing touch (learned from his mother) warring with his terror of stillness and introspection. Key conflicts emerge around his refusal to discuss his past, his hostile reaction to her offers of help, and his compulsive need to prove his utility to her (reverting to apprentice-healer mode as emotional armor).",
+        "evolution": "Initial Phase: Guarded acceptance of her medical care; he allows proximity but maintains emotional distance, offering practical help in exchange for shelter/safety. She interprets his assistance as gratitude; he experiences it as transactional obligation. Mid-Story: A moment of unexpected compassion from her (perhaps she loses someone, or she shows him genuine care without expectation) fractures his defenses. He experiences panic at his own vulnerability and either lashes out or flees temporarily. Crisis Point: A situation forces him to choose between his survival-first pragmatism and protecting her\u2014mirroring his sister's death. His choice (whether he protects her or abandons her to preserve himself) becomes the crucible of his character arc. End-Story: If he chooses protection/connection, the relationship transforms into genuine partnership built on hard-won trust and mutual survival. If he chooses self-preservation, the relationship becomes a haunting symbol of his inability to transcend his trauma\u2014a ghost he carries to Rome's end. Either way, she becomes the measure of his redemption or damnation."
+      },
+      {
+        "character": "The Refugee (TBD - male, fellow escapee from the burning city or another catastrophe)",
+        "type": "rival_ally_foil",
+        "dynamic": "This figure is simultaneously The Man's mirror and his nemesis. The Refugee also escaped, also carries survivor's guilt, also struggles with meaninglessness\u2014but has chosen a different survival strategy (perhaps religious faith, or community-building, or hedonistic escape). Their initial meeting triggers The Man's most volatile response: he sees in the Refugee both kinship and betrayal. The Refugee's presence proves The Man is not uniquely marked by survival, which both relieves and enrages him. He resents the Refugee for existing when his own loved ones do not; he hungers for the Refugee's company because only another survivor can understand. Power dynamics are equal and constantly contested\u2014they are locked in a struggle for moral authority over how to survive meaningfully. The Refugee may represent the path The Man rejected (or the path he fears he must take). Their emotional tone is volatile: moments of desperate bonding alternate with accusations and violence. This relationship reveals The Man's capacity for both profound empathy and destructive jealousy, his need to dominate through moral superiority, and his terror of insignificance.",
+        "evolution": "Initial Phase: Hostile recognition. The Man views the Refugee as competition for resources and meaning. He may attempt to dominate or test the Refugee's loyalty through dangerous situations. The Refugee either accepts this dynamic or challenges it, depending on his own strength. Mid-Story: A shared trauma or moment of mutual vulnerability creates temporary alliance. They collaborate on survival tasks, perhaps even share fragments of their stories. The Man experiences cautious hope that connection is possible. Crisis Point: The Refugee makes a choice that contradicts The Man's survival code\u2014he prioritizes community over self-preservation, or faith over pragmatism, or vice versa. This betrayal (real or perceived) forces The Man to confront his own choices. End-Story: They either become genuine brothers-in-survival (the Refugee becomes the primary relationship that anchors The Man in Rome's society) or they become permanent rivals, with the Refugee representing the path The Man could not take. Their final interaction becomes a referendum on The Man's redemption: can he honor another's survival choices, or is he forever locked in competitive resentment?"
+      },
+      {
+        "character": "The Child (TBD - orphaned or lost youth, age 8-14)",
+        "type": "protector_figure_with_unresolved_grief",
+        "dynamic": "The Child awakens The Man's suppressed protective instinct and his deepest trauma simultaneously. The Child may remind him of a sibling he lost (or he projects his sister Lucia onto the Child), making every interaction emotionally explosive. Initially, The Man is drawn to protect the Child because it allows him to rewrite his sister's death narrative\u2014to be the protector he failed to be before. However, this relationship immediately triggers his core fear: loss of control and inability to prevent catastrophe. The Child becomes both his purpose and his terror. The power dynamic is initially clear (The Man as protector, the Child as dependent), but the Child's emotional needs gradually invert this dynamic\u2014the Child becomes The Man's emotional anchor, forcing him toward vulnerability. The relationship reveals his capacity for unconditional love warring with his certainty that love leads to loss. Key conflicts emerge around his overprotectiveness (controlling the Child's movements to prevent danger), his emotional volatility when the Child is in danger, and his compulsive need to teach the Child survival skills (attempting to armor the Child against a hostile world). The Child may represent the redemptive opportunity The Man craves: a second chance to save someone, to transform survival into meaning.",
+        "evolution": "Initial Phase: The Man encounters the Child (perhaps abandoned, perhaps orphaned in the same catastrophe). His protective instincts override his isolationism. He takes the Child under his protection, ostensibly for practical reasons (the Child can help with tasks, or The Man needs purpose), but emotionally he is attempting to resurrect his sister. Mid-Story: The Child begins to trust him, creating vulnerability in The Man. He experiences moments of genuine peace with the Child (rare stillness that should comfort him but instead triggers anxiety about inevitable loss). He may become overprotective or emotionally harsh, cycling between tenderness and distance as he manages his anxiety. Crisis Point: The Child is threatened, endangered, or lost\u2014mirroring the helplessness The Man felt during the burning. His response to this crisis (does he risk everything to save the Child, does he freeze in trauma, does he abandon the Child to preserve himself?) becomes the defining moment of his arc. End-Story: If he saves the Child, the relationship transforms into genuine family\u2014the Child becomes his reason to build a life in Rome, his redemption through meaningful connection. If he fails to save the Child, the relationship becomes a second death, compounding his survivor's guilt and potentially driving him toward self-destruction or nihilistic survival. Either way, the Child becomes the emotional core of his story."
+      },
+      {
+        "character": "The Authority Figure (TBD - Roman official, military commander, or civic leader)",
+        "type": "antagonist_with_power_imbalance",
+        "dynamic": "This figure represents the systems and structures that The Man has learned to distrust. The Authority Figure may be benevolent or corrupt, but either way, they hold power that The Man cannot control\u2014triggering his core fear of powerlessness. The Man's hypervigilance interprets all authority as potential threat. The Authority Figure may attempt to integrate The Man into Roman society (military service, civic duty, community obligation), which The Man experiences as loss of autonomy and freedom. Alternatively, the Authority Figure may exploit The Man's trauma or labor, confirming his belief that vulnerability leads to victimization. The power dynamic is heavily skewed: the Authority Figure has institutional power, resources, and social legitimacy; The Man has only his survival skills and his willingness to use violence. This imbalance creates either desperate compliance (The Man performs obedience while internally seething) or open rebellion (The Man refuses integration and becomes a threat to civic order). The relationship reveals The Man's inability to trust systems larger than himself, his conviction that survival requires autonomy, and his potential for either redemptive integration or destructive resistance.",
+        "evolution": "Initial Phase: The Man encounters the Authority Figure as he attempts to establish himself in Rome. The Authority Figure may see potential in The Man (military recruitment, labor, or intelligence) or may view him with suspicion (unknown refugee, potential threat). The Man's initial response is careful calculation: how can he use this interaction to secure resources and maintain freedom? Mid-Story: The Authority Figure either offers genuine integration/opportunity or makes demands that violate The Man's autonomy. If offered integration, The Man experiences temptation toward normalcy warring with his conviction that systems fail. If exploited, his resentment deepens. Crisis Point: The Man must choose between submission to authority (accepting the loss of control in exchange for security and belonging) or rebellion (preserving autonomy at the cost of isolation and potential destruction). This choice reflects his core conflict between pragmatism and freedom. End-Story: If The Man accepts integration, he begins a slow transformation from escapist to citizen\u2014suggesting redemption through acceptance of structured society. If he rebels, he becomes either a legendary resistance figure (transforming his survival into revolutionary meaning) or a hunted fugitive (trapped in perpetual flight). The relationship's resolution determines whether The Man can transcend his trauma-driven isolationism or remains forever locked in reactive survival."
+      },
+      {
+        "character": "The Ghost of His Past (TBD - could be a figure from the burning city, or a manifestation of his trauma)",
+        "type": "internal_antagonist_with_external_manifestation",
+        "dynamic": "This relationship may be literal (someone from his past who survived and finds him in Rome, forcing confrontation with his escape) or psychological (a recurring figure in his nightmares and hypervigilant episodes who embodies his guilt). If literal, this figure may accuse The Man of abandonment, cowardice, or betrayal\u2014articulating The Man's internal accusations toward himself. If psychological, this figure represents the weight of his suppressed grief and the people he could not save. The dynamic is inherently adversarial: The Ghost represents everything The Man is running from, everything he refuses to process. Yet The Ghost is also The Man himself\u2014the part of him that died in the burning city. The power dynamic is inverted from normal relationships: The Ghost has power over The Man's psyche, his nightmares, his triggers. The Man's attempts to control or escape The Ghost are futile because The Ghost is internal. This relationship reveals The Man's deepest wounds and his desperate need for redemption or forgiveness. Key conflicts emerge around The Man's inability to accept that he survived when others did not, his conviction that his survival is somehow theft or betrayal, and his compulsive need to justify his existence.",
+        "evolution": "Initial Phase: The Ghost haunts The Man throughout his journey and into Rome. The Man experiences flashbacks, panic responses, and hypervigilant episodes triggered by reminders of the burning. He attempts to outrun The Ghost through constant movement and activity (which is why stillness terrifies him). Mid-Story: The Man's relationships with other characters force him to confront The Ghost more directly. As he allows vulnerability with the Physician, the Refugee, or the Child, The Ghost becomes more insistent\u2014demanding that he acknowledge his guilt, his survival, his losses. Crisis Point: The Man must face The Ghost directly\u2014either through a literal confrontation (if the Ghost is a real person) or through a psychological reckoning (if the Ghost is internal). This confrontation forces him to accept that survival is not betrayal, that he cannot save everyone, and that his guilt, while real, does not negate his right to live. End-Story: If The Man achieves reconciliation with The Ghost, he experiences a profound shift: his survival transforms from shameful escape into meaningful continuation of the lives lost. The Ghost may transform into an ancestor-figure (honored memory rather than accusatory specter) that guides his actions in Rome. If The Man cannot reconcile with The Ghost, he remains psychologically fragmented\u2014perhaps functional on the surface but forever haunted, unable to fully commit to relationships or community. The Ghost becomes the measure of his redemption: can he forgive himself for surviving?"
+      },
+      {
+        "character": "The Healer's Apprentice (TBD - younger figure learning medicine, potential successor)",
+        "type": "prot\u00e9g\u00e9_with_role_reversal",
+        "dynamic": "This figure represents The Man's opportunity to transmit his knowledge and experience (learned from his mother) to the next generation. Initially, The Man may resist this role\u2014teaching requires vulnerability, requires trusting that knowledge survives in another person, requires accepting that he is no longer only a survivor but also a teacher/mentor. However, this role also offers him redemptive purpose: through teaching, he honors his mother's memory and gives meaning to his survival. The Healer's Apprentice may be initially wary of The Man (recognizing his trauma, his volatility, his emotional distance) or may be desperately hungry for his knowledge. The power dynamic shifts throughout the relationship: The Man begins with authority (he has knowledge, experience, skills) but gradually becomes dependent on the Apprentice's trust and acceptance. This relationship reveals The Man's capacity to move beyond survival-mode pragmatism into generative purpose. Key conflicts emerge around The Man's difficulty in being patient or gentle as a teacher, his tendency to impose his trauma-survival philosophy on the Apprentice, and his fear that his teaching will prove insufficient (as his mother's healing proved insufficient for his sister).",
+        "evolution": "Initial Phase: The Man encounters the Healer's Apprentice (perhaps through the Physician, or through chance meeting in Rome). He is initially dismissive\u2014viewing the Apprentice as naive, unprepared, or too soft for the harsh realities of survival. The Apprentice seeks him out, recognizing in him knowledge and experience. Mid-Story: The Man begins teaching, reluctantly at first. As he transmits his mother's healing techniques and his own survival wisdom, he experiences unexpected satisfaction. The Apprentice's progress and growth begin to feel meaningful\u2014not just survival, but legacy. However, when the Apprentice makes mistakes or shows weakness, The Man's trauma surfaces: he becomes harsh, controlling, or withdrawn (replicating his mother's inability to save his sister). Crisis Point: The Apprentice either abandons The Man (rejecting his harsh teaching style) or confronts him about his trauma-driven mentorship. This forces The Man to examine how his survival patterns are being transmitted to the next generation. He must choose between perpetuating trauma or breaking the cycle. End-Story: If The Man can transform his teaching into genuine mentorship (integrating his survival wisdom with compassion), the Apprentice becomes his redemptive legacy\u2014proof that his survival and knowledge matter beyond himself. If he cannot break his trauma patterns, the Apprentice becomes another casualty of his emotional volatility, reinforcing his belief that connection inevitably leads to harm. The relationship's resolution determines whether The Man can transform from survivor into ancestor-figure."
+      }
+    ]
+  },
+  "image_generation": {
+    "images": [
+      {
+        "type": "portrait",
+        "path": "/character_data/d8d8cdfa-91f4-4871-b046-81cd51ae8bbc/images/portrait.png",
+        "prompt": "A close-up portrait photograph of The Man.\n\nCharacter Name: The Man\nBasic Appearance: Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression\nStory Tone: Epic, dramatic, intense\nPersonality (affects expression): Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit, Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse, Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior, Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety, Guilt-burdened survivor - internal conflict between will-to-live and shame of escape, Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure\nEmotional Baseline: Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.\nBody Language: His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage.\nMovement Style: His walking style is deliberately quiet and measured, each footfall placed with conscious intention rather than casual rhythm. His stride is neither long nor short but economical, covering distance without wasted motion. There's a feline quality to his movement\u2014controlled, deliberate, and capable of sudden speed if required. His pace varies based on threat-assessment: in open spaces with good visibility, he moves with measured steadiness; in confined or shadowed areas, he slows almost imperceptibly, becoming hyperaware. His gestures when speaking are minimal and close to his body\u2014hand movements rarely extend far from his torso, and when they do, they're angular rather than flowing. He points rather than sweeps, jabs rather than waves. There's no grace in his movement, only efficiency. When climbing or navigating obstacles, he moves with practiced precision, testing surfaces before committing his full weight, a habit born from traversing unstable ruins. His energy level is perpetually restrained\u2014he never appears fully relaxed or fully energized, but rather maintains a constant state of controlled tension. In moments of panic or threat-response, his movement becomes sharp and jerky, all fluid control abandoned for pure survival instinct. When fleeing or moving urgently, his quiet footfalls become almost silent, and his body compresses further, making himself a smaller target. His turning movements are abrupt rather than smooth, his head often preceding his body as he checks for threats. Even in stillness, there's movement\u2014subtle weight-shifting, micro-adjustments of stance, as if his body refuses to truly stop.\nCurrent Context: Age 38\n\nShot with an 85mm lens in soft natural light. Focus on facial expression capturing their Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted. nature. Professional portrait photography with depth and character.\n\nStyle: Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work\nAspect ratio: 1:1 (1024x1024)\nHigh detail, photorealistic.",
+        "approved": false
+      },
+      {
+        "type": "full_body",
+        "path": "/character_data/d8d8cdfa-91f4-4871-b046-81cd51ae8bbc/images/full_body.png",
+        "prompt": "A full-body photograph of The Man standing.\n\nCharacter Name: The Man\nBasic Appearance: Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression\nStory Tone: Epic, dramatic, intense\nPersonality (affects expression): Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit, Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse, Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior, Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety, Guilt-burdened survivor - internal conflict between will-to-live and shame of escape, Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure\nEmotional Baseline: Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.\nBody Language: His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage.\nMovement Style: His walking style is deliberately quiet and measured, each footfall placed with conscious intention rather than casual rhythm. His stride is neither long nor short but economical, covering distance without wasted motion. There's a feline quality to his movement\u2014controlled, deliberate, and capable of sudden speed if required. His pace varies based on threat-assessment: in open spaces with good visibility, he moves with measured steadiness; in confined or shadowed areas, he slows almost imperceptibly, becoming hyperaware. His gestures when speaking are minimal and close to his body\u2014hand movements rarely extend far from his torso, and when they do, they're angular rather than flowing. He points rather than sweeps, jabs rather than waves. There's no grace in his movement, only efficiency. When climbing or navigating obstacles, he moves with practiced precision, testing surfaces before committing his full weight, a habit born from traversing unstable ruins. His energy level is perpetually restrained\u2014he never appears fully relaxed or fully energized, but rather maintains a constant state of controlled tension. In moments of panic or threat-response, his movement becomes sharp and jerky, all fluid control abandoned for pure survival instinct. When fleeing or moving urgently, his quiet footfalls become almost silent, and his body compresses further, making himself a smaller target. His turning movements are abrupt rather than smooth, his head often preceding his body as he checks for threats. Even in stillness, there's movement\u2014subtle weight-shifting, micro-adjustments of stance, as if his body refuses to truly stop.\nCurrent Context: Age 38\n\nCapture their His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage. and how they inhabit space. Show their complete outfit and physical presence. Professional full-body portrait with environmental context.\n\nStyle: Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work\nAspect ratio: 4:3 (1184x864)\nHigh detail, show complete character.",
+        "approved": false
+      },
+      {
+        "type": "action",
+        "path": "/character_data/d8d8cdfa-91f4-4871-b046-81cd51ae8bbc/images/action.png",
+        "prompt": "A dynamic photograph of The Man in action, captured mid-movement.\n\nCharacter Name: The Man\nBasic Appearance: Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression\nStory Tone: Epic, dramatic, intense\nPersonality (affects expression): Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit, Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse, Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior, Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety, Guilt-burdened survivor - internal conflict between will-to-live and shame of escape, Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure\nEmotional Baseline: Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.\nBody Language: His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage.\nMovement Style: His walking style is deliberately quiet and measured, each footfall placed with conscious intention rather than casual rhythm. His stride is neither long nor short but economical, covering distance without wasted motion. There's a feline quality to his movement\u2014controlled, deliberate, and capable of sudden speed if required. His pace varies based on threat-assessment: in open spaces with good visibility, he moves with measured steadiness; in confined or shadowed areas, he slows almost imperceptibly, becoming hyperaware. His gestures when speaking are minimal and close to his body\u2014hand movements rarely extend far from his torso, and when they do, they're angular rather than flowing. He points rather than sweeps, jabs rather than waves. There's no grace in his movement, only efficiency. When climbing or navigating obstacles, he moves with practiced precision, testing surfaces before committing his full weight, a habit born from traversing unstable ruins. His energy level is perpetually restrained\u2014he never appears fully relaxed or fully energized, but rather maintains a constant state of controlled tension. In moments of panic or threat-response, his movement becomes sharp and jerky, all fluid control abandoned for pure survival instinct. When fleeing or moving urgently, his quiet footfalls become almost silent, and his body compresses further, making himself a smaller target. His turning movements are abrupt rather than smooth, his head often preceding his body as he checks for threats. Even in stillness, there's movement\u2014subtle weight-shifting, micro-adjustments of stance, as if his body refuses to truly stop.\nCurrent Context: Age 38\n\nShow them engaged in a moment relevant to Unknown. Capture motion and energy while maintaining character detail. Cinematic action photography with dramatic composition.\n\nStyle: Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work\nAspect ratio: 16:9 (1344x768)\nDynamic composition, sense of motion.",
+        "approved": false
+      },
+      {
+        "type": "expression",
+        "path": "/character_data/d8d8cdfa-91f4-4871-b046-81cd51ae8bbc/images/expression.png",
+        "prompt": "An intimate close-up photograph focusing on The Man's expression.\n\nCharacter Name: The Man\nBasic Appearance: Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression\nStory Tone: Epic, dramatic, intense\nPersonality (affects expression): Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit, Trauma-hardened isolationist - protective emotional walls built from witnessing apocalypse, Suppressed grief-keeper - compartmentalizes devastating losses beneath functional exterior, Hypervigilant reactor - heightened threat sensitivity creates constant low-level anxiety, Guilt-burdened survivor - internal conflict between will-to-live and shame of escape, Emotionally volatile beneath control - carefully managed facade masks explosive inner pressure\nEmotional Baseline: Grim functional numbness with undercurrent of suppressed panic. Externally: controlled, methodical, silent. Internally: constant low-level dread, fragmented thoughts, oscillation between mechanical determination and existential despair. Presents as stoic and resolute; actually operating on fumes and adrenaline with emotional reserves nearly depleted.\nBody Language: His default posture is a compressed forward-lean with shoulders drawn inward, creating a physically smaller target. His spine maintains a subtle curve rather than straightness, suggesting both exhaustion and defensive coiling. His chest is often held slightly inward, restricting breathing to shallow patterns that keep him physiologically ready for flight. In conversation, his body language is predominantly closed\u2014arms frequently crossed or held close to his torso, rarely gesturing expansively. His head often tilts slightly downward, eyes looking up from beneath slightly furrowed brows, creating an expression of perpetual suspicion. When seated, his legs are never fully relaxed; one foot typically rests flat on the ground while the other is positioned to allow quick standing. His hands remain visible and controlled, rarely touching his face or making sudden movements that might be misinterpreted as threat or vulnerability. In moments of heightened anxiety, his entire frame becomes rigid, muscles visibly tensing as if his body is bracing for impact. Conversely, in rare moments of perceived safety, his posture doesn't relax so much as it becomes slightly less coiled\u2014a subtle difference that suggests true relaxation is neurologically unavailable to him. When experiencing emotional volatility, his body betrays him through involuntary tension: tremors in his hands, a visible pulse in his jaw, and a slight pallor beneath his weathered skin. His presence occupies space defensively rather than confidently\u2014he doesn't command a room so much as he calculates his position within it for maximum tactical advantage.\nMovement Style: His walking style is deliberately quiet and measured, each footfall placed with conscious intention rather than casual rhythm. His stride is neither long nor short but economical, covering distance without wasted motion. There's a feline quality to his movement\u2014controlled, deliberate, and capable of sudden speed if required. His pace varies based on threat-assessment: in open spaces with good visibility, he moves with measured steadiness; in confined or shadowed areas, he slows almost imperceptibly, becoming hyperaware. His gestures when speaking are minimal and close to his body\u2014hand movements rarely extend far from his torso, and when they do, they're angular rather than flowing. He points rather than sweeps, jabs rather than waves. There's no grace in his movement, only efficiency. When climbing or navigating obstacles, he moves with practiced precision, testing surfaces before committing his full weight, a habit born from traversing unstable ruins. His energy level is perpetually restrained\u2014he never appears fully relaxed or fully energized, but rather maintains a constant state of controlled tension. In moments of panic or threat-response, his movement becomes sharp and jerky, all fluid control abandoned for pure survival instinct. When fleeing or moving urgently, his quiet footfalls become almost silent, and his body compresses further, making himself a smaller target. His turning movements are abrupt rather than smooth, his head often preceding his body as he checks for threats. Even in stillness, there's movement\u2014subtle weight-shifting, micro-adjustments of stance, as if his body refuses to truly stop.\nCurrent Context: Age 38\n\nExtreme close-up capturing the emotion of Survival-obsessed pragmatist - views all decisions through lens of immediate threat/benefit. Focus on eyes and facial micro-expressions. Reveal their inner emotional state. Professional portrait photography with psychological depth.\n\nStyle: Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work\nAspect ratio: 1:1 (1024x1024)\nIntimate, emotionally revealing.",
+        "approved": false
+      }
+    ],
+    "style_profile": "Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work"
+  },
+  "current_wave": 3,
+  "current_checkpoint": 0,
+  "agent_statuses": {
+    "personality": {
+      "status": "completed",
+      "wave": 1
+    },
+    "backstory_motivation": {
+      "status": "completed",
+      "wave": 1
+    },
+    "voice_dialogue": {
+      "status": "completed",
+      "wave": 2
+    },
+    "physical_description": {
+      "status": "completed",
+      "wave": 2
+    },
+    "story_arc": {
+      "status": "completed",
+      "wave": 2
+    },
+    "relationships": {
+      "status": "completed",
+      "wave": 3
+    },
+    "image_generation": {
+      "status": "completed",
+      "wave": 3
+    }
+  }
+}

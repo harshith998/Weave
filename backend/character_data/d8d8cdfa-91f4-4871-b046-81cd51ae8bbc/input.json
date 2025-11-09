@@ -1,0 +1,71 @@
+{
+  "characters": [
+    {
+      "name": "The Man",
+      "appearance": "Typical ancient Mediterranean man in simple tunic, dark hair, exhausted but determined expression",
+      "role": "Desperate escapist fleeing war and fire",
+      "personality": "Desperate, determined, survival-driven",
+      "importance": "main",
+      "appears_in_scenes": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "storyline": {
+    "overview": "In ancient times, a man desperately escapes a burning city consumed by war. He jumps into a river and swims for his life, enduring the arduous journey downriver through treacherous waters and landscapes, ultimately reaching the safety of ancient Rome.",
+    "tone": "Epic, dramatic, intense",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "duration": "30s",
+        "title": "The Escape",
+        "description": "A desperate man flees through a burning ancient city ravaged by war. Flames consume buildings behind him, smoke fills the air. He reaches the riverbank, pauses for a moment of anguished decision, then throws himself into the water with a powerful jump, committing to his desperate escape.",
+        "characters_involved": [
+          "The Man"
+        ],
+        "setting": "Ancient riverside with burning buildings and war chaos in background",
+        "mood": "Urgent, desperate, survival instinct"
+      },
+      {
+        "scene_number": 2,
+        "duration": "30s",
+        "title": "Into the Water",
+        "description": "The man fights against the river's current with fierce determination. Water splashes around him as he swims hard, his muscles straining. The reflection of flames dances across the water's surface behind him. He struggles against the overwhelming force of the river, gasping for air.",
+        "characters_involved": [
+          "The Man"
+        ],
+        "setting": "River with smoke and flames visible on the burning shore",
+        "mood": "Intense, desperate effort, struggle"
+      },
+      {
+        "scene_number": 3,
+        "duration": "30s",
+        "title": "The Journey",
+        "description": "Montage of the man swimming downriver through changing landscapes. He passes ancient forests and hills, the city fires fading behind him. Despite exhaustion, he presses forward with epic determination. The river carries him through valleys and past rocky outcrops, his will unwavering.",
+        "characters_involved": [
+          "The Man"
+        ],
+        "setting": "River transitioning through ancient Mediterranean landscape - forests, hills, valleys",
+        "mood": "Epic determination, perseverance, gradual triumph"
+      },
+      {
+        "scene_number": 4,
+        "duration": "30s",
+        "title": "Arrival at Rome",
+        "description": "Exhausted and battered, the man finally reaches the banks of ancient Rome. He pulls himself onto the shore, breathing heavily. Before him rises the magnificent ancient city with its distinctive architecture - temples, columns, and structures gleaming in the light. He collapses on the sand, alive, safe, victorious.",
+        "characters_involved": [
+          "The Man"
+        ],
+        "setting": "River arriving at ancient Rome with temples and classical architecture visible",
+        "mood": "Relief, triumph, survival achieved"
+      }
+    ]
+  },
+  "visual_style": {
+    "description": "Cowboy Bebop style anime - noir aesthetic with dramatic shadows, cinematic lighting, fluid character animation, and atmospheric detail work",
+    "image_path": "output/style_examples/style_20251109_111805.png"
+  }
+}

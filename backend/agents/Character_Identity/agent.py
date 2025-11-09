@@ -326,6 +326,12 @@ Please ensure the Entry Agent has completed successfully and outputted storyline
         # Start development
         character_id = self.start_character_development(entry_json, mode="balanced")
 
+        # Save character name -> UUID mapping to project state
+        character_name = entry_json.get('characters', [{}])[0].get('name', 'Unknown')
+        from utils.state_manager import write_character_mapping
+        write_character_mapping(character_name, character_id, project_id="default")
+        print(f"✓ Saved character mapping: {character_name} -> {character_id}")
+
         # Run development with terminal display
         final_profile = await self.run_character_development_terminal(character_id)
 
